@@ -1,5 +1,5 @@
 //importing styles
-import './styles/css/app.css';
+import '../styles/css/app.css';
 //app component
 const App = () => {
   return (
