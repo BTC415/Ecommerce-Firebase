@@ -1,7 +1,10 @@
 {
-  "name": "blogging-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "ecommerce-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/NightClover-code/ReduxTypescriptSimpleStarter",
+  "author": "Achraf Elmouhib <elmouhib2003achraf@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -12,8 +15,11 @@
     "@types/react-dom": "^17.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^4.2.2",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "typescript": "^4.1.4",
     "web-vitals": "^1.1.0"
   },
@@ -21,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -42,10 +49,6 @@
     ]
   },
   "devDependencies": {
-    "@types/react-redux": "^7.1.16",
-    "axios": "^0.21.1",
-    "react-redux": "^7.2.2",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "@types/react-redux": "^7.1.16"
   }
 }
