@@ -1,5 +1,5 @@
 //importing styles
-import '../../styles/css/styles.css';
+import '../../styles/css/default.css';
 //app component
 const App = () => {
   return (
