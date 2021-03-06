@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 @import '../Header/header';
+@import './variables';
 html,
 body {
   height: 100%;
@@ -12,11 +14,11 @@ body {
   min-height: 100vh;
   overflow: hidden;
   font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Nunito', sans-serif;
   .wrapper {
     min-width: 250px;
     max-width: 2000px;
-    width: 90%;
+    width: 85%;
     margin: auto;
   }
 }

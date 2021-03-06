@@ -1,6 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 header {
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .container {
+  width: 85%;
+  margin: auto;
+  overflow: hidden;
+}
+
+header .container h1 {
+  color: #2b3945;
 }
 
 html,
@@ -19,13 +37,13 @@ body {
   min-height: 100vh;
   overflow: hidden;
   font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .app__container .wrapper {
   min-width: 250px;
   max-width: 2000px;
-  width: 90%;
+  width: 85%;
   margin: auto;
 }
 /*# sourceMappingURL=default.css.map */
