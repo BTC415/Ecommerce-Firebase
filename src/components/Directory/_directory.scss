@@ -1,0 +1,49 @@
+.directory {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: calc(80vh);
+  margin: 30px auto;
+  border-radius: 5px;
+  overflow: hidden;
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .men__item__container {
+    position: relative;
+    background: url('../../assets/images/shop-men.jpeg') no-repeat 0 -180px;
+    background-size: cover;
+  }
+  .women__item__container {
+    position: relative;
+    background: url('../../assets/images/shop-women.jpeg') no-repeat;
+    background-size: cover;
+  }
+  button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    background-color: $dark-blue;
+    border: 1px solid white;
+    color: white;
+  }
+}

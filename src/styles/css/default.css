@@ -21,6 +21,66 @@ header .container h1 {
   color: #2b3945;
 }
 
+.directory {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: calc(80vh);
+      grid-template-rows: calc(80vh);
+  margin: 30px auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.directory::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.directory img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.directory .men__item__container {
+  position: relative;
+  background: url("../../assets/images/shop-men.jpeg") no-repeat 0 -180px;
+  background-size: cover;
+}
+
+.directory .women__item__container {
+  position: relative;
+  background: url("../../assets/images/shop-women.jpeg") no-repeat;
+  background-size: cover;
+}
+
+.directory button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 100;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 18px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  outline: none;
+  font-family: inherit;
+  background-color: #2b3945;
+  border: 1px solid white;
+  color: white;
+}
+
 html,
 body {
   height: 100%;
