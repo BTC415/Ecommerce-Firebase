@@ -79,6 +79,13 @@ header .container h1 {
   background-color: #2b3945;
   border: 1px solid white;
   color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.directory button:hover {
+  opacity: 0.85;
 }
 
 html,
