@@ -7,10 +7,10 @@
 }
 .signin {
   .container {
-    width: 40%;
+    max-width: 400px;
     margin: auto;
     overflow: hidden;
-    border: 3px solid $dark-blue;
+    border: 2px solid $dark-blue;
     padding: 15px 10px 10px 10px;
     border-radius: 5px;
     @include flexBoxColumn();

@@ -28,10 +28,12 @@ header {
         list-style: none;
         display: flex;
         gap: 20px;
-        li a {
+        li a,
+        .log__out {
           text-decoration: none;
           color: $dark-blue;
           font-size: 18px;
+          cursor: pointer;
         }
       }
     }

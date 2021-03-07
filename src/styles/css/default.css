@@ -42,10 +42,12 @@ header .container .registration .registration__list {
   gap: 20px;
 }
 
-header .container .registration .registration__list li a {
+header .container .registration .registration__list li a,
+header .container .registration .registration__list .log__out {
   text-decoration: none;
   color: #2b3945;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .directory {
@@ -91,7 +93,7 @@ header .container .registration .registration__list li a {
   background-size: cover;
 }
 
-.directory button {
+.directory .shop__button {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -111,7 +113,7 @@ header .container .registration .registration__list li a {
   transition: all 0.2s ease-in-out;
 }
 
-.directory button:hover {
+.directory .shop__button:hover {
   opacity: 0.85;
 }
 
@@ -122,10 +124,10 @@ footer {
 }
 
 .signin .container {
-  width: 40%;
+  max-width: 400px;
   margin: auto;
   overflow: hidden;
-  border: 3px solid #2b3945;
+  border: 2px solid #2b3945;
   padding: 15px 10px 10px 10px;
   border-radius: 5px;
   display: -webkit-box;
@@ -147,7 +149,7 @@ footer {
   width: 100%;
 }
 
-button {
+.btn {
   width: 100%;
   background-color: #2b3945;
   color: white;
@@ -164,7 +166,7 @@ button {
   letter-spacing: 2px;
 }
 
-button:hover {
+.btn:hover {
   background-color: #fff;
   color: #2b3945;
 }

@@ -1,7 +1,14 @@
+//importing firebase & utilities
+import firebase from 'firebase/app';
+import { auth } from '../..//firebase/utils';
 //router link
 import { Link } from 'react-router-dom';
+//header props
+interface HeaderProps {
+  currentUser: firebase.User | null;
+}
 //header component
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ currentUser }) => {
   return (
     <header>
       <div className="container">
@@ -11,18 +18,23 @@ const Header: React.FC = () => {
           </Link>
         </div>
         <div className="registration">
-          <ul className="registration__list">
-            <li>
-              <Link to="/registration" className="registration__link">
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to="/login" className="registration__link">
-                Login
-              </Link>
-            </li>
-          </ul>
+          {currentUser && (
+            <ul className="registration__list">
+              <li onClick={() => auth.signOut()} className="log__out">
+                LogOut
+              </li>
+            </ul>
+          )}
+          {!currentUser && (
+            <ul className="registration__list">
+              <li>
+                <Link to="/registration">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </header>
