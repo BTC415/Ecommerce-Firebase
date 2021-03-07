@@ -24,10 +24,11 @@ const App: React.FC = () => {
         //getting currentUser object
         const userRef = await handleUserProfile(userAuth);
         //updating state when user changes
-        userRef?.onSnapshot(snapshot => {
+        userRef?.onSnapshot(({ data, id }) => {
           setCurrentUser({
-            uid: snapshot.id,
-            data: snapshot.data(),
+            id,
+            displayName: data()?.displayName,
+            email: data()?.email,
           });
         });
       }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { CurrentUser } from '../../state';
 //header props
 interface HeaderProps {
-  currentUser: CurrentUser;
+  currentUser: CurrentUser | null;
 }
 //header component
 const Header: React.FC<HeaderProps> = ({ currentUser }) => {
