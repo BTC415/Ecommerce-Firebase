@@ -2,27 +2,37 @@
 import '../../styles/css/default.css';
 //importing hooks & auth
 import { useEffect, useState } from 'react';
-import { auth } from '../../firebase/utils';
-import firebase from 'firebase/app';
+import { auth, handleUserProfile } from '../../firebase/utils';
 //importing pages
 import Homepage from '../../pages/Homepage';
 import Registration from '../../pages/Registration';
 import Login from '../../pages/Login';
 //importing route
-import { Route } from 'react-router';
+import { Redirect, Route } from 'react-router';
 //importing layouts
 import MainLayout from '../../layouts/MainLayout';
+//importing types
+import { CurrentUser } from '../../state';
 //app component
 const App: React.FC = () => {
   //local State
-  const [currentUser, setCurrentUser] = useState<firebase.User | null>(null);
+  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
   //checking if user is signed in on first render
   useEffect(() => {
-    const authListener = auth.onAuthStateChanged(userAuth => {
-      if (!userAuth) {
-        setCurrentUser(null);
+    const authListener = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        //getting currentUser object
+        const userRef = await handleUserProfile(userAuth);
+        //updating state when user changes
+        userRef?.onSnapshot(snapshot => {
+          setCurrentUser({
+            uid: snapshot.id,
+            data: snapshot.data(),
+          });
+        });
       }
-      setCurrentUser(userAuth);
+      //clean up if user is signed out
+      setCurrentUser(null);
     });
     // clean up
     return () => authListener();
@@ -48,11 +58,15 @@ const App: React.FC = () => {
       />
       <Route
         path="/login"
-        render={() => (
-          <MainLayout currentUser={currentUser}>
-            <Login />
-          </MainLayout>
-        )}
+        render={() =>
+          currentUser ? (
+            <Redirect to="/" />
+          ) : (
+            <MainLayout currentUser={currentUser}>
+              <Login />
+            </MainLayout>
+          )
+        }
       />
     </div>
   );

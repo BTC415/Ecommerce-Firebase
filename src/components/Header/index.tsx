@@ -1,11 +1,11 @@
 //importing firebase & utilities
-import firebase from 'firebase/app';
 import { auth } from '../..//firebase/utils';
 //router link
 import { Link } from 'react-router-dom';
+import { CurrentUser } from '../../state';
 //header props
 interface HeaderProps {
-  currentUser: firebase.User | null;
+  currentUser: CurrentUser;
 }
 //header component
 const Header: React.FC<HeaderProps> = ({ currentUser }) => {
