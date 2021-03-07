@@ -1,0 +1,19 @@
+button {
+  width: 100%;
+  background-color: $dark-blue;
+  color: white;
+  font-family: inherit;
+  border-radius: 5px;
+  font-size: 18px;
+  border: 2px solid $dark-blue;
+  outline: none;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  &:hover {
+    background-color: #fff;
+    color: $dark-blue;
+  }
+}

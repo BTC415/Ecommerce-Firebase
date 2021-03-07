@@ -121,6 +121,54 @@ footer {
   padding: 20px;
 }
 
+.signin .container {
+  width: 40%;
+  margin: auto;
+  overflow: hidden;
+  border: 3px solid #2b3945;
+  padding: 15px 10px 10px 10px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.signin .container form {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  background-color: #2b3945;
+  color: white;
+  font-family: inherit;
+  border-radius: 5px;
+  font-size: 18px;
+  border: 2px solid #2b3945;
+  outline: none;
+  padding: 10px 0;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #2b3945;
+}
+
 html,
 body {
   height: 100%;

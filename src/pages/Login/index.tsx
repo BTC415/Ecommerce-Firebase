@@ -3,7 +3,7 @@ import SignIn from '../../components/SignIn';
 //login page
 const Login: React.FC = () => {
   return (
-    <div>
+    <div className="login__page">
       <SignIn />
     </div>
   );
