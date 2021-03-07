@@ -26,6 +26,8 @@ header {
     .registration {
       .registration__list {
         list-style: none;
+        display: flex;
+        gap: 20px;
         li a {
           text-decoration: none;
           color: $dark-blue;

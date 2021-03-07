@@ -1,3 +1,4 @@
+//directory component
 const Directory: React.FC = () => {
   return (
     <section className="directory">
