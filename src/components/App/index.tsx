@@ -24,12 +24,14 @@ const App: React.FC = () => {
         //getting currentUser object
         const userRef = await handleUserProfile(userAuth);
         //updating state when user changes
-        userRef?.onSnapshot(({ data, id }) => {
-          setCurrentUser({
-            id,
-            displayName: data()?.displayName,
-            email: data()?.email,
-          });
+        userRef?.onSnapshot(snapshot => {
+          if (snapshot.exists) {
+            setCurrentUser({
+              id: snapshot.id,
+              displayName: snapshot.data()?.displayName,
+              email: snapshot.data()?.email,
+            });
+          }
         });
       }
       //clean up if user is signed out
