@@ -8,5 +8,5 @@ export const auth = app.auth();
 export const db = app.firestore();
 //signing with google handler
 const GoogleProvider = new firebase.auth.GoogleAuthProvider();
-export const signInWithGoogle = auth.signInWithPopup(GoogleProvider);
+export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 GoogleProvider.setCustomParameters({ prompt: 'select_account' });
