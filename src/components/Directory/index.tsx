@@ -1,4 +1,4 @@
-const Directory = () => {
+const Directory: React.FC = () => {
   return (
     <section className="directory">
       <div className="men__item__container">
