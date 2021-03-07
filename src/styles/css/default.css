@@ -111,6 +111,12 @@ header .container .registration .registration__list li a {
   opacity: 0.85;
 }
 
+footer {
+  text-align: center;
+  font-size: 16px;
+  padding: 20px;
+}
+
 html,
 body {
   height: 100%;
