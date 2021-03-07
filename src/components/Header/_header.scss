@@ -1,4 +1,10 @@
-@import '../App/variables';
+//mixins
+@mixin flexBoxSpaceBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+//header
 header {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   height: 70px;
@@ -8,8 +14,24 @@ header {
     width: 85%;
     margin: auto;
     overflow: hidden;
-    h1 {
-      color: $dark-blue;
+    @include flexBoxSpaceBetween();
+    .logo__container {
+      a {
+        text-decoration: none;
+        h1 {
+          color: $dark-blue;
+        }
+      }
+    }
+    .registration {
+      .registration__list {
+        list-style: none;
+        li a {
+          text-decoration: none;
+          color: $dark-blue;
+          font-size: 18px;
+        }
+      }
     }
   }
 }
