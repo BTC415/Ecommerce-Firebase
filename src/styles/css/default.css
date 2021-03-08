@@ -123,6 +123,10 @@ footer {
   padding: 20px;
 }
 
+.signin {
+  margin-top: 50px;
+}
+
 .signin .container {
   max-width: 400px;
   margin: auto;
@@ -169,6 +173,10 @@ footer {
 .btn:hover {
   background-color: #fff;
   color: #2b3945;
+}
+
+.signup {
+  margin-top: 50px;
 }
 
 .signup .container {
