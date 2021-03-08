@@ -1,5 +1,7 @@
 //importing hooks
 import { useState } from 'react';
+//importing firebase utils
+import { auth, handleUserProfile } from '../../firebase/utils';
 //importing components
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
@@ -9,6 +11,7 @@ interface FormElementsState {
   email: string;
   password: string;
   confirmPassword: string;
+  errors: string[];
 }
 //sign up component
 const SignUp: React.FC = () => {
@@ -18,6 +21,7 @@ const SignUp: React.FC = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    errors: [],
   });
   //on change handler
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,11 +30,43 @@ const SignUp: React.FC = () => {
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    //destructuring
+    const { confirmPassword, password, displayName, email } = formElements;
+    //validation
+    const err: string[] = [];
+    if (password !== confirmPassword) {
+      err.push("Passwords didn't match. Please try again");
+    }
+    if (password.length < 6) {
+      err.push('Password length must be at least 6 characters');
+    }
+    if (password.length > 15) {
+      err.push('Password length must not exceed 15 characters');
+    }
+    if (!password || !displayName || !email || confirmPassword) {
+      err.push('One or more fields are missing. Please try again');
+    }
+    //updating state with errors
+    setFormElements({
+      ...formElements,
+      errors: err,
+    });
+    //preventing submit when errors occure
+    if (err.length > 0) {
+      return;
+    }
   };
   return (
     <div className="signup">
       <div className="container">
         <h2>Sign Up</h2>
+        {formElements.errors.length > 0 && (
+          <ul>
+            {formElements.errors.map((err, index) => {
+              return <li key={index}>{err}</li>;
+            })}
+          </ul>
+        )}
         <form onSubmit={onSubmitHandler}>
           <FormInput
             onChange={onChangeHandler}
