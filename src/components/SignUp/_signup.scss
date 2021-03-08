@@ -1,0 +1,21 @@
+//mixins
+@mixin flexBoxColumn {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.signup {
+  .container {
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden;
+    border: 2px solid $dark-blue;
+    padding: 15px 10px 10px 10px;
+    border-radius: 5px;
+    @include flexBoxColumn();
+    form {
+      width: 100%;
+    }
+  }
+}

@@ -1,5 +1,12 @@
+//importing components
+import SignUp from '../../components/SignUp';
+//registration page
 const Registration: React.FC = () => {
-  return <div>Registration page</div>;
+  return (
+    <div>
+      <SignUp />
+    </div>
+  );
 };
 
 export default Registration;

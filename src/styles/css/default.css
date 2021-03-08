@@ -171,6 +171,32 @@ footer {
   color: #2b3945;
 }
 
+.signup .container {
+  max-width: 400px;
+  margin: auto;
+  overflow: hidden;
+  border: 2px solid #2b3945;
+  padding: 15px 10px 10px 10px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.signup .container form {
+  width: 100%;
+}
+
 html,
 body {
   height: 100%;
