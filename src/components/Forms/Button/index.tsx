@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 //button interface
 interface ButtonProps {
   onClick?: () => Promise<firebase.auth.UserCredential>;
+  type?: 'submit';
 }
 //button component
 const Button: React.FC<ButtonProps> = ({ children, ...otherProps }) => {

@@ -21,7 +21,7 @@ const SignUp: React.FC = () => {
   });
   //on change handler
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormElements({ ...formElements, displayName: e.target.value });
+    setFormElements({ ...formElements, [e.target.name]: e.target.value });
   };
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -39,7 +39,28 @@ const SignUp: React.FC = () => {
             placeholder="Full Name"
             value={formElements.displayName}
           />
-          <Button>Sign In With Google</Button>
+          <FormInput
+            onChange={onChangeHandler}
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formElements.email}
+          />
+          <FormInput
+            onChange={onChangeHandler}
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formElements.password}
+          />
+          <FormInput
+            onChange={onChangeHandler}
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm password"
+            value={formElements.confirmPassword}
+          />
+          <Button type="submit">Register</Button>
         </form>
       </div>
     </div>
