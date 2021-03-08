@@ -53,11 +53,15 @@ const App: React.FC = () => {
       />
       <Route
         path="/registration"
-        render={() => (
-          <MainLayout currentUser={currentUser}>
-            <Registration />
-          </MainLayout>
-        )}
+        render={() =>
+          currentUser ? (
+            <Redirect to="/" />
+          ) : (
+            <MainLayout currentUser={currentUser}>
+              <Registration />
+            </MainLayout>
+          )
+        }
       />
       <Route
         path="/login"

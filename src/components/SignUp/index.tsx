@@ -13,22 +13,25 @@ interface FormElementsState {
   confirmPassword: string;
   errors: string[];
 }
+const initialState: FormElementsState = {
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+  errors: [],
+};
 //sign up component
 const SignUp: React.FC = () => {
   //local state
-  const [formElements, setFormElements] = useState<FormElementsState>({
-    displayName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    errors: [],
-  });
+  const [formElements, setFormElements] = useState<FormElementsState>(
+    initialState
+  );
   //on change handler
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormElements({ ...formElements, [e.target.name]: e.target.value });
   };
   //on submit handler
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //destructuring
     const { confirmPassword, password, displayName, email } = formElements;
@@ -43,7 +46,7 @@ const SignUp: React.FC = () => {
     if (password.length > 15) {
       err.push('Password length must not exceed 15 characters');
     }
-    if (!password || !displayName || !email || confirmPassword) {
+    if (!password || !displayName || !email || !confirmPassword) {
       err.push('One or more fields are missing. Please try again');
     }
     //updating state with errors
@@ -55,6 +58,22 @@ const SignUp: React.FC = () => {
     if (err.length > 0) {
       return;
     }
+    //submitting and creating user's account
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      //saving user to db
+      await handleUserProfile(user, { displayName });
+      //resetting the form
+      setFormElements(initialState);
+    } catch (err) {
+      setFormElements({
+        ...formElements,
+        errors: [...formElements.errors, err.message],
+      });
+    }
   };
   return (
     <div className="signup">
@@ -63,7 +82,11 @@ const SignUp: React.FC = () => {
         {formElements.errors.length > 0 && (
           <ul>
             {formElements.errors.map((err, index) => {
-              return <li key={index}>{err}</li>;
+              return (
+                <li style={{ lineHeight: '1.5' }} key={index}>
+                  {err}
+                </li>
+              );
             })}
           </ul>
         )}
