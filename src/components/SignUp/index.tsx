@@ -30,7 +30,7 @@ const SignUp: React.FC = () => {
   return (
     <div className="signup">
       <div className="container">
-        <h2>Sign</h2>
+        <h2>Sign Up</h2>
         <form onSubmit={onSubmitHandler}>
           <FormInput
             onChange={onChangeHandler}

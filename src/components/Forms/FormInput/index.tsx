@@ -14,7 +14,7 @@ const FormInput: React.FC<FormInputProps> = ({
   ...otherProps
 }) => {
   return (
-    <div className="form__input">
+    <div className="form__input__container">
       {label && <label>{label}</label>}
       <input className="form__input" {...otherProps} onChange={onChange} />
     </div>

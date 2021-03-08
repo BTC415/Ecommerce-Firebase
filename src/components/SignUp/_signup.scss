@@ -12,11 +12,14 @@
     margin: auto;
     overflow: hidden;
     border: 2px solid $dark-blue;
-    padding: 15px 10px 10px 10px;
+    padding: 15px 15px 10px 15px;
     border-radius: 5px;
     @include flexBoxColumn();
     form {
       width: 100%;
+    }
+    h2 {
+      padding-bottom: 10px;
     }
   }
 }
