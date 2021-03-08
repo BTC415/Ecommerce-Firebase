@@ -17,6 +17,9 @@
     @include flexBoxColumn();
     form {
       width: 100%;
+      .form__inputs {
+        padding-bottom: 10px;
+      }
     }
     h2 {
       padding-bottom: 10px;

@@ -83,7 +83,7 @@ const SignUp: React.FC = () => {
           <ul>
             {formElements.errors.map((err, index) => {
               return (
-                <li style={{ lineHeight: '1.5' }} key={index}>
+                <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
                   {err}
                 </li>
               );
@@ -91,34 +91,36 @@ const SignUp: React.FC = () => {
           </ul>
         )}
         <form onSubmit={onSubmitHandler}>
-          <FormInput
-            onChange={onChangeHandler}
-            type="text"
-            name="displayName"
-            placeholder="Full Name"
-            value={formElements.displayName}
-          />
-          <FormInput
-            onChange={onChangeHandler}
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formElements.email}
-          />
-          <FormInput
-            onChange={onChangeHandler}
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formElements.password}
-          />
-          <FormInput
-            onChange={onChangeHandler}
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm password"
-            value={formElements.confirmPassword}
-          />
+          <div className="form__inputs">
+            <FormInput
+              onChange={onChangeHandler}
+              type="text"
+              name="displayName"
+              placeholder="Full Name"
+              value={formElements.displayName}
+            />
+            <FormInput
+              onChange={onChangeHandler}
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formElements.email}
+            />
+            <FormInput
+              onChange={onChangeHandler}
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formElements.password}
+            />
+            <FormInput
+              onChange={onChangeHandler}
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm password"
+              value={formElements.confirmPassword}
+            />
+          </div>
           <Button type="submit">Register</Button>
         </form>
       </div>
