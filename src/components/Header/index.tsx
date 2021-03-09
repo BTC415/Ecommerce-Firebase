@@ -1,14 +1,13 @@
+//importing hooks
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 //importing firebase & utilities
 import { auth } from '../..//firebase/utils';
 //router link
 import { Link } from 'react-router-dom';
-import { CurrentUser } from '../../state';
-//header props
-interface HeaderProps {
-  currentUser: CurrentUser | null;
-}
 //header component
-const Header: React.FC<HeaderProps> = ({ currentUser }) => {
+const Header: React.FC = () => {
+  //redux state
+  const currentUser = useTypedSelector(state => state.user);
   return (
     <header>
       <div className="container">

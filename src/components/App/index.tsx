@@ -48,7 +48,7 @@ const App: React.FC = () => {
         path="/"
         exact
         render={() => (
-          <MainLayout currentUser={currentUser}>
+          <MainLayout>
             <Homepage />
           </MainLayout>
         )}
@@ -59,7 +59,7 @@ const App: React.FC = () => {
           currentUser ? (
             <Redirect to="/" />
           ) : (
-            <MainLayout currentUser={currentUser}>
+            <MainLayout>
               <Registration />
             </MainLayout>
           )
@@ -71,7 +71,7 @@ const App: React.FC = () => {
           currentUser ? (
             <Redirect to="/" />
           ) : (
-            <MainLayout currentUser={currentUser}>
+            <MainLayout>
               <Login />
             </MainLayout>
           )
@@ -80,7 +80,7 @@ const App: React.FC = () => {
       <Route
         path="/recovery"
         render={() => (
-          <MainLayout currentUser={currentUser}>
+          <MainLayout>
             <Recovery />
           </MainLayout>
         )}
