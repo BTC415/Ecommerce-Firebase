@@ -7,49 +7,36 @@ import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
 //importing firebase utils
 import { auth, signInWithGoogle } from '../../firebase/utils';
-interface FormElementsState {
-  email: string;
-  password: string;
-  errors: string[];
-}
-const initialState: FormElementsState = {
-  email: '',
-  password: '',
-  errors: [],
-};
 //sign in component
 const SignIn: React.FC = () => {
   //local state
-  const [formElements, setFormElements] = useState<FormElementsState>(
-    initialState
-  );
-  //on change handler
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormElements({ ...formElements, [e.target.name]: e.target.value });
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [errors, setErrors] = useState<string[]>([]);
+  //reset form
+  const resetForm = () => {
+    setEmail('');
+    setPassword('');
+    setErrors([]);
   };
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //destructuring
-    const { email, password } = formElements;
+    //signing user in
     try {
-      //signing user in
       await auth.signInWithEmailAndPassword(email, password);
       //resetting the form
-      setFormElements(initialState);
+      resetForm();
     } catch (err) {
       //catching errors
-      setFormElements({
-        ...formElements,
-        errors: [...formElements.errors, err.message],
-      });
+      setErrors([...errors, err]);
     }
   };
 
   return (
     <MainForm headline="Log In">
-      {formElements.errors.length > 0 && (
+      {errors.length > 0 && (
         <ul>
-          {formElements.errors.map((err, index) => {
+          {errors.map((err, index) => {
             return (
               <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
                 {err}
@@ -62,18 +49,18 @@ const SignIn: React.FC = () => {
         <form onSubmit={onSubmitHandler}>
           <div className="form__inputs">
             <FormInput
-              onChange={onChangeHandler}
+              onChange={e => setEmail(e.target.value)}
               type="email"
               name="email"
               placeholder="Email"
-              value={formElements.email}
+              value={email}
             />
             <FormInput
-              onChange={onChangeHandler}
+              onChange={e => setPassword(e.target.value)}
               type="password"
               name="password"
               placeholder="Password"
-              value={formElements.password}
+              value={password}
             />
           </div>
           <Link className="password__recovery" to="/recovery">

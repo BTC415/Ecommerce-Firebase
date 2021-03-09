@@ -6,36 +6,25 @@ import { auth, handleUserProfile } from '../../firebase/utils';
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
-//State interface
-interface FormElementsState {
-  displayName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  errors: string[];
-}
-const initialState: FormElementsState = {
-  displayName: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-  errors: [],
-};
 //sign up component
 const SignUp: React.FC = () => {
   //local state
-  const [formElements, setFormElements] = useState<FormElementsState>(
-    initialState
-  );
-  //on change handler
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormElements({ ...formElements, [e.target.name]: e.target.value });
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [displayName, setDisplayName] = useState<string>('');
+  const [errors, setErrors] = useState<string[]>([]);
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  //reset form
+  const resetForm = () => {
+    setErrors([]);
+    setEmail('');
+    setDisplayName('');
+    setConfirmPassword('');
+    setPassword('');
   };
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //destructuring
-    const { confirmPassword, password, displayName, email } = formElements;
     //validation
     const err: string[] = [];
     if (password !== confirmPassword) {
@@ -51,10 +40,7 @@ const SignUp: React.FC = () => {
       err.push('One or more fields are missing. Please try again');
     }
     //updating state with errors
-    setFormElements({
-      ...formElements,
-      errors: err,
-    });
+    setErrors(err);
     //preventing submit when errors occure
     if (err.length > 0) {
       return;
@@ -68,19 +54,16 @@ const SignUp: React.FC = () => {
       //saving user to db
       await handleUserProfile(user, { displayName });
       //resetting the form
-      setFormElements(initialState);
+      resetForm();
     } catch (err) {
-      setFormElements({
-        ...formElements,
-        errors: [...formElements.errors, err.message],
-      });
+      setErrors([...errors, err]);
     }
   };
   return (
     <MainForm headline="Sign Up">
-      {formElements.errors.length > 0 && (
+      {errors.length > 0 && (
         <ul>
-          {formElements.errors.map((err, index) => {
+          {errors.map((err, index) => {
             return (
               <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
                 {err}
@@ -92,32 +75,32 @@ const SignUp: React.FC = () => {
       <form onSubmit={onSubmitHandler}>
         <div className="form__inputs">
           <FormInput
-            onChange={onChangeHandler}
+            onChange={e => setDisplayName(e.target.value)}
             type="text"
             name="displayName"
             placeholder="Full Name"
-            value={formElements.displayName}
+            value={displayName}
           />
           <FormInput
-            onChange={onChangeHandler}
+            onChange={e => setEmail(e.target.value)}
             type="email"
             name="email"
             placeholder="Email"
-            value={formElements.email}
+            value={email}
           />
           <FormInput
-            onChange={onChangeHandler}
+            onChange={e => setPassword(e.target.value)}
             type="password"
             name="password"
             placeholder="Password"
-            value={formElements.password}
+            value={password}
           />
           <FormInput
-            onChange={onChangeHandler}
+            onChange={e => setConfirmPassword(e.target.value)}
             type="password"
             name="confirmPassword"
             placeholder="Confirm password"
-            value={formElements.confirmPassword}
+            value={confirmPassword}
           />
         </div>
         <Button type="submit">Register</Button>
