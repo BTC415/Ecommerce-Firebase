@@ -1,7 +1,9 @@
+//importing reducers
 import { combineReducers } from 'redux';
-
+import userReducer from './userReducer';
+//reducers
 const reducers = combineReducers({
-  dummyReducer: () => 5,
+  user: userReducer,
 });
 export default reducers;
 //ensuring that typescript knows the type of our state
