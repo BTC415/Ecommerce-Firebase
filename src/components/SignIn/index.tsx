@@ -1,5 +1,6 @@
-//importing hooks
+//importing hooks & router utils
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 //importing components
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
@@ -79,6 +80,9 @@ const SignIn: React.FC = () => {
         </form>
       </div>
       <span>Or</span>
+      <Link className="password__recovery" to="/recovery">
+        <h3>Forgot Password?</h3>
+      </Link>
       <div className="social__signin">
         <form onSubmit={e => e.preventDefault()}>
           <Button onClick={signInWithGoogle}>Sign In With Google</Button>
