@@ -1,0 +1,37 @@
+//mixins
+@mixin flexBoxColumn {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.main__form {
+  margin-top: 50px;
+  .container {
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden;
+    border: 2px solid $dark-blue;
+    padding: 15px 15px 10px 15px;
+    border-radius: 5px;
+    @include flexBoxColumn();
+    form {
+      width: 100%;
+      .form__inputs {
+        padding-bottom: 10px;
+      }
+    }
+    span {
+      font-size: 20px;
+      padding: 5px 0;
+      font-style: italic;
+    }
+    h2 {
+      padding-bottom: 10px;
+    }
+  }
+}
+.social__signin,
+.common__signin {
+  width: 100%;
+}

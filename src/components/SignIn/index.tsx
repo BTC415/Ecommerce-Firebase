@@ -3,15 +3,18 @@ import { useState } from 'react';
 //importing components
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
+import MainForm from '../Forms/MainForm';
 //importing firebase utils
 import { auth, signInWithGoogle } from '../../firebase/utils';
 interface FormElementsState {
   email: string;
   password: string;
+  errors: string[];
 }
 const initialState: FormElementsState = {
   email: '',
   password: '',
+  errors: [],
 };
 //sign in component
 const SignIn: React.FC = () => {
@@ -33,43 +36,55 @@ const SignIn: React.FC = () => {
       //resetting the form
       setFormElements(initialState);
     } catch (err) {
-      console.log(err);
+      //catching errors
+      setFormElements({
+        ...formElements,
+        errors: [...formElements.errors, err.message],
+      });
     }
   };
 
   return (
-    <div className="signin">
-      <div className="container">
-        <h2>LogIn</h2>
-        <div className="common__signin">
-          <form onSubmit={onSubmitHandler}>
-            <div className="form__inputs">
-              <FormInput
-                onChange={onChangeHandler}
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formElements.email}
-              />
-              <FormInput
-                onChange={onChangeHandler}
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formElements.password}
-              />
-            </div>
-            <Button>Sign In</Button>
-          </form>
-        </div>
-        <span>Or</span>
-        <div className="social__signin">
-          <form onSubmit={e => e.preventDefault()}>
-            <Button onClick={signInWithGoogle}>Sign In With Google</Button>
-          </form>
-        </div>
+    <MainForm headline="Log In">
+      {formElements.errors.length > 0 && (
+        <ul>
+          {formElements.errors.map((err, index) => {
+            return (
+              <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
+                {err}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      <div className="common__signin">
+        <form onSubmit={onSubmitHandler}>
+          <div className="form__inputs">
+            <FormInput
+              onChange={onChangeHandler}
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formElements.email}
+            />
+            <FormInput
+              onChange={onChangeHandler}
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formElements.password}
+            />
+          </div>
+          <Button>Sign In</Button>
+        </form>
       </div>
-    </div>
+      <span>Or</span>
+      <div className="social__signin">
+        <form onSubmit={e => e.preventDefault()}>
+          <Button onClick={signInWithGoogle}>Sign In With Google</Button>
+        </form>
+      </div>
+    </MainForm>
   );
 };
 export default SignIn;

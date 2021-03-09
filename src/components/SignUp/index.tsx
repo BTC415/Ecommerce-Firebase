@@ -5,6 +5,7 @@ import { auth, handleUserProfile } from '../../firebase/utils';
 //importing components
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
+import MainForm from '../Forms/MainForm';
 //State interface
 interface FormElementsState {
   displayName: string;
@@ -76,55 +77,52 @@ const SignUp: React.FC = () => {
     }
   };
   return (
-    <div className="signup">
-      <div className="container">
-        <h2>Sign Up</h2>
-        {formElements.errors.length > 0 && (
-          <ul>
-            {formElements.errors.map((err, index) => {
-              return (
-                <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
-                  {err}
-                </li>
-              );
-            })}
-          </ul>
-        )}
-        <form onSubmit={onSubmitHandler}>
-          <div className="form__inputs">
-            <FormInput
-              onChange={onChangeHandler}
-              type="text"
-              name="displayName"
-              placeholder="Full Name"
-              value={formElements.displayName}
-            />
-            <FormInput
-              onChange={onChangeHandler}
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formElements.email}
-            />
-            <FormInput
-              onChange={onChangeHandler}
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formElements.password}
-            />
-            <FormInput
-              onChange={onChangeHandler}
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm password"
-              value={formElements.confirmPassword}
-            />
-          </div>
-          <Button type="submit">Register</Button>
-        </form>
-      </div>
-    </div>
+    <MainForm headline="Sign Up">
+      {formElements.errors.length > 0 && (
+        <ul>
+          {formElements.errors.map((err, index) => {
+            return (
+              <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
+                {err}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      <form onSubmit={onSubmitHandler}>
+        <div className="form__inputs">
+          <FormInput
+            onChange={onChangeHandler}
+            type="text"
+            name="displayName"
+            placeholder="Full Name"
+            value={formElements.displayName}
+          />
+          <FormInput
+            onChange={onChangeHandler}
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formElements.email}
+          />
+          <FormInput
+            onChange={onChangeHandler}
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formElements.password}
+          />
+          <FormInput
+            onChange={onChangeHandler}
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm password"
+            value={formElements.confirmPassword}
+          />
+        </div>
+        <Button type="submit">Register</Button>
+      </form>
+    </MainForm>
   );
 };
 

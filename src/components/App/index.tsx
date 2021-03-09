@@ -7,6 +7,7 @@ import { auth, handleUserProfile } from '../../firebase/utils';
 import Homepage from '../../pages/Homepage';
 import Registration from '../../pages/Registration';
 import Login from '../../pages/Login';
+import Recovery from '../../pages/Recovery';
 //importing route
 import { Redirect, Route } from 'react-router';
 //importing layouts
@@ -74,6 +75,14 @@ const App: React.FC = () => {
             </MainLayout>
           )
         }
+      />
+      <Route
+        path="/recovery"
+        render={() => (
+          <MainLayout currentUser={currentUser}>
+            <Recovery />
+          </MainLayout>
+        )}
       />
     </div>
   );

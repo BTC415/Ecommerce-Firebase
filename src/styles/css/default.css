@@ -123,57 +123,6 @@ footer {
   padding: 20px;
 }
 
-.signin {
-  margin-top: 50px;
-}
-
-.signin .container {
-  max-width: 400px;
-  margin: auto;
-  overflow: hidden;
-  border: 2px solid #2b3945;
-  padding: 15px 15px 10px 15px;
-  border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.signin .container .social__signin,
-.signin .container .common__signin {
-  width: 100%;
-}
-
-.signin .container .social__signin form,
-.signin .container .common__signin form {
-  width: 100%;
-}
-
-.signin .container .social__signin form .form__inputs,
-.signin .container .common__signin form .form__inputs {
-  padding-bottom: 10px;
-}
-
-.signin .container span {
-  font-size: 20px;
-  padding: 5px 0;
-  font-style: italic;
-}
-
-.signin .container h2 {
-  padding-bottom: 10px;
-}
-
 .btn {
   width: 100%;
   background-color: #2b3945;
@@ -196,11 +145,22 @@ footer {
   color: #2b3945;
 }
 
-.signup {
+.form__input__container .form__input {
+  width: 100%;
+  font-family: inherit;
+  padding: 15px 20px;
+  font-size: 16px;
+  margin: 5px 0;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid #2b3945;
+}
+
+.main__form {
   margin-top: 50px;
 }
 
-.signup .container {
+.main__form .container {
   max-width: 400px;
   margin: auto;
   overflow: hidden;
@@ -222,27 +182,27 @@ footer {
           justify-content: center;
 }
 
-.signup .container form {
+.main__form .container form {
   width: 100%;
 }
 
-.signup .container form .form__inputs {
+.main__form .container form .form__inputs {
   padding-bottom: 10px;
 }
 
-.signup .container h2 {
+.main__form .container span {
+  font-size: 20px;
+  padding: 5px 0;
+  font-style: italic;
+}
+
+.main__form .container h2 {
   padding-bottom: 10px;
 }
 
-.form__input__container .form__input {
+.social__signin,
+.common__signin {
   width: 100%;
-  font-family: inherit;
-  padding: 15px 20px;
-  font-size: 16px;
-  margin: 5px 0;
-  border-radius: 5px;
-  outline: none;
-  border: 2px solid #2b3945;
 }
 
 html,
