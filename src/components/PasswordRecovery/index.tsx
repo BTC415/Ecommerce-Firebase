@@ -8,27 +8,17 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import MainForm from '../Forms/MainForm';
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
-//state interface
-interface FormElementsState {
-  email: string;
-  errors: string[];
-}
-const initialState: FormElementsState = {
-  email: '',
-  errors: [],
-};
 //props interface
 interface PasswordRecoveryProps extends RouteComponentProps<any> {}
 //email password form component
 const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
   //local state
-  const [formElements, setFormElements] = useState<FormElementsState>(
-    initialState
-  );
+  const [email, setEmail] = useState<string>('');
+  const [errors, setErrors] = useState<string[]>([]);
+  //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const { email } = formElements;
       //sending instructions on password recovery
       await auth
         .sendPasswordResetEmail(email, {
@@ -41,25 +31,17 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
         .catch(() => {
           const err: string[] = ['Email not found. Please try again.'];
           //catching errors
-          setFormElements({
-            ...formElements,
-            errors: err,
-            email: '',
-          });
+          setErrors(err);
         });
     } catch (err) {
       console.log(err.message);
     }
   };
-  //on change handler
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormElements({ ...formElements, [e.target.name]: e.target.value });
-  };
   return (
     <MainForm headline="Password Recovery">
-      {formElements.errors.length > 0 && (
+      {errors.length > 0 && (
         <ul>
-          {formElements.errors.map((err, index) => {
+          {errors.map((err, index) => {
             return (
               <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
                 {err}
@@ -71,11 +53,11 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
       <form onSubmit={onSubmitHandler}>
         <div className="form__inputs">
           <FormInput
-            onChange={onChangeHandler}
+            onChange={e => setEmail(e.target.value)}
             type="email"
             name="email"
             placeholder="Email"
-            value={formElements.email}
+            value={email}
           />
         </div>
         <Button type="submit">Send me instructions</Button>

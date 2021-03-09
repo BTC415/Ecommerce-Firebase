@@ -1,5 +1,5 @@
 //importing hooks
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useTypedSelector } from '../../hooks';
 //importing firebase & utilities
 import { auth } from '../..//firebase/utils';
 //router link

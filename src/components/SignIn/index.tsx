@@ -28,7 +28,7 @@ const SignIn: React.FC = () => {
       resetForm();
     } catch (err) {
       //catching errors
-      setErrors([...errors, err]);
+      setErrors(err);
     }
   };
 

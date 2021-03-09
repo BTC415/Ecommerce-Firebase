@@ -3,8 +3,7 @@ import '../../styles/css/default.css';
 //importing hooks & auth
 import { useEffect } from 'react';
 import { auth, handleUserProfile } from '../../firebase/utils';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { useActions } from '../../hooks/useActions';
+import { useTypedSelector, useActions } from '../../hooks';
 //importing pages
 import Homepage from '../../pages/Homepage';
 import Registration from '../../pages/Registration';
@@ -36,10 +35,10 @@ const App: React.FC = () => {
           }
         });
       }
-      //clean up if user is signed out
+      //cleanup if user is signed out
       setCurrentUser(null);
     });
-    // clean up
+    // cleanup
     return () => authListener();
   }, [setCurrentUser]);
   return (
