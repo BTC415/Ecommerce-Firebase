@@ -187,7 +187,7 @@ footer {
 }
 
 .main__form .container form .form__inputs {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .main__form .container span {
@@ -197,7 +197,14 @@ footer {
 }
 
 .main__form .container h2 {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.main__form .container .password__recovery h3 {
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 400;
+  margin-bottom: 10px;
 }
 
 .social__signin,

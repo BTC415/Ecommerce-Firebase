@@ -1,5 +1,6 @@
-//importing hooks
+//importing hooks & router utils
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 //importing firebase utils
 import { auth, handleUserProfile } from '../../firebase/utils';
 //importing components
@@ -120,6 +121,9 @@ const SignUp: React.FC = () => {
             value={formElements.confirmPassword}
           />
         </div>
+        <Link className="password__recovery" to="/recovery">
+          <h3>Forgot Password?</h3>
+        </Link>
         <Button type="submit">Register</Button>
       </form>
     </MainForm>
