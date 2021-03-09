@@ -39,11 +39,12 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
           history.push('/login');
         })
         .catch(() => {
-          const err: string[] = [''];
+          const err: string[] = ['Email not found. Please try again.'];
           //catching errors
           setFormElements({
             ...formElements,
             errors: err,
+            email: '',
           });
         });
     } catch (err) {
@@ -56,6 +57,17 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
   };
   return (
     <MainForm headline="Password Recovery">
+      {formElements.errors.length > 0 && (
+        <ul>
+          {formElements.errors.map((err, index) => {
+            return (
+              <li style={{ lineHeight: '1.5', margin: '0 10px' }} key={index}>
+                {err}
+              </li>
+            );
+          })}
+        </ul>
+      )}
       <form onSubmit={onSubmitHandler}>
         <div className="form__inputs">
           <FormInput
