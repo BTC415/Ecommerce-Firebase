@@ -188,6 +188,7 @@ footer {
 
 .main__form .container form .form__inputs {
   padding-bottom: 5px;
+  width: 100%;
 }
 
 .main__form .container span {

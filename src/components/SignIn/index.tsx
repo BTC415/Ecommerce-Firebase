@@ -76,13 +76,13 @@ const SignIn: React.FC = () => {
               value={formElements.password}
             />
           </div>
-          <Button>Sign In</Button>
+          <Link className="password__recovery" to="/recovery">
+            <h3>Forgot Password?</h3>
+          </Link>
+          <Button type="submit">Sign In</Button>
         </form>
       </div>
       <span>Or</span>
-      <Link className="password__recovery" to="/recovery">
-        <h3>Forgot Password?</h3>
-      </Link>
       <div className="social__signin">
         <form onSubmit={e => e.preventDefault()}>
           <Button onClick={signInWithGoogle}>Sign In With Google</Button>
