@@ -1,8 +1,10 @@
 //importing styles
 import '../../styles/css/default.css';
 //importing hooks & auth
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { auth, handleUserProfile } from '../../firebase/utils';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 //importing pages
 import Homepage from '../../pages/Homepage';
 import Registration from '../../pages/Registration';
@@ -12,12 +14,11 @@ import Recovery from '../../pages/Recovery';
 import { Redirect, Route } from 'react-router';
 //importing layouts
 import MainLayout from '../../layouts/MainLayout';
-//importing types
-import { CurrentUser } from '../../state';
 //app component
 const App: React.FC = () => {
-  //local State
-  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
+  //redux action & state
+  const { setCurrentUser } = useActions();
+  const currentUser = useTypedSelector(state => state.user);
   //checking if user is signed in on first render
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async userAuth => {
@@ -40,7 +41,7 @@ const App: React.FC = () => {
     });
     // clean up
     return () => authListener();
-  }, []);
+  }, [setCurrentUser]);
   return (
     <div className="app__container">
       <Route
