@@ -1,7 +1,7 @@
 //importing types
-import { CurrentUserAction } from '../actions/userAction';
+import { CurrentUserAction } from '../actions';
 import { ActionType } from '../action-types';
-import { CurrentUser } from '../interfaces';
+import { CurrentUser } from '../../interfaces';
 //state type
 type CurrentUserState = CurrentUser | null;
 //reducer
