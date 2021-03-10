@@ -4,10 +4,13 @@ import '../../styles/css/default.css';
 import { useEffect } from 'react';
 import { auth, handleUserProfile } from '../../firebase/utils';
 import { useTypedSelector, useActions } from '../../hooks';
+//importing higher order components
+import WithAuth from '../../hoc/WithAuth';
 //importing pages
 import Homepage from '../../pages/Homepage';
 import Registration from '../../pages/Registration';
 import Login from '../../pages/Login';
+import Account from '../../pages/Account';
 import Recovery from '../../pages/Recovery';
 //importing route
 import { Redirect, Route } from 'react-router';
@@ -82,6 +85,16 @@ const App: React.FC = () => {
           <MainLayout>
             <Recovery />
           </MainLayout>
+        )}
+      />
+      <Route
+        path="/account"
+        render={() => (
+          <WithAuth>
+            <MainLayout>
+              <Account />
+            </MainLayout>
+          </WithAuth>
         )}
       />
     </div>
