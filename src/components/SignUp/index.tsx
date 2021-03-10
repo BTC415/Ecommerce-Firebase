@@ -6,8 +6,11 @@ import { auth, handleUserProfile } from '../../firebase/utils';
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
+//importing router utils
+import { withRouter } from 'react-router-dom';
+import { PropsWithRouter } from '../../state';
 //sign up component
-const SignUp: React.FC = () => {
+const SignUp: React.FC<PropsWithRouter> = ({ history }) => {
   //local state
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -55,6 +58,8 @@ const SignUp: React.FC = () => {
       await handleUserProfile(user, { displayName });
       //resetting the form
       resetForm();
+      //redirecting
+      history.push('/');
     } catch (err) {
       setErrors([...errors, err]);
     }
@@ -109,4 +114,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default SignUp;
+export default withRouter(SignUp);

@@ -1,14 +1,18 @@
+//firebase utils
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import { firebaseConfig } from './config';
+//router utils
+import { useHistory } from 'react-router-dom';
 //exporing utilities
 export const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth();
 export const db = app.firestore();
 //signin with google provider
 const GoogleProvider = new firebase.auth.GoogleAuthProvider();
-export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
+export const signInWithGoogle = async () =>
+  auth.signInWithPopup(GoogleProvider);
 GoogleProvider.setCustomParameters({ prompt: 'select_account' });
 //saving user profile to firestore
 export const handleUserProfile = async (

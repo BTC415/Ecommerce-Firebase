@@ -7,8 +7,11 @@ import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
 //importing firebase utils
 import { auth, signInWithGoogle } from '../../firebase/utils';
+//importing router utils
+import { withRouter } from 'react-router-dom';
+import { PropsWithRouter } from '../../state';
 //sign in component
-const SignIn: React.FC = () => {
+const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   //local state
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -26,6 +29,8 @@ const SignIn: React.FC = () => {
       await auth.signInWithEmailAndPassword(email, password);
       //resetting the form
       resetForm();
+      //redirecting
+      history.push('/');
     } catch (err) {
       //catching errors
       setErrors(err);
@@ -78,4 +83,4 @@ const SignIn: React.FC = () => {
     </MainForm>
   );
 };
-export default SignIn;
+export default withRouter(SignIn);

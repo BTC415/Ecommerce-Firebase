@@ -30,9 +30,6 @@ const Header: React.FC = () => {
           {!currentUser && (
             <ul className="registration__list">
               <li>
-                <Link to="/account">My Account</Link>
-              </li>
-              <li>
                 <Link to="/registration">Register</Link>
               </li>
               <li>
