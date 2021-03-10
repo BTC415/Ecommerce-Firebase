@@ -24,17 +24,13 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   };
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //signing user in
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      //resetting the form
-      resetForm();
-      //redirecting
-      history.push('/');
-    } catch (err) {
-      //catching errors
-      setErrors(err);
-    }
+
+    //resetting the form
+    // resetForm();
+    //redirecting
+    // history.push('/');
+    //catching errors
+    // setErrors(err);
   };
 
   return (
