@@ -28,9 +28,11 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   };
   //resetting form & redirecting
   useEffect(() => {
-    if (signInSuccess) {
+    if (signInSuccess.status) {
       resetForm();
       history.push('/');
+    } else if (signInSuccess.err) {
+      setErrors([signInSuccess.err!]);
     }
   }, [signInSuccess, history]);
   //on submit handler

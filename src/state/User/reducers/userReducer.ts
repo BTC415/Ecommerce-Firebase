@@ -5,12 +5,18 @@ import { CurrentUser } from '../../interfaces';
 //state interface
 interface UserState {
   currentUser: CurrentUser | null;
-  signInSuccess: boolean;
+  signInSuccess: {
+    status: boolean;
+    err: string | null;
+  };
 }
 //initial state
 const initialState: UserState = {
   currentUser: null,
-  signInSuccess: false,
+  signInSuccess: {
+    status: false,
+    err: null,
+  },
 };
 //reducer
 const userReducer = (

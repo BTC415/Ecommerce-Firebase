@@ -21,13 +21,19 @@ export const signInUser = (email: string, password: string) => async (
     //sign in sucess
     dispatch({
       type: ActionType.SIGN_IN_SUCCESS,
-      payload: true,
+      payload: {
+        status: true,
+        err: null,
+      },
     });
   } catch (err) {
     //sign in error
     dispatch({
       type: ActionType.SIGN_IN_ERROR,
-      payload: false,
+      payload: {
+        status: false,
+        err: err.message,
+      },
     });
   }
 };

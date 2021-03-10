@@ -13,9 +13,15 @@ interface SetCurrentUserAction {
 }
 interface SignInSuccessAction {
   type: ActionType.SIGN_IN_SUCCESS;
-  payload: boolean;
+  payload: {
+    status: boolean;
+    err: string | null;
+  };
 }
 interface SignInErrorAction {
   type: ActionType.SIGN_IN_ERROR;
-  payload: boolean;
+  payload: {
+    status: boolean;
+    err: string | null;
+  };
 }
