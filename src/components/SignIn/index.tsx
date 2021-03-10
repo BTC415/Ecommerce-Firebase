@@ -7,7 +7,7 @@ import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
 //importing firebase utils
-import { auth, signInWithGoogle } from '../../firebase/utils';
+import { signInWithGoogle } from '../../firebase/utils';
 //importing router utils
 import { withRouter } from 'react-router-dom';
 import { PropsWithRouter } from '../../state';
