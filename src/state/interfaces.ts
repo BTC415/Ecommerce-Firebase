@@ -8,8 +8,3 @@ export interface CurrentUser {
 }
 //router props
 export interface PropsWithRouter extends RouteComponentProps<any> {}
-//email password
-export interface EmailPassword {
-  email: string;
-  password: string;
-}

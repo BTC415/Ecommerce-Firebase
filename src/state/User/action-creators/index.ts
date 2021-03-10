@@ -1,7 +1,7 @@
 //importing types
 import { ActionType } from '../action-types';
-import { CurrentUser, EmailPassword } from '../../interfaces';
-import { Dispatch } from 'react';
+import { CurrentUser } from '../../interfaces';
+import { Dispatch } from 'redux';
 import { CurrentUserAction } from '../actions';
 //importing firebase utils
 import { auth } from '../../../firebase/utils';
@@ -12,11 +12,22 @@ export const setCurrentUser = (user: CurrentUser | null) => {
     payload: user,
   };
 };
-export const signInUser = ({ email, password }: EmailPassword) => async (
+export const signInUser = (email: string, password: string) => async (
   dispatch: Dispatch<CurrentUserAction>
 ) => {
   //signing user in
   try {
     await auth.signInWithEmailAndPassword(email, password);
-  } catch (err) {}
+    //sign in sucess
+    dispatch({
+      type: ActionType.SIGN_IN_SUCCESS,
+      payload: true,
+    });
+  } catch (err) {
+    //sign in error
+    dispatch({
+      type: ActionType.SIGN_IN_ERROR,
+      payload: false,
+    });
+  }
 };

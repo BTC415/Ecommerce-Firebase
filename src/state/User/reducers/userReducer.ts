@@ -3,25 +3,27 @@ import { CurrentUserAction } from '../actions';
 import { ActionType } from '../action-types';
 import { CurrentUser } from '../../interfaces';
 //state interface
-interface CurrentUserState {
+interface UserState {
   currentUser: CurrentUser | null;
   signInSuccess: boolean;
 }
 //initial state
-const initialState: CurrentUserState = {
+const initialState: UserState = {
   currentUser: null,
   signInSuccess: false,
 };
 //reducer
 const userReducer = (
-  state: CurrentUserState = initialState,
+  state: UserState = initialState,
   action: CurrentUserAction
-): CurrentUserState => {
+): UserState => {
   switch (action.type) {
     case ActionType.SET_CURRENT_USER:
       return { ...state, currentUser: action.payload };
     case ActionType.SIGN_IN_SUCCESS:
-      return { ...state, signInSuccess: true };
+      return { ...state, signInSuccess: action.payload };
+    case ActionType.SIGN_IN_ERROR:
+      return { ...state, signInSuccess: action.payload };
     default:
       return state;
   }

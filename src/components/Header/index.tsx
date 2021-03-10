@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 //header component
 const Header: React.FC = () => {
   //redux state
-  const currentUser = useTypedSelector(state => state.user);
+  const { currentUser } = useTypedSelector(state => state.user);
   return (
     <header>
       <div className="container">

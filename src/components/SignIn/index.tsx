@@ -1,5 +1,6 @@
 //importing hooks & router utils
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useActions, useTypedSelector } from '../../hooks';
 import { Link } from 'react-router-dom';
 //importing components
 import Button from '../Forms/Button';
@@ -16,23 +17,27 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
+  //redux actions & state
+  const { signInUser } = useActions();
+  const { signInSuccess } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {
     setEmail('');
     setPassword('');
     setErrors([]);
   };
-  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  //resetting form & redirecting
+  useEffect(() => {
+    if (signInSuccess) {
+      resetForm();
+      history.push('/');
+    }
+  }, [signInSuccess, history]);
+  //on submit handler
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    //resetting the form
-    // resetForm();
-    //redirecting
-    // history.push('/');
-    //catching errors
-    // setErrors(err);
+    signInUser(email, password);
   };
-
   return (
     <MainForm headline="Log In">
       {errors.length > 0 && (
