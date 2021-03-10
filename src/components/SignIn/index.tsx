@@ -77,7 +77,9 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
       <span>Or</span>
       <div className="social__signin">
         <form onSubmit={e => e.preventDefault()}>
-          <Button onClick={signInWithGoogle}>Sign In With Google</Button>
+          <Button onClick={() => signInWithGoogle(history)}>
+            Sign In With Google
+          </Button>
         </form>
       </div>
     </MainForm>

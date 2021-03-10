@@ -1,7 +1,6 @@
-import firebase from 'firebase/app';
 //button interface
 interface ButtonProps {
-  onClick?: () => Promise<firebase.auth.UserCredential>;
+  onClick?: () => Promise<void>;
   type?: 'submit';
 }
 //button component
