@@ -1,5 +1,6 @@
 //importing hooks
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useActions, useTypedSelector } from '../../hooks';
 //import router utils
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 //importing components
@@ -13,9 +14,21 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
   //local state
   const [email, setEmail] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
+  //redux actions & state
+  const { recoverPassword } = useActions();
+  const { passwordRecoverySuccess } = useTypedSelector(state => state.user);
+  //resetting form
+  useEffect(() => {
+    if (passwordRecoverySuccess.status) {
+      setEmail('');
+    } else {
+      setErrors([passwordRecoverySuccess.err!]);
+    }
+  }, [passwordRecoverySuccess, history]);
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    recoverPassword(email);
   };
   return (
     <MainForm headline="Password Recovery">
