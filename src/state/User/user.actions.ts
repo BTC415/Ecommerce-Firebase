@@ -1,6 +1,6 @@
 //importing types
-import { ActionType } from '../action-types';
-import { CurrentUser } from '../../interfaces';
+import { ActionType } from './user.action-types';
+import { CurrentUser } from '../interfaces';
 //action type
 export type CurrentUserAction =
   | SetCurrentUserAction

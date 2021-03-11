@@ -1,14 +1,10 @@
 //importing types
-import { ActionType } from '../action-types';
-import { CurrentUser } from '../../interfaces';
+import { ActionType } from './user.action-types';
+import { CurrentUser } from '../interfaces';
 import { Dispatch } from 'redux';
-import { CurrentUserAction } from '../actions';
+import { CurrentUserAction } from './user.actions';
 //importing firebase utils
-import {
-  auth,
-  GoogleProvider,
-  handleUserProfile,
-} from '../../../firebase/utils';
+import { auth, GoogleProvider, handleUserProfile } from '../../firebase/utils';
 //action creators
 export const setCurrentUser = (user: CurrentUser | null) => {
   return {
