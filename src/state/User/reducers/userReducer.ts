@@ -3,7 +3,7 @@ import { CurrentUserAction } from '../actions';
 import { ActionType } from '../action-types';
 import { CurrentUser } from '../../interfaces';
 //state interface
-interface UserState {
+export interface UserState {
   currentUser: CurrentUser | null;
   signInSuccess: {
     status: boolean;
@@ -54,7 +54,13 @@ const userReducer = (
       return { ...state, passwordRecoverySuccess: action.payload };
     case ActionType.PASSWORD_RECOVERY_ERROR:
       return { ...state, passwordRecoverySuccess: action.payload };
-
+    case ActionType.RESET_AUTH_FORMS:
+      return {
+        ...state,
+        signInSuccess: { status: false, err: '' },
+        signUpSuccess: { status: false, err: [] },
+        passwordRecoverySuccess: { status: false, err: '' },
+      };
     default:
       return state;
   }

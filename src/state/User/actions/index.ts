@@ -10,7 +10,8 @@ export type CurrentUserAction =
   | SignUpSuccessAction
   | SignUpSuccessAction
   | PassworsRecoveryErrorAction
-  | PassworsRecoverySuccessAction;
+  | PassworsRecoverySuccessAction
+  | ResetAuthForms;
 //action interfaces
 interface SetCurrentUserAction {
   type: ActionType.SET_CURRENT_USER;
@@ -57,4 +58,7 @@ interface PassworsRecoveryErrorAction {
     status: boolean;
     err: string;
   };
+}
+interface ResetAuthForms {
+  type: ActionType.RESET_AUTH_FORMS;
 }

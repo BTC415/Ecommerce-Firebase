@@ -147,3 +147,8 @@ export const signInWithGoogle = () => async (
     });
   }
 };
+export const resetAuthForms = () => {
+  return {
+    type: ActionType.RESET_AUTH_FORMS,
+  };
+};
