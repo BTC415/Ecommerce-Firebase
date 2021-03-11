@@ -91,3 +91,30 @@ export const signUpUser = (
     });
   }
 };
+export const recoverPassword = (email: string) => async (
+  dispatch: Dispatch<CurrentUserAction>
+) => {
+  try {
+    //sending instructions on password recovery
+    await auth.sendPasswordResetEmail(email, {
+      url: 'http://localhost:3000/login',
+    });
+    //success
+    dispatch({
+      type: ActionType.PASSWORD_RECOVERY_SUCCESS,
+      payload: {
+        status: true,
+        err: null,
+      },
+    });
+  } catch (err) {
+    //error
+    dispatch({
+      type: ActionType.PASSWORD_RECOVERY_ERROR,
+      payload: {
+        status: false,
+        err: err.message,
+      },
+    });
+  }
+};

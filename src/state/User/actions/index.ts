@@ -7,7 +7,10 @@ export type CurrentUserAction =
   | SignInSuccessAction
   | SignInErrorAction
   | SignUpErrorAction
-  | SignUpSuccessAction;
+  | SignUpSuccessAction
+  | SignUpSuccessAction
+  | PassworsRecoveryErrorAction
+  | PassworsRecoverySuccessAction;
 //action interfaces
 interface SetCurrentUserAction {
   type: ActionType.SET_CURRENT_USER;
@@ -39,5 +42,19 @@ interface SignUpErrorAction {
   payload: {
     status: boolean;
     err: string[];
+  };
+}
+interface PassworsRecoverySuccessAction {
+  type: ActionType.PASSWORD_RECOVERY_SUCCESS;
+  payload: {
+    status: boolean;
+    err: string | null;
+  };
+}
+interface PassworsRecoveryErrorAction {
+  type: ActionType.PASSWORD_RECOVERY_ERROR;
+  payload: {
+    status: boolean;
+    err: string | null;
   };
 }

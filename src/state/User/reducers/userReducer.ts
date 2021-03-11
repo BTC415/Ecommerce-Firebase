@@ -13,6 +13,10 @@ interface UserState {
     status: boolean;
     err: string[];
   };
+  passwordRecoverySuccess: {
+    status: boolean;
+    err: string | null;
+  };
 }
 //initial state
 const initialState: UserState = {
@@ -24,6 +28,10 @@ const initialState: UserState = {
   signUpSuccess: {
     status: false,
     err: [],
+  },
+  passwordRecoverySuccess: {
+    status: false,
+    err: null,
   },
 };
 //reducer
@@ -42,6 +50,11 @@ const userReducer = (
       return { ...state, signUpSuccess: action.payload };
     case ActionType.SIGN_UP_SUCCESS:
       return { ...state, signUpSuccess: action.payload };
+    case ActionType.PASSWORD_RECOVERY_SUCCESS:
+      return { ...state, passwordRecoverySuccess: action.payload };
+    case ActionType.PASSWORD_RECOVERY_ERROR:
+      return { ...state, passwordRecoverySuccess: action.payload };
+
     default:
       return state;
   }

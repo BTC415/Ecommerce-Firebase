@@ -1,7 +1,5 @@
 //importing hooks
 import { useState } from 'react';
-//importing firebase utils
-import { auth } from '../../firebase/utils';
 //import router utils
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 //importing components
@@ -18,24 +16,6 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      //sending instructions on password recovery
-      await auth
-        .sendPasswordResetEmail(email, {
-          url: 'http://localhost:3000/login',
-        })
-        .then(() => {
-          //redirecting user
-          history.push('/login');
-        })
-        .catch(() => {
-          const err: string[] = ['Email not found. Please try again.'];
-          //catching errors
-          setErrors(err);
-        });
-    } catch (err) {
-      console.log(err.message);
-    }
   };
   return (
     <MainForm headline="Password Recovery">
