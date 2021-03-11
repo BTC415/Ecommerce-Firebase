@@ -6,6 +6,19 @@ import { CurrentUserAction } from './user.actions';
 //importing firebase utils
 import { auth, GoogleProvider, handleUserProfile } from '../../firebase/utils';
 //action creators
+export const emailSignInStart = (userCredentials: any) => {
+  return {
+    type: ActionType.EMAIL_SIGN_IN_START,
+    payload: userCredentials,
+  };
+};
+export const signInSuccess = (user: any) => {
+  return {
+    type: ActionType.SIGN_IN_SUCCESS,
+    payload: user,
+  };
+};
+
 export const setCurrentUser = (user: CurrentUser | null) => {
   return {
     type: ActionType.SET_CURRENT_USER,
