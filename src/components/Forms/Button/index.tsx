@@ -1,6 +1,6 @@
 //button interface
 interface ButtonProps {
-  onClick?: () => Promise<void>;
+  onClick?: () => any;
   type?: 'submit';
 }
 //button component

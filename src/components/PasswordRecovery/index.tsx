@@ -21,7 +21,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
   useEffect(() => {
     if (passwordRecoverySuccess.status) {
       setEmail('');
-      history.push('/');
+      history.push('/login');
     } else if (passwordRecoverySuccess.err) {
       setErrors([passwordRecoverySuccess.err!]);
     }

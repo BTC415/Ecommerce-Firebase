@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
-//importing firebase utils
-import { signInWithGoogle } from '../../firebase/utils';
 //importing router utils
 import { withRouter } from 'react-router-dom';
 import { PropsWithRouter } from '../../state';
@@ -18,7 +16,7 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   const [password, setPassword] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions & state
-  const { signInUser } = useActions();
+  const { signInUser, signInWithGoogle } = useActions();
   const { signInSuccess } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {
@@ -80,7 +78,7 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
       <span>Or</span>
       <div className="social__signin">
         <form onSubmit={e => e.preventDefault()}>
-          <Button onClick={() => signInWithGoogle(history)}>
+          <Button onClick={() => signInWithGoogle()}>
             Sign In With Google
           </Button>
         </form>

@@ -7,7 +7,7 @@ interface UserState {
   currentUser: CurrentUser | null;
   signInSuccess: {
     status: boolean;
-    err: string | null;
+    err: string;
   };
   signUpSuccess: {
     status: boolean;
@@ -23,7 +23,7 @@ const initialState: UserState = {
   currentUser: null,
   signInSuccess: {
     status: false,
-    err: null,
+    err: '',
   },
   signUpSuccess: {
     status: false,

@@ -4,7 +4,11 @@ import { CurrentUser } from '../../interfaces';
 import { Dispatch } from 'redux';
 import { CurrentUserAction } from '../actions';
 //importing firebase utils
-import { auth, handleUserProfile } from '../../../firebase/utils';
+import {
+  auth,
+  GoogleProvider,
+  handleUserProfile,
+} from '../../../firebase/utils';
 //action creators
 export const setCurrentUser = (user: CurrentUser | null) => {
   return {
@@ -114,6 +118,31 @@ export const recoverPassword = (email: string) => async (
       payload: {
         status: false,
         err: err.message,
+      },
+    });
+  }
+};
+export const signInWithGoogle = () => async (
+  dispatch: Dispatch<CurrentUserAction>
+) => {
+  try {
+    //signing in with google
+    await auth.signInWithPopup(GoogleProvider);
+    //success
+    dispatch({
+      type: ActionType.SIGN_IN_SUCCESS,
+      payload: {
+        status: true,
+        err: '',
+      },
+    });
+  } catch (err) {
+    //error
+    dispatch({
+      type: ActionType.SIGN_IN_ERROR,
+      payload: {
+        status: false,
+        err: '',
       },
     });
   }

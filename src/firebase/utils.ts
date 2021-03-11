@@ -8,15 +8,7 @@ export const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth();
 export const db = app.firestore();
 //signin with google provider
-const GoogleProvider = new firebase.auth.GoogleAuthProvider();
-export const signInWithGoogle = async (history: any) => {
-  try {
-    await auth.signInWithPopup(GoogleProvider);
-    history.push('/');
-  } catch (err) {
-    console.log(err.message);
-  }
-};
+export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: 'select_account' });
 //saving user profile to firestore
 export const handleUserProfile = async (
