@@ -9,6 +9,10 @@ interface UserState {
     status: boolean;
     err: string | null;
   };
+  signUpSuccess: {
+    status: boolean;
+    err: string[];
+  };
 }
 //initial state
 const initialState: UserState = {
@@ -16,6 +20,10 @@ const initialState: UserState = {
   signInSuccess: {
     status: false,
     err: null,
+  },
+  signUpSuccess: {
+    status: false,
+    err: [],
   },
 };
 //reducer
@@ -30,6 +38,10 @@ const userReducer = (
       return { ...state, signInSuccess: action.payload };
     case ActionType.SIGN_IN_ERROR:
       return { ...state, signInSuccess: action.payload };
+    case ActionType.SIGN_UP_ERROR:
+      return { ...state, signUpSuccess: action.payload };
+    case ActionType.SIGN_UP_SUCCESS:
+      return { ...state, signUpSuccess: action.payload };
     default:
       return state;
   }

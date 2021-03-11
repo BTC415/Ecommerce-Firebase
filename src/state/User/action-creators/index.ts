@@ -4,7 +4,7 @@ import { CurrentUser } from '../../interfaces';
 import { Dispatch } from 'redux';
 import { CurrentUserAction } from '../actions';
 //importing firebase utils
-import { auth } from '../../../firebase/utils';
+import { auth, handleUserProfile } from '../../../firebase/utils';
 //action creators
 export const setCurrentUser = (user: CurrentUser | null) => {
   return {
@@ -33,6 +33,60 @@ export const signInUser = (email: string, password: string) => async (
       payload: {
         status: false,
         err: err.message,
+      },
+    });
+  }
+};
+export const signUpUser = (
+  displayName: string,
+  email: string,
+  password: string,
+  confirmPassword: string
+) => async (dispatch: Dispatch<CurrentUserAction>) => {
+  //validation
+  const err: string[] = [];
+  if (password !== confirmPassword) {
+    err.push("Passwords didn't match. Please try again");
+  }
+  if (password.length < 6) {
+    err.push('Password length must be at least 6 characters');
+  }
+  if (password.length > 15) {
+    err.push('Password length must not exceed 15 characters');
+  }
+  if (!password || !displayName || !email || !confirmPassword) {
+    err.push('One or more fields are missing. Please try again');
+  }
+  //dispatching errors
+  dispatch({
+    type: ActionType.SIGN_UP_ERROR,
+    payload: {
+      status: false,
+      err,
+    },
+  });
+  if (err.length > 0) {
+    return;
+  }
+  //submitting and creating user's account
+  try {
+    const { user } = await auth.createUserWithEmailAndPassword(email, password);
+    //saving user to db
+    await handleUserProfile(user, { displayName });
+    //success
+    dispatch({
+      type: ActionType.SIGN_UP_SUCCESS,
+      payload: {
+        status: true,
+        err: [],
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: ActionType.SIGN_UP_ERROR,
+      payload: {
+        status: false,
+        err: [...err, error.message],
       },
     });
   }

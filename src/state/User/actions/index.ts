@@ -5,7 +5,9 @@ import { CurrentUser } from '../../interfaces';
 export type CurrentUserAction =
   | SetCurrentUserAction
   | SignInSuccessAction
-  | SignInErrorAction;
+  | SignInErrorAction
+  | SignUpErrorAction
+  | SignUpSuccessAction;
 //action interfaces
 interface SetCurrentUserAction {
   type: ActionType.SET_CURRENT_USER;
@@ -23,5 +25,19 @@ interface SignInErrorAction {
   payload: {
     status: boolean;
     err: string | null;
+  };
+}
+interface SignUpSuccessAction {
+  type: ActionType.SIGN_UP_SUCCESS;
+  payload: {
+    status: boolean;
+    err: string[];
+  };
+}
+interface SignUpErrorAction {
+  type: ActionType.SIGN_UP_ERROR;
+  payload: {
+    status: boolean;
+    err: string[];
   };
 }

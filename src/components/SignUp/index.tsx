@@ -1,7 +1,6 @@
 //importing hooks
-import { useState } from 'react';
-//importing firebase utils
-import { auth, handleUserProfile } from '../../firebase/utils';
+import { useState, useEffect } from 'react';
+import { useActions, useTypedSelector } from '../../hooks';
 //importing components
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
@@ -17,6 +16,9 @@ const SignUp: React.FC<PropsWithRouter> = ({ history }) => {
   const [displayName, setDisplayName] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  //redux actions & state
+  const { signUpUser } = useActions();
+  const { signUpSuccess } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {
     setErrors([]);
@@ -25,44 +27,19 @@ const SignUp: React.FC<PropsWithRouter> = ({ history }) => {
     setConfirmPassword('');
     setPassword('');
   };
+  //resetting form & redirecting
+  useEffect(() => {
+    if (signUpSuccess.status) {
+      resetForm();
+      history.push('/');
+    } else {
+      setErrors(signUpSuccess.err!);
+    }
+  }, [signUpSuccess, history]);
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //validation
-    const err: string[] = [];
-    if (password !== confirmPassword) {
-      err.push("Passwords didn't match. Please try again");
-    }
-    if (password.length < 6) {
-      err.push('Password length must be at least 6 characters');
-    }
-    if (password.length > 15) {
-      err.push('Password length must not exceed 15 characters');
-    }
-    if (!password || !displayName || !email || !confirmPassword) {
-      err.push('One or more fields are missing. Please try again');
-    }
-    //updating state with errors
-    setErrors(err);
-    //preventing submit when errors occure
-    if (err.length > 0) {
-      return;
-    }
-    //submitting and creating user's account
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      //saving user to db
-      await handleUserProfile(user, { displayName });
-      //resetting the form
-      resetForm();
-      //redirecting
-      history.push('/');
-    } catch (err) {
-      setErrors([...errors, err]);
-    }
+    signUpUser(displayName, email, password, confirmPassword);
   };
   return (
     <MainForm headline="Sign Up">
