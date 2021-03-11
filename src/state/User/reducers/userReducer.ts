@@ -15,7 +15,7 @@ interface UserState {
   };
   passwordRecoverySuccess: {
     status: boolean;
-    err: string | null;
+    err: string;
   };
 }
 //initial state
@@ -31,7 +31,7 @@ const initialState: UserState = {
   },
   passwordRecoverySuccess: {
     status: false,
-    err: null,
+    err: '',
   },
 };
 //reducer

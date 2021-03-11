@@ -23,7 +23,7 @@ export const signInUser = (email: string, password: string) => async (
       type: ActionType.SIGN_IN_SUCCESS,
       payload: {
         status: true,
-        err: null,
+        err: '',
       },
     });
   } catch (err) {
@@ -104,7 +104,7 @@ export const recoverPassword = (email: string) => async (
       type: ActionType.PASSWORD_RECOVERY_SUCCESS,
       payload: {
         status: true,
-        err: null,
+        err: '',
       },
     });
   } catch (err) {

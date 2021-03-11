@@ -20,14 +20,14 @@ interface SignInSuccessAction {
   type: ActionType.SIGN_IN_SUCCESS;
   payload: {
     status: boolean;
-    err: string | null;
+    err: string;
   };
 }
 interface SignInErrorAction {
   type: ActionType.SIGN_IN_ERROR;
   payload: {
     status: boolean;
-    err: string | null;
+    err: string;
   };
 }
 interface SignUpSuccessAction {
@@ -48,13 +48,13 @@ interface PassworsRecoverySuccessAction {
   type: ActionType.PASSWORD_RECOVERY_SUCCESS;
   payload: {
     status: boolean;
-    err: string | null;
+    err: string;
   };
 }
 interface PassworsRecoveryErrorAction {
   type: ActionType.PASSWORD_RECOVERY_ERROR;
   payload: {
     status: boolean;
-    err: string | null;
+    err: string;
   };
 }
