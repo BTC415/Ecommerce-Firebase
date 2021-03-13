@@ -12,7 +12,8 @@ export type CurrentUserAction =
   | PassworsRecoveryErrorAction
   | PassworsRecoverySuccessAction
   | ResetAuthForms
-  | EmailSignInStartAction;
+  | EmailSignInStartAction
+  | SignOutSuccesAction;
 //action interfaces
 export interface EmailSignInStartAction {
   type: ActionType.EMAIL_SIGN_IN_START;
@@ -34,7 +35,14 @@ interface SignInErrorAction {
     requestError: string;
   };
 }
-
+export interface SignOutSuccesAction {
+  type: ActionType.SIGN_OUT_SUCCESS;
+  payload: {
+    user: CurrentUser | null;
+    formError: string;
+    requestError: string;
+  };
+}
 interface SetCurrentUserAction {
   type: ActionType.SET_CURRENT_USER;
   payload: CurrentUser | null;

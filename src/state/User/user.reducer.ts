@@ -29,6 +29,8 @@ const userReducer = (
         formError: action.payload.formError,
         requestError: action.payload.requestError,
       };
+    case ActionType.SIGN_OUT_SUCCESS:
+      return { ...state, ...initialState };
     default:
       return state;
   }

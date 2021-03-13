@@ -1,13 +1,12 @@
 //importing hooks
-import { useTypedSelector } from '../../hooks';
-//importing firebase & utilities
-import { auth } from '../..//firebase/utils';
+import { useTypedSelector, useActions } from '../../hooks';
 //router link
 import { Link } from 'react-router-dom';
 //header component
 const Header: React.FC = () => {
-  //redux state
+  //redux state & actions
   const { currentUser } = useTypedSelector(state => state.user);
+  const { signOutUserStart } = useActions();
   return (
     <header>
       <div className="container">
@@ -22,7 +21,7 @@ const Header: React.FC = () => {
               <li>
                 <Link to="/account">My Account</Link>
               </li>
-              <li onClick={() => auth.signOut()} className="log__out">
+              <li onClick={() => signOutUserStart()} className="log__out">
                 LogOut
               </li>
             </ul>
