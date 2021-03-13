@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import { firebaseConfig } from './config';
+//importing interfaces
+import { HandleUser } from '../state/interfaces';
 //exporing utilities
 export const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth();
@@ -11,10 +13,7 @@ export const db = app.firestore();
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: 'select_account' });
 //saving user profile to firestore
-export const handleUserProfile = async (
-  userAuth: firebase.User | null,
-  moreData?: any
-) => {
+export const handleUserProfile = async ({ userAuth, moreData }: HandleUser) => {
   if (!userAuth) {
     return null;
   }
