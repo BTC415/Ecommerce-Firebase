@@ -1,140 +1,61 @@
 //importing types
 import { ActionType } from './user.action-types';
-import { CurrentUser } from '../interfaces';
-import { Dispatch } from 'redux';
-import { CurrentUserAction } from './user.actions';
+import { CurrentUser, EmailPassword, UserCredentials } from '../interfaces';
 //importing firebase utils
-import { auth, GoogleProvider, handleUserProfile } from '../../firebase/utils';
+import { auth, GoogleProvider } from '../../firebase/utils';
+import { CurrentUserAction } from './user.actions';
 //action creators
-export const emailSignInStart = (email: string, password: string) => ({
+export const emailSignInStart = (
+  userCredentials: EmailPassword
+): CurrentUserAction => ({
   type: ActionType.EMAIL_SIGN_IN_START,
-  payload: { email, password },
+  payload: userCredentials,
 });
 
-export const signInSuccess = (user: CurrentUser | null) => ({
+export const signInSuccess = (user: CurrentUser | null): CurrentUserAction => ({
   type: ActionType.SIGN_IN_SUCCESS,
-  payload: { user, formError: '', requestError: '' },
+  payload: user,
 });
 
-export const signInError = (formError: string, requestError: string) => ({
-  type: ActionType.SIGN_IN_ERROR,
-  payload: { user: null, formError, requestError },
-});
-
-export const signOutUserStart = () => ({
+export const emailSignOutStart = (): CurrentUserAction => ({
   type: ActionType.EMAIL_SIGN_OUT_START,
 });
 
-export const signOutSuccess = () => ({
+export const signOutSuccess = (): CurrentUserAction => ({
   type: ActionType.SIGN_OUT_SUCCESS,
+  payload: null,
 });
 
-export const signUpStart = (
-  displayName: string,
-  email: string,
-  password: string,
-  confirmPassword: string
-) => ({
+export const emailSignUpStart = (
+  userCredentials: UserCredentials
+): CurrentUserAction => ({
   type: ActionType.EMAIL_SIGN_UP_START,
-  payload: { displayName, email, password, confirmPassword },
+  payload: userCredentials,
 });
 
-export const checkUserSession = () => {
-  return {
-    type: ActionType.CHECK_USER_SESSION,
-  };
-};
+export const signUpSuccess = (user: CurrentUser | null): CurrentUserAction => ({
+  type: ActionType.SIGN_UP_SUCCESS,
+  payload: user,
+});
 
-export const resetAuthForms = () => ({
+export const checkUserSession = (): CurrentUserAction => ({
+  type: ActionType.CHECK_USER_SESSION,
+});
+
+export const resetAuthForms = (): CurrentUserAction => ({
   type: ActionType.RESET_AUTH_FORMS,
 });
 
-export const signUpUser = (
-  displayName: string,
-  email: string,
-  password: string,
-  confirmPassword: string
-) => async (dispatch: Dispatch<CurrentUserAction>) => {
-  //validation
-  const err: string[] = [];
-  if (password !== confirmPassword) {
-    err.push("Passwords didn't match. Please try again");
-  }
-  if (password.length < 6) {
-    err.push('Password length must be at least 6 characters');
-  }
-  if (password.length > 15) {
-    err.push('Password length must not exceed 15 characters');
-  }
-  if (!password || !displayName || !email || !confirmPassword) {
-    err.push('One or more fields are missing. Please try again');
-  }
-  //dispatching errors
-  dispatch({
-    type: ActionType.SIGN_UP_ERROR,
-    payload: {
-      status: false,
-      err,
-    },
-  });
-  if (err.length > 0) {
-    return;
-  }
-  //submitting and creating user's account
-  try {
-    const { user } = await auth.createUserWithEmailAndPassword(email, password);
-    //saving user to db
-    await handleUserProfile(user, { displayName });
-    //success
-    dispatch({
-      type: ActionType.SIGN_UP_SUCCESS,
-      payload: {
-        status: true,
-        err: [],
-      },
-    });
-  } catch (error) {
-    dispatch({
-      type: ActionType.SIGN_UP_ERROR,
-      payload: {
-        status: false,
-        err: [...err, error.message],
-      },
-    });
-  }
-};
+export const recoverPasswordStart = (email: string): CurrentUserAction => ({
+  type: ActionType.PASSWORD_RECOVERY_START,
+  payload: email,
+});
 
-export const recoverPassword = (email: string) => async (
-  dispatch: Dispatch<CurrentUserAction>
-) => {
-  try {
-    //sending instructions on password recovery
-    await auth.sendPasswordResetEmail(email, {
-      url: 'http://localhost:3000/login',
-    });
-    //success
-    dispatch({
-      type: ActionType.PASSWORD_RECOVERY_SUCCESS,
-      payload: {
-        status: true,
-        err: '',
-      },
-    });
-  } catch (err) {
-    //error
-    dispatch({
-      type: ActionType.PASSWORD_RECOVERY_ERROR,
-      payload: {
-        status: false,
-        err: err.message,
-      },
-    });
-  }
-};
+export const recoverPasswordSuccess = (): CurrentUserAction => ({
+  type: ActionType.PASSWORD_RECOVERY_SUCCESS,
+});
 
-export const signInWithGoogle = () => async (
-  dispatch: Dispatch<CurrentUserAction>
-) => {
+export const signInWithGoogle = (): CurrentUserAction => {
   try {
     //signing in with google
     await auth.signInWithPopup(GoogleProvider);
@@ -157,3 +78,8 @@ export const signInWithGoogle = () => async (
     });
   }
 };
+
+export const userError = (err: string[]) => ({
+  type: ActionType.USER_ERROR,
+  payload: err,
+});

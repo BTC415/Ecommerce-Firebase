@@ -4,15 +4,13 @@ import { ActionType } from './user.action-types';
 import { CurrentUser } from '../interfaces';
 //state interface
 export interface UserState {
-  formError: string;
-  requestError: string;
   currentUser: CurrentUser | null;
+  userErrors: string[];
 }
 //initial state
 const initialState: UserState = {
   currentUser: null,
-  formError: '',
-  requestError: '',
+  userErrors: [],
 };
 //reducer
 const userReducer = (
@@ -22,15 +20,11 @@ const userReducer = (
   switch (action.type) {
     //destructuring
     case ActionType.SIGN_IN_SUCCESS:
-      return { ...state, currentUser: action.payload.user };
-    case ActionType.SIGN_IN_ERROR:
-      return {
-        ...state,
-        formError: action.payload.formError,
-        requestError: action.payload.requestError,
-      };
+      return { ...state, currentUser: action.payload, userErrors: [] };
     case ActionType.SIGN_OUT_SUCCESS:
       return { ...state, ...initialState };
+    case ActionType.USER_ERROR:
+      return { ...state, userErrors: action.payload };
     default:
       return state;
   }

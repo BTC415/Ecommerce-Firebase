@@ -2,11 +2,15 @@
 import { takeLatest, call, all, put } from 'redux-saga/effects';
 //importing types & actions
 import { ActionType } from './user.action-types';
-import { EmailSignInStartAction } from './user.actions';
+import {
+  EmailSignInStartAction,
+  EmailSignUpStartAction,
+  PasswordRecoveryStartAction,
+} from './user.actions';
 import { userAuth } from '../types';
-import { signInError, signOutSuccess } from './user.action-creators';
+import { signOutSuccess, userError } from './user.action-creators';
 //importing firebase utils & helpers
-import { auth, getCurrentUser } from '../../firebase/utils';
+import { auth, getCurrentUser, handleUserProfile } from '../../firebase/utils';
 import { getSnaphotFromUserAuth } from './user.helpers';
 //sagas
 export function* emailSignIn({
@@ -18,7 +22,7 @@ export function* emailSignIn({
     yield getSnaphotFromUserAuth(user);
   } catch (err) {
     //errors
-    yield put(signInError('', err.message));
+    console.log(err.message);
   }
 }
 
@@ -31,7 +35,41 @@ export function* emailSignOut() {
   }
 }
 
-export function* emailSignUp() {}
+export function* emailSignUp({
+  payload: { email, password, confirmPassword, displayName },
+}: EmailSignUpStartAction) {
+  //validation
+  const err: string[] = [];
+  if (password !== confirmPassword) {
+    err.push("Passwords didn't match. Please try again");
+  }
+  if (password.length < 6) {
+    err.push('Password length must be at least 6 characters');
+  }
+  if (password.length > 15) {
+    err.push('Password length must not exceed 15 characters');
+  }
+  if (!password || !displayName || !email || !confirmPassword) {
+    err.push('One or more fields are missing. Please try again');
+  }
+  //errors
+  yield put(userError(err));
+  //stopping execution if errors
+  if (err.length > 0) {
+    return;
+  }
+  //submitting and creating user's account
+  try {
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    //saving user to db
+    yield call(handleUserProfile, {
+      userAuth: user,
+      moreData: { displayName },
+    });
+  } catch (error) {
+    //TODO DISPATCH ERRORS
+  }
+}
 
 export function* isUserAuthenticated() {
   try {
@@ -40,6 +78,19 @@ export function* isUserAuthenticated() {
     yield getSnaphotFromUserAuth(userAuth);
   } catch (err) {
     console.log(err.message);
+  }
+}
+
+export function* recoverPassword({ payload }: PasswordRecoveryStartAction) {
+  try {
+    //sending instructions on password recovery
+    yield auth.sendPasswordResetEmail(payload, {
+      url: 'http://localhost:3000/login',
+    });
+    //TODO success
+    //
+  } catch (err) {
+    //TODO error
   }
 }
 
@@ -58,11 +109,17 @@ export function* onEmailSignOutStart() {
 export function* onEmailSignUpStart() {
   yield takeLatest(ActionType.EMAIL_SIGN_UP_START, emailSignUp);
 }
+
+export function* onRecoverPasswordStart() {
+  yield takeLatest(ActionType.PASSWORD_RECOVERY_START, recoverPassword);
+}
+
 export default function* userSagas() {
   yield all([
     call(onCheckUserSession),
     call(onEmailSignInStart),
     call(onEmailSignOutStart),
     call(onEmailSignUpStart),
+    call(onRecoverPasswordStart),
   ]);
 }

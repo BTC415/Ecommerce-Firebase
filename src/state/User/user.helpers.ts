@@ -1,7 +1,7 @@
 //importing saga utils
 import { call, put } from 'redux-saga/effects';
 //importing types & actions
-import { signInError, signInSuccess } from './user.action-creators';
+import { signInSuccess } from './user.action-creators';
 import { userRefType, userData, userAuth } from '../types';
 //importing firebase utils
 import { handleUserProfile } from '../../firebase/utils';
@@ -23,7 +23,7 @@ export function* getSnaphotFromUserAuth(user: userAuth | null) {
       })
     );
   } catch (err) {
-    //errors
-    yield put(signInError(err.message, ''));
+    //TODO errors
+    // yield put(signInError(err.message, ''));
   }
 }
