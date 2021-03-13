@@ -24,8 +24,7 @@ export function* getSnaphotFromUserAuth(user: userAuth, moreData?: any) {
       })
     );
   } catch (err) {
-    //TODO errors
-    // yield put(signInError(err.message, ''));
+    console.log(err.message);
   }
 }
 

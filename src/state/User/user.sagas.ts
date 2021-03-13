@@ -23,10 +23,11 @@ export function* emailSignIn({
   //signing user in
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    //success
     yield getSnaphotFromUserAuth(user);
   } catch (err) {
     //errors
-    console.log(err.message);
+    yield put(userError([err.message]));
   }
 }
 

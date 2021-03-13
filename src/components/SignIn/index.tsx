@@ -16,7 +16,7 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   const [password, setPassword] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions & state
-  const { emailSignInStart, signInWithGoogle, resetAuthForms } = useActions();
+  const { emailSignInStart } = useActions();
   const { currentUser, userErrors } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {
@@ -28,12 +28,11 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   useEffect(() => {
     if (currentUser) {
       resetForm();
-      resetAuthForms();
       history.push('/');
     } else {
-      setErrors([...errors, ...userErrors]);
+      setErrors(userErrors);
     }
-  }, [currentUser, history, resetAuthForms, errors, userErrors]);
+  }, [currentUser, history, userErrors]);
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -79,9 +78,7 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
       <span>Or</span>
       <div className="social__signin">
         <form onSubmit={e => e.preventDefault()}>
-          <Button onClick={() => signInWithGoogle()}>
-            Sign In With Google
-          </Button>
+          <Button onClick={() => 5}>Sign In With Google</Button>
         </form>
       </div>
     </MainForm>
