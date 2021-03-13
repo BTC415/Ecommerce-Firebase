@@ -3,11 +3,9 @@ import { ActionType } from './user.action-types';
 import { CurrentUser, EmailPassword } from '../interfaces';
 //action type
 export type CurrentUserAction =
-  | SetCurrentUserAction
   | SignInSuccessAction
   | SignInErrorAction
   | SignUpErrorAction
-  | SignUpSuccessAction
   | SignUpSuccessAction
   | PassworsRecoveryErrorAction
   | PassworsRecoverySuccessAction
@@ -21,45 +19,24 @@ export interface EmailSignInStartAction {
 }
 interface SignInSuccessAction {
   type: ActionType.SIGN_IN_SUCCESS;
-  payload: {
-    user: CurrentUser | null;
-    formError: string;
-    requestError: string;
-  };
+  payload: CurrentUser | null;
 }
 interface SignInErrorAction {
   type: ActionType.SIGN_IN_ERROR;
-  payload: {
-    user: CurrentUser | null;
-    formError: string;
-    requestError: string;
-  };
+  payload: string;
 }
 export interface SignOutSuccesAction {
   type: ActionType.SIGN_OUT_SUCCESS;
-  payload: {
-    user: CurrentUser | null;
-    formError: string;
-    requestError: string;
-  };
-}
-interface SetCurrentUserAction {
-  type: ActionType.SET_CURRENT_USER;
   payload: CurrentUser | null;
 }
+
 interface SignUpSuccessAction {
   type: ActionType.SIGN_UP_SUCCESS;
-  payload: {
-    status: boolean;
-    err: string[];
-  };
+  payload: CurrentUser | null;
 }
 interface SignUpErrorAction {
   type: ActionType.SIGN_UP_ERROR;
-  payload: {
-    status: boolean;
-    err: string[];
-  };
+  payload: string;
 }
 interface PassworsRecoverySuccessAction {
   type: ActionType.PASSWORD_RECOVERY_SUCCESS;
