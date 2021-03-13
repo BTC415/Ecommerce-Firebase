@@ -29,44 +29,25 @@ export const signOutSuccess = () => ({
   type: ActionType.SIGN_OUT_SUCCESS,
 });
 
+export const signUpStart = (
+  displayName: string,
+  email: string,
+  password: string,
+  confirmPassword: string
+) => ({
+  type: ActionType.EMAIL_SIGN_UP_START,
+  payload: { displayName, email, password, confirmPassword },
+});
+
 export const checkUserSession = () => {
   return {
     type: ActionType.CHECK_USER_SESSION,
   };
 };
 
-export const setCurrentUser = (user: CurrentUser | null) => {
-  return {
-    type: ActionType.SET_CURRENT_USER,
-    payload: user,
-  };
-};
-
-export const signInUser = (email: string, password: string) => async (
-  dispatch: Dispatch<CurrentUserAction>
-) => {
-  //signing user in
-  try {
-    await auth.signInWithEmailAndPassword(email, password);
-    //sign in sucess
-    dispatch({
-      type: ActionType.SIGN_IN_SUCCESS,
-      payload: {
-        status: true,
-        err: '',
-      },
-    });
-  } catch (err) {
-    //sign in error
-    dispatch({
-      type: ActionType.SIGN_IN_ERROR,
-      payload: {
-        status: false,
-        err: err.message,
-      },
-    });
-  }
-};
+export const resetAuthForms = () => ({
+  type: ActionType.RESET_AUTH_FORMS,
+});
 
 export const signUpUser = (
   displayName: string,
@@ -175,9 +156,4 @@ export const signInWithGoogle = () => async (
       },
     });
   }
-};
-export const resetAuthForms = () => {
-  return {
-    type: ActionType.RESET_AUTH_FORMS,
-  };
 };

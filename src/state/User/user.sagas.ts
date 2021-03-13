@@ -31,6 +31,8 @@ export function* emailSignOut() {
   }
 }
 
+export function* emailSignUp() {}
+
 export function* isUserAuthenticated() {
   try {
     const userAuth: userAuth = yield getCurrentUser();
@@ -53,10 +55,14 @@ export function* onEmailSignOutStart() {
   yield takeLatest(ActionType.EMAIL_SIGN_OUT_START, emailSignOut);
 }
 
+export function* onEmailSignUpStart() {
+  yield takeLatest(ActionType.EMAIL_SIGN_UP_START, emailSignUp);
+}
 export default function* userSagas() {
   yield all([
-    call(onEmailSignInStart),
     call(onCheckUserSession),
+    call(onEmailSignInStart),
     call(onEmailSignOutStart),
+    call(onEmailSignUpStart),
   ]);
 }

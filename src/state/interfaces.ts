@@ -14,5 +14,11 @@ export interface HandleUser {
   userAuth: firebase.User | null;
   moreData?: any;
 }
+export interface UserCredentials {
+  displayName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 //router props
 export interface PropsWithRouter extends RouteComponentProps<any> {}
