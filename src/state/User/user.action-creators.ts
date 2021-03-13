@@ -12,6 +12,7 @@ export const emailSignInStart = (userCredentials: any) => {
     payload: userCredentials,
   };
 };
+
 export const signInSuccess = (user: any) => {
   return {
     type: ActionType.SIGN_IN_SUCCESS,
@@ -25,6 +26,7 @@ export const setCurrentUser = (user: CurrentUser | null) => {
     payload: user,
   };
 };
+
 export const signInUser = (email: string, password: string) => async (
   dispatch: Dispatch<CurrentUserAction>
 ) => {
@@ -50,6 +52,7 @@ export const signInUser = (email: string, password: string) => async (
     });
   }
 };
+
 export const signUpUser = (
   displayName: string,
   email: string,
@@ -104,6 +107,7 @@ export const signUpUser = (
     });
   }
 };
+
 export const recoverPassword = (email: string) => async (
   dispatch: Dispatch<CurrentUserAction>
 ) => {
@@ -131,6 +135,7 @@ export const recoverPassword = (email: string) => async (
     });
   }
 };
+
 export const signInWithGoogle = () => async (
   dispatch: Dispatch<CurrentUserAction>
 ) => {
