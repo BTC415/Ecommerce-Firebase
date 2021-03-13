@@ -6,14 +6,14 @@ import { CurrentUserAction } from './user.actions';
 //importing firebase utils
 import { auth, GoogleProvider, handleUserProfile } from '../../firebase/utils';
 //action creators
-export const emailSignInStart = (userCredentials: any) => {
+export const emailSignInStart = (email: string, password: string) => {
   return {
     type: ActionType.EMAIL_SIGN_IN_START,
-    payload: userCredentials,
+    payload: { email, password },
   };
 };
 
-export const signInSuccess = (user: any) => {
+export const signInSuccess = (user: CurrentUser | null) => {
   return {
     type: ActionType.SIGN_IN_SUCCESS,
     payload: user,
