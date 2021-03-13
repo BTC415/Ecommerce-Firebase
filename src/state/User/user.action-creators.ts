@@ -16,7 +16,14 @@ export const emailSignInStart = (email: string, password: string) => {
 export const signInSuccess = (user: CurrentUser | null) => {
   return {
     type: ActionType.SIGN_IN_SUCCESS,
-    payload: user,
+    payload: { user, formError: '', requestError: '' },
+  };
+};
+
+export const signInError = (formError: string, requestError: string) => {
+  return {
+    type: ActionType.SIGN_IN_ERROR,
+    payload: { user: null, formError, requestError },
   };
 };
 

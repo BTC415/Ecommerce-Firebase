@@ -21,28 +21,11 @@ const App: React.FC = () => {
   //redux action & state
   const { setCurrentUser } = useActions();
   //checking if user is signed in on first render
-  useEffect(() => {
-    const authListener = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        //getting currentUser object
-        const userRef = await handleUserProfile(userAuth);
-        //updating state when user changes
-        userRef?.onSnapshot(snapshot => {
-          if (snapshot.exists) {
-            setCurrentUser({
-              id: snapshot.id,
-              displayName: snapshot.data()?.displayName,
-              email: snapshot.data()?.email,
-            });
-          }
-        });
-      }
-      //cleanup if user is signed out
-      setCurrentUser(null);
-    });
-    // cleanup
-    return () => authListener();
-  }, [setCurrentUser]);
+  // useEffect(() => {
+
+  //   // cleanup
+  //   return () => authListener();
+  // }, [setCurrentUser]);
   return (
     <div className="app__container">
       <Route

@@ -18,23 +18,26 @@ export interface EmailSignInStartAction {
   type: ActionType.EMAIL_SIGN_IN_START;
   payload: EmailPassword;
 }
-interface SetCurrentUserAction {
-  type: ActionType.SET_CURRENT_USER;
-  payload: CurrentUser | null;
-}
 interface SignInSuccessAction {
   type: ActionType.SIGN_IN_SUCCESS;
   payload: {
-    status: boolean;
-    err: string;
+    user: CurrentUser | null;
+    formError: string;
+    requestError: string;
   };
 }
 interface SignInErrorAction {
   type: ActionType.SIGN_IN_ERROR;
   payload: {
-    status: boolean;
-    err: string;
+    user: CurrentUser | null;
+    formError: string;
+    requestError: string;
   };
+}
+
+interface SetCurrentUserAction {
+  type: ActionType.SET_CURRENT_USER;
+  payload: CurrentUser | null;
 }
 interface SignUpSuccessAction {
   type: ActionType.SIGN_UP_SUCCESS;
