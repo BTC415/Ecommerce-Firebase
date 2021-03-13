@@ -1,6 +1,6 @@
 //importing types
 import { ActionType } from './user.action-types';
-import { CurrentUser } from '../interfaces';
+import { CurrentUser, EmailPassword } from '../interfaces';
 //action type
 export type CurrentUserAction =
   | SetCurrentUserAction
@@ -11,8 +11,13 @@ export type CurrentUserAction =
   | SignUpSuccessAction
   | PassworsRecoveryErrorAction
   | PassworsRecoverySuccessAction
-  | ResetAuthForms;
+  | ResetAuthForms
+  | EmailSignInStartAction;
 //action interfaces
+export interface EmailSignInStartAction {
+  type: ActionType.EMAIL_SIGN_IN_START;
+  payload: EmailPassword;
+}
 interface SetCurrentUserAction {
   type: ActionType.SET_CURRENT_USER;
   payload: CurrentUser | null;

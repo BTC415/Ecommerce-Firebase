@@ -6,5 +6,10 @@ export interface CurrentUser {
   displayName: string;
   id: string;
 }
+//email password
+export interface EmailPassword {
+  email: string;
+  password: string;
+}
 //router props
 export interface PropsWithRouter extends RouteComponentProps<any> {}
