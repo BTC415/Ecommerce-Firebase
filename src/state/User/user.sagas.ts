@@ -10,7 +10,7 @@ import {
 import { userAuth } from '../types';
 import { signOutSuccess, userError } from './user.action-creators';
 //importing firebase utils & helpers
-import { auth, getCurrentUser, handleUserProfile } from '../../firebase/utils';
+import { auth, getCurrentUser } from '../../firebase/utils';
 import { getSnaphotFromUserAuth } from './user.helpers';
 //sagas
 export function* emailSignIn({
@@ -62,12 +62,10 @@ export function* emailSignUp({
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     //saving user to db
-    yield call(handleUserProfile, {
-      userAuth: user,
-      moreData: { displayName },
-    });
+    yield getSnaphotFromUserAuth(user, { displayName });
   } catch (error) {
-    //TODO DISPATCH ERRORS
+    //errors
+    yield put(userError([...err, error.message]));
   }
 }
 

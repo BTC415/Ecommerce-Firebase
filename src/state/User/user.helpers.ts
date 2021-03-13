@@ -6,12 +6,13 @@ import { userRefType, userData, userAuth } from '../types';
 //importing firebase utils
 import { handleUserProfile } from '../../firebase/utils';
 //helper functions
-export function* getSnaphotFromUserAuth(user: userAuth | null) {
+export function* getSnaphotFromUserAuth(user: userAuth, moreData?: any) {
   //firebase user
   try {
     //getting currentUser object
     const userRef: userRefType = yield call(handleUserProfile, {
       userAuth: user,
+      moreData,
     });
     const userData: userData = yield userRef.get();
     //updating state when user changes

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
   //redux state & actions
   const { currentUser } = useTypedSelector(state => state.user);
-  const { signOutUserStart } = useActions();
+  const { emailSignOutStart } = useActions();
   return (
     <header>
       <div className="container">
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
               <li>
                 <Link to="/account">My Account</Link>
               </li>
-              <li onClick={() => signOutUserStart()} className="log__out">
+              <li onClick={() => emailSignOutStart()} className="log__out">
                 LogOut
               </li>
             </ul>
