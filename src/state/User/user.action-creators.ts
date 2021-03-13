@@ -6,26 +6,28 @@ import { CurrentUserAction } from './user.actions';
 //importing firebase utils
 import { auth, GoogleProvider, handleUserProfile } from '../../firebase/utils';
 //action creators
-export const emailSignInStart = (email: string, password: string) => {
-  return {
-    type: ActionType.EMAIL_SIGN_IN_START,
-    payload: { email, password },
-  };
-};
+export const emailSignInStart = (email: string, password: string) => ({
+  type: ActionType.EMAIL_SIGN_IN_START,
+  payload: { email, password },
+});
 
-export const signInSuccess = (user: CurrentUser | null) => {
-  return {
-    type: ActionType.SIGN_IN_SUCCESS,
-    payload: { user, formError: '', requestError: '' },
-  };
-};
+export const signInSuccess = (user: CurrentUser | null) => ({
+  type: ActionType.SIGN_IN_SUCCESS,
+  payload: { user, formError: '', requestError: '' },
+});
 
-export const signInError = (formError: string, requestError: string) => {
-  return {
-    type: ActionType.SIGN_IN_ERROR,
-    payload: { user: null, formError, requestError },
-  };
-};
+export const signInError = (formError: string, requestError: string) => ({
+  type: ActionType.SIGN_IN_ERROR,
+  payload: { user: null, formError, requestError },
+});
+
+export const signOutUserStart = () => ({
+  type: ActionType.EMAIL_SIGN_OUT_START,
+});
+
+export const signOutSuccess = () => ({
+  type: ActionType.SIGN_OUT_SUCCESS,
+});
 
 export const checkUserSession = () => {
   return {
