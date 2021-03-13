@@ -6,11 +6,13 @@ import { CurrentUser } from '../interfaces';
 export interface UserState {
   currentUser: CurrentUser | null;
   userErrors: string[];
+  recoverPasswordSuccess: boolean;
 }
 //initial state
 const initialState: UserState = {
   currentUser: null,
   userErrors: [],
+  recoverPasswordSuccess: false,
 };
 //reducer
 const userReducer = (
@@ -25,6 +27,8 @@ const userReducer = (
       return { ...state, ...initialState };
     case ActionType.USER_ERROR:
       return { ...state, userErrors: action.payload };
+    case ActionType.PASSWORD_RECOVERY_SUCCESS:
+      return { ...state, recoverPasswordSuccess: action.payload };
     default:
       return state;
   }

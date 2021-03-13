@@ -45,6 +45,7 @@ interface SignUpSuccessAction {
 }
 interface PasswordRecoverySuccessAction {
   type: ActionType.PASSWORD_RECOVERY_SUCCESS;
+  payload: boolean;
 }
 interface ResetAuthForms {
   type: ActionType.RESET_AUTH_FORMS;

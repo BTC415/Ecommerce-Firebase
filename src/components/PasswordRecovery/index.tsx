@@ -15,22 +15,24 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
   const [email, setEmail] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions & state
-  const { recoverPassword, resetAuthForms } = useActions();
-  const { passwordRecoverySuccess } = useTypedSelector(state => state.user);
+  const { recoverPasswordStart, resetAuthForms } = useActions();
+  const { recoverPasswordSuccess, userErrors } = useTypedSelector(
+    state => state.user
+  );
   //resetting form
   useEffect(() => {
-    if (passwordRecoverySuccess.status) {
+    if (recoverPasswordSuccess) {
       setEmail('');
       resetAuthForms();
       history.push('/login');
-    } else if (passwordRecoverySuccess.err) {
-      setErrors([passwordRecoverySuccess.err!]);
+    } else {
+      setErrors(userErrors);
     }
-  }, [passwordRecoverySuccess, history, resetAuthForms]);
+  }, [recoverPasswordSuccess, history, resetAuthForms, userErrors]);
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    recoverPassword(email);
+    recoverPasswordStart(email);
   };
   return (
     <MainForm headline="Password Recovery">

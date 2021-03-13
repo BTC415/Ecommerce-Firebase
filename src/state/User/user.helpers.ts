@@ -4,7 +4,7 @@ import { call, put } from 'redux-saga/effects';
 import { signInSuccess } from './user.action-creators';
 import { userRefType, userData, userAuth } from '../types';
 //importing firebase utils
-import { handleUserProfile } from '../../firebase/utils';
+import { auth, handleUserProfile } from '../../firebase/utils';
 //helper functions
 export function* getSnaphotFromUserAuth(user: userAuth, moreData?: any) {
   //firebase user
@@ -28,3 +28,17 @@ export function* getSnaphotFromUserAuth(user: userAuth, moreData?: any) {
     // yield put(signInError(err.message, ''));
   }
 }
+
+export const handleResetPasswordAPI = (email: string) => {
+  const config = {
+    url: 'https://localhost:3000/login',
+  };
+  return new Promise<void>((resolve, reject) => {
+    auth
+      .sendPasswordResetEmail(email, config)
+      .then(() => {
+        resolve();
+      })
+      .catch(() => reject('Email not found. Please try again.'));
+  });
+};

@@ -53,6 +53,7 @@ export const recoverPasswordStart = (email: string): CurrentUserAction => ({
 
 export const recoverPasswordSuccess = (): CurrentUserAction => ({
   type: ActionType.PASSWORD_RECOVERY_SUCCESS,
+  payload: true,
 });
 
 export const signInWithGoogle = (): CurrentUserAction => {

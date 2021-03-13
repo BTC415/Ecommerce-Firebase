@@ -8,10 +8,14 @@ import {
   PasswordRecoveryStartAction,
 } from './user.actions';
 import { userAuth } from '../types';
-import { signOutSuccess, userError } from './user.action-creators';
+import {
+  signOutSuccess,
+  userError,
+  recoverPasswordSuccess,
+} from './user.action-creators';
 //importing firebase utils & helpers
 import { auth, getCurrentUser } from '../../firebase/utils';
-import { getSnaphotFromUserAuth } from './user.helpers';
+import { getSnaphotFromUserAuth, handleResetPasswordAPI } from './user.helpers';
 //sagas
 export function* emailSignIn({
   payload: { email, password },
@@ -85,10 +89,13 @@ export function* recoverPassword({ payload }: PasswordRecoveryStartAction) {
     yield auth.sendPasswordResetEmail(payload, {
       url: 'http://localhost:3000/login',
     });
-    //TODO success
-    //
+    //resetting password
+    yield call(handleResetPasswordAPI, payload);
+    //Success
+    yield put(recoverPasswordSuccess());
   } catch (err) {
-    //TODO error
+    //errors
+    yield put(userError(err));
   }
 }
 
