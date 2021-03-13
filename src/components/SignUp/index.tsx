@@ -17,8 +17,8 @@ const SignUp: React.FC<PropsWithRouter> = ({ history }) => {
   const [errors, setErrors] = useState<string[]>([]);
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   //redux actions & state
-  const { signUpUser, resetAuthForms } = useActions();
-  const { signUpSuccess } = useTypedSelector(state => state.user);
+  const { emailSignUpStart, resetAuthForms } = useActions();
+  const { currentUser, userErrors } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {
     setErrors([]);
@@ -29,18 +29,18 @@ const SignUp: React.FC<PropsWithRouter> = ({ history }) => {
   };
   //resetting form & redirecting
   useEffect(() => {
-    if (signUpSuccess.status) {
+    if (currentUser) {
       resetForm();
       resetAuthForms();
       history.push('/');
     } else {
-      setErrors(signUpSuccess.err!);
+      setErrors(userErrors);
     }
-  }, [signUpSuccess, history, resetAuthForms]);
+  }, [history, resetAuthForms, currentUser, userErrors]);
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUpUser(displayName, email, password, confirmPassword);
+    emailSignUpStart({ displayName, email, password, confirmPassword });
   };
   return (
     <MainForm headline="Sign Up">
