@@ -17,7 +17,9 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions & state
   const { emailSignInStart, signInWithGoogle, resetAuthForms } = useActions();
-  const { currentUser } = useTypedSelector(state => state.user);
+  const { currentUser, formError, requestError } = useTypedSelector(
+    state => state.user
+  );
   //reset form
   const resetForm = () => {
     setEmail('');
@@ -30,10 +32,12 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
       resetForm();
       resetAuthForms();
       history.push('/');
-    } else if (currentUser) {
-      setErrors([currentUser.err!]);
+    } else if (formError.length > 0 || requestError.length > 0) {
+      setErrors([...errors, formError]);
+    } else if (requestError.length > 0) {
+      setErrors([...errors, requestError]);
     }
-  }, [currentUser, history, resetAuthForms]);
+  }, [currentUser, formError, history, requestError, resetAuthForms, errors]);
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

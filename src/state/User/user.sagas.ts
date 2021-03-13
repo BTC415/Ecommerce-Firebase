@@ -26,7 +26,10 @@ export function* isUserAuthenticated() {
   try {
     const userAuth: userAuth = yield getCurrentUser();
     if (!userAuth) return;
-  } catch (error) {}
+    yield getSnaphotFromUserAuth(userAuth);
+  } catch (err) {
+    console.log(err.message);
+  }
 }
 
 export function* onCheckUserSession() {
@@ -38,5 +41,5 @@ export function* onEmailSignInStart() {
 }
 
 export default function* userSagas() {
-  yield all([call(onEmailSignInStart)]);
+  yield all([call(onEmailSignInStart), call(onCheckUserSession)]);
 }

@@ -1,9 +1,8 @@
 //importing styles
 import '../../styles/css/default.css';
-//importing hooks & auth
-import { useEffect } from 'react';
-import { auth, handleUserProfile } from '../../firebase/utils';
+//importing hooks
 import { useActions } from '../../hooks';
+import { useEffect } from 'react';
 //importing higher order components
 import WithAuth from '../../hoc/WithAuth';
 //importing pages
@@ -19,13 +18,11 @@ import MainLayout from '../../layouts/MainLayout';
 //app component
 const App: React.FC = () => {
   //redux action & state
-  const { setCurrentUser } = useActions();
+  const { checkUserSession } = useActions();
   //checking if user is signed in on first render
-  // useEffect(() => {
-
-  //   // cleanup
-  //   return () => authListener();
-  // }, [setCurrentUser]);
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
   return (
     <div className="app__container">
       <Route
