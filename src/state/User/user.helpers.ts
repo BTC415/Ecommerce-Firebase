@@ -2,13 +2,11 @@
 import { call, put } from 'redux-saga/effects';
 //importing types & actions
 import { signInError, signInSuccess } from './user.action-creators';
-import { userRefType, userData } from '../types';
+import { userRefType, userData, userAuth } from '../types';
 //importing firebase utils
 import { handleUserProfile } from '../../firebase/utils';
-import firebase from 'firebase/app';
-
 //helper functions
-export function* getSnaphotFromUserAuth(user: firebase.User | null) {
+export function* getSnaphotFromUserAuth(user: userAuth | null) {
   //firebase user
   try {
     //getting currentUser object

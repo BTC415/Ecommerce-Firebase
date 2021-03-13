@@ -27,6 +27,12 @@ export const signInError = (formError: string, requestError: string) => {
   };
 };
 
+export const checkUserSession = () => {
+  return {
+    type: ActionType.CHECK_USER_SESSION,
+  };
+};
+
 export const setCurrentUser = (user: CurrentUser | null) => {
   return {
     type: ActionType.SET_CURRENT_USER,
