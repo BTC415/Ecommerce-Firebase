@@ -6,17 +6,17 @@ import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
 //importing router utils
-import { withRouter } from 'react-router-dom';
-import { PropsWithRouter } from '../../state';
+import { useHistory } from 'react-router-dom';
 //sign up component
-const SignUp: React.FC<PropsWithRouter> = ({ history }) => {
+const SignUp: React.FC = () => {
   //local state
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [displayName, setDisplayName] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
   const [confirmPassword, setConfirmPassword] = useState<string>('');
-  //redux actions & state
+  //redux actions, router history & state
+  const history = useHistory();
   const { emailSignUpStart } = useActions();
   const { currentUser, userErrors } = useTypedSelector(state => state.user);
   //reset form
@@ -91,4 +91,4 @@ const SignUp: React.FC<PropsWithRouter> = ({ history }) => {
   );
 };
 
-export default withRouter(SignUp);
+export default SignUp;

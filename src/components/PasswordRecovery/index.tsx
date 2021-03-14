@@ -2,19 +2,18 @@
 import { useState, useEffect } from 'react';
 import { useActions, useTypedSelector } from '../../hooks';
 //import router utils
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 //importing components
 import MainForm from '../Forms/MainForm';
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
-//props interface
-interface PasswordRecoveryProps extends RouteComponentProps<any> {}
 //email password form component
-const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
+const PasswordRecovery: React.FC = () => {
   //local state
   const [email, setEmail] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
-  //redux actions & state
+  //redux actions, router history & state
+  const history = useHistory();
   const { recoverPasswordStart } = useActions();
   const { recoverPasswordSuccess, userErrors } = useTypedSelector(
     state => state.user
@@ -62,4 +61,4 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ history }) => {
   );
 };
 
-export default withRouter(PasswordRecovery);
+export default PasswordRecovery;

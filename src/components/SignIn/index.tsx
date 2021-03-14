@@ -7,16 +7,16 @@ import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
 import MainForm from '../Forms/MainForm';
 //importing router utils
-import { withRouter } from 'react-router-dom';
-import { PropsWithRouter } from '../../state';
+import { useHistory } from 'react-router-dom';
 //sign in component
-const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
+const SignIn: React.FC = () => {
   //local state
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errors, setErrors] = useState<string[]>([]);
-  //redux actions & state
-  const { emailSignInStart } = useActions();
+  //redux actions, router history & state
+  const history = useHistory();
+  const { emailSignInStart, googleSignInStart } = useActions();
   const { currentUser, userErrors } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {
@@ -78,10 +78,12 @@ const SignIn: React.FC<PropsWithRouter> = ({ history }) => {
       <span>Or</span>
       <div className="social__signin">
         <form onSubmit={e => e.preventDefault()}>
-          <Button onClick={() => 5}>Sign In With Google</Button>
+          <Button onClick={() => googleSignInStart()}>
+            Sign In With Google
+          </Button>
         </form>
       </div>
     </MainForm>
   );
 };
-export default withRouter(SignIn);
+export default SignIn;

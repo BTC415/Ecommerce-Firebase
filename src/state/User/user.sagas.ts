@@ -14,7 +14,7 @@ import {
   recoverPasswordSuccess,
 } from './user.action-creators';
 //importing firebase utils & helpers
-import { auth, getCurrentUser } from '../../firebase/utils';
+import { auth, getCurrentUser, GoogleProvider } from '../../firebase/utils';
 import { getSnaphotFromUserAuth, handleResetPasswordAPI } from './user.helpers';
 //sagas
 export function* emailSignIn({
@@ -32,10 +32,13 @@ export function* emailSignIn({
 }
 
 export function* emailSignOut() {
+  //signing out user
   try {
     yield auth.signOut();
+    //success
     yield put(signOutSuccess());
   } catch (err) {
+    //error
     console.log(err.message);
   }
 }
@@ -86,10 +89,6 @@ export function* isUserAuthenticated() {
 
 export function* recoverPassword({ payload }: PasswordRecoveryStartAction) {
   try {
-    //sending instructions on password recovery
-    yield auth.sendPasswordResetEmail(payload, {
-      url: 'http://localhost:3000/login',
-    });
     //resetting password
     yield call(handleResetPasswordAPI, payload);
     //Success
@@ -97,6 +96,18 @@ export function* recoverPassword({ payload }: PasswordRecoveryStartAction) {
   } catch (err) {
     //errors
     yield put(userError([err.message]));
+  }
+}
+
+export function* googleSignIn() {
+  try {
+    //signing with google
+    const { user } = yield auth.signInWithPopup(GoogleProvider);
+    //success
+    yield getSnaphotFromUserAuth(user);
+  } catch (err) {
+    //errors
+    yield userError([err.message]);
   }
 }
 
@@ -116,6 +127,10 @@ export function* onEmailSignUpStart() {
   yield takeLatest(ActionType.EMAIL_SIGN_UP_START, emailSignUp);
 }
 
+export function* onGoogleSignInStart() {
+  yield takeLatest(ActionType.GOOGLE_SIGN_IN_START, googleSignIn);
+}
+
 export function* onRecoverPasswordStart() {
   yield takeLatest(ActionType.PASSWORD_RECOVERY_START, recoverPassword);
 }
@@ -127,5 +142,6 @@ export default function* userSagas() {
     call(onEmailSignOutStart),
     call(onEmailSignUpStart),
     call(onRecoverPasswordStart),
+    call(onGoogleSignInStart),
   ]);
 }
