@@ -96,7 +96,7 @@ export function* recoverPassword({ payload }: PasswordRecoveryStartAction) {
     yield put(recoverPasswordSuccess());
   } catch (err) {
     //errors
-    yield put(userError(err));
+    yield put(userError([err.message]));
   }
 }
 
