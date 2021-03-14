@@ -33,12 +33,12 @@ export const handleResetPasswordAPI = (email: string) => {
   const config = {
     url: 'https://localhost:3000/login',
   };
-  return new Promise<void>((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     auth
       .sendPasswordResetEmail(email, config)
       .then(() => {
-        resolve();
+        resolve('success');
       })
-      .catch(() => reject('Email not found. Please try again.'));
+      .catch(() => reject(['Email not found. Please try again.']));
   });
 };

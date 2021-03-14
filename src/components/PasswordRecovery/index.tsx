@@ -31,7 +31,12 @@ const PasswordRecovery: React.FC = () => {
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    recoverPasswordStart(email);
+    if (email.length > 0) {
+      recoverPasswordStart(email);
+      setErrors([]);
+    } else {
+      setErrors(['Please enter a valid email.']);
+    }
   };
   return (
     <MainForm headline="Password Recovery">

@@ -18,7 +18,6 @@ import { auth, getCurrentUser, GoogleProvider } from '../../firebase/utils';
 import { getSnaphotFromUserAuth, handleResetPasswordAPI } from './user.helpers';
 
 // worker sagas
-
 export function* emailSignIn({
   payload: { email, password },
 }: EmailSignInStartAction) {
@@ -97,7 +96,7 @@ export function* recoverPassword({ payload }: PasswordRecoveryStartAction) {
     yield put(recoverPasswordSuccess());
   } catch (err) {
     //errors
-    yield put(userError([err.message]));
+    yield put(userError(err));
   }
 }
 
@@ -108,8 +107,7 @@ export function* googleSignIn() {
     //success
     yield getSnaphotFromUserAuth(user);
   } catch (err) {
-    //errors
-    yield userError([err.message]);
+    console.log(err.message);
   }
 }
 
