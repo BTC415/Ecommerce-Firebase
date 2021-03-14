@@ -18,6 +18,10 @@ const PasswordRecovery: React.FC = () => {
   const { recoverPasswordSuccess, userErrors } = useTypedSelector(
     state => state.user
   );
+  //resetting user on first render
+  useEffect(() => {
+    resetUserState();
+  }, [resetUserState]);
   //resetting form
   useEffect(() => {
     if (recoverPasswordSuccess) {

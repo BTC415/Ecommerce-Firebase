@@ -17,7 +17,7 @@ const SignUp: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   //redux actions, router history & state
   const history = useHistory();
-  const { emailSignUpStart } = useActions();
+  const { emailSignUpStart, resetUserState } = useActions();
   const { currentUser, userErrors } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {
@@ -27,6 +27,10 @@ const SignUp: React.FC = () => {
     setConfirmPassword('');
     setPassword('');
   };
+  //resetting user on first render
+  useEffect(() => {
+    resetUserState();
+  }, [resetUserState]);
   //resetting form & redirecting
   useEffect(() => {
     if (currentUser) {
