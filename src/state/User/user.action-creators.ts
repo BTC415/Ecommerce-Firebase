@@ -55,26 +55,14 @@ export const userError = (err: string[]) => ({
   type: ActionType.USER_ERROR,
   payload: err,
 });
-// export const signInWithGoogle = (): CurrentUserAction => {
-//   try {
-//     //signing in with google
-//     await auth.signInWithPopup(GoogleProvider);
-//     //success
-//     dispatch({
-//       type: ActionType.SIGN_IN_SUCCESS,
-//       payload: {
-//         status: true,
-//         err: '',
-//       },
-//     });
-//   } catch (err) {
-//     //error
-//     dispatch({
-//       type: ActionType.SIGN_IN_ERROR,
-//       payload: {
-//         status: false,
-//         err: '',
-//       },
-//     });
-//   }
-// };
+
+export const googleSignInStart = (): CurrentUserAction => ({
+  type: ActionType.GOOGLE_SIGN_IN_START,
+});
+
+export const googleSignSuccess = (
+  user: CurrentUser | null
+): CurrentUserAction => ({
+  type: ActionType.GOOGLE_SIGN_IN_SUCCESS,
+  payload: user,
+});
