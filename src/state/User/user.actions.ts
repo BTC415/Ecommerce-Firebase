@@ -14,7 +14,8 @@ export type CurrentUserAction =
   | PasswordRecoveryStartAction
   | UserErrorsAction
   | GoogleSignInStartAction
-  | GoogleSignInSuccessAction;
+  | GoogleSignInSuccessAction
+  | ResetUserStateAction;
 
 //start action interfaces
 export interface EmailSignInStartAction {
@@ -69,4 +70,7 @@ interface UserErrorsAction {
 //other action interfaces
 interface CheckUserSessionAction {
   type: ActionType.CHECK_USER_SESSION;
+}
+interface ResetUserStateAction {
+  type: ActionType.RESET_USER_STATE;
 }

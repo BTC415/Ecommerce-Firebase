@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 export const useAuth = () => {
   //redux state & router history
   const history = useHistory();
-  const currentUser = useTypedSelector(state => state.user);
+  const { currentUser } = useTypedSelector(state => state.user);
   //redirecting user
   useEffect(() => {
     if (!currentUser) {

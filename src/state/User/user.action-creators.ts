@@ -72,3 +72,7 @@ export const userError = (err: string[]) => ({
 export const checkUserSession = (): CurrentUserAction => ({
   type: ActionType.CHECK_USER_SESSION,
 });
+
+export const resetUserState = (): CurrentUserAction => ({
+  type: ActionType.RESET_USER_STATE,
+});

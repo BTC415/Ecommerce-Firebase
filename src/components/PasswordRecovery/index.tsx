@@ -14,7 +14,7 @@ const PasswordRecovery: React.FC = () => {
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions, router history & state
   const history = useHistory();
-  const { recoverPasswordStart } = useActions();
+  const { recoverPasswordStart, resetUserState } = useActions();
   const { recoverPasswordSuccess, userErrors } = useTypedSelector(
     state => state.user
   );
@@ -22,11 +22,12 @@ const PasswordRecovery: React.FC = () => {
   useEffect(() => {
     if (recoverPasswordSuccess) {
       setEmail('');
+      resetUserState();
       history.push('/login');
     } else {
       setErrors(userErrors);
     }
-  }, [recoverPasswordSuccess, history, userErrors]);
+  }, [recoverPasswordSuccess, history, userErrors, resetUserState]);
   //on submit handler
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
