@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { useTypedSelector } from './useTypedSelector';
-import { PropsWithRouter } from '../state';
+import { useHistory } from 'react-router-dom';
 //use Auth hook
-export const useAuth = ({
-  history,
-  children,
-}: React.PropsWithChildren<PropsWithRouter>) => {
-  //redux state
+export const useAuth = () => {
+  //redux state & router history
+  const history = useHistory();
   const currentUser = useTypedSelector(state => state.user);
   //redirecting user
   useEffect(() => {
