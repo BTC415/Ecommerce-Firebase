@@ -19,4 +19,5 @@ export const store = createStore(
   {},
   composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 );
+//running redux saga
 sagaMiddleware.run(saga);

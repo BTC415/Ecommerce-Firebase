@@ -20,7 +20,6 @@ const userReducer = (
   action: CurrentUserAction
 ): UserState => {
   switch (action.type) {
-    //destructuring
     case ActionType.SIGN_IN_SUCCESS:
       return { ...state, currentUser: action.payload, userErrors: [] };
     case ActionType.SIGN_OUT_SUCCESS:

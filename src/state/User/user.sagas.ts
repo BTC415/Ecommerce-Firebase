@@ -16,7 +16,9 @@ import {
 //importing firebase utils & helpers
 import { auth, getCurrentUser, GoogleProvider } from '../../firebase/utils';
 import { getSnaphotFromUserAuth, handleResetPasswordAPI } from './user.helpers';
-//sagas
+
+// worker sagas
+
 export function* emailSignIn({
   payload: { email, password },
 }: EmailSignInStartAction) {
@@ -111,6 +113,8 @@ export function* googleSignIn() {
   }
 }
 
+//start sagas
+
 export function* onCheckUserSession() {
   yield takeLatest(ActionType.CHECK_USER_SESSION, isUserAuthenticated);
 }
@@ -134,6 +138,8 @@ export function* onGoogleSignInStart() {
 export function* onRecoverPasswordStart() {
   yield takeLatest(ActionType.PASSWORD_RECOVERY_START, recoverPassword);
 }
+
+//global saga
 
 export default function* userSagas() {
   yield all([

@@ -16,7 +16,7 @@ export type CurrentUserAction =
   | GoogleSignInStartAction
   | GoogleSignInSuccessAction;
 
-//action interfaces
+//start action interfaces
 export interface EmailSignInStartAction {
   type: ActionType.EMAIL_SIGN_IN_START;
   payload: EmailPassword;
@@ -31,14 +31,17 @@ interface EmailSignOutStartAction {
 interface GoogleSignInStartAction {
   type: ActionType.GOOGLE_SIGN_IN_START;
 }
-interface GoogleSignInSuccessAction {
-  type: ActionType.GOOGLE_SIGN_IN_SUCCESS;
-  payload: CurrentUser | null;
-}
 export interface PasswordRecoveryStartAction {
   type: ActionType.PASSWORD_RECOVERY_START;
   payload: string;
 }
+
+//success action interfaces
+interface GoogleSignInSuccessAction {
+  type: ActionType.GOOGLE_SIGN_IN_SUCCESS;
+  payload: CurrentUser | null;
+}
+
 interface SignInSuccessAction {
   type: ActionType.SIGN_IN_SUCCESS;
   payload: CurrentUser | null;
@@ -56,10 +59,14 @@ interface PasswordRecoverySuccessAction {
   type: ActionType.PASSWORD_RECOVERY_SUCCESS;
   payload: boolean;
 }
-interface CheckUserSessionAction {
-  type: ActionType.CHECK_USER_SESSION;
-}
+
+//error action interfaces
 interface UserErrorsAction {
   type: ActionType.USER_ERROR;
   payload: string[];
+}
+
+//other action interfaces
+interface CheckUserSessionAction {
+  type: ActionType.CHECK_USER_SESSION;
 }

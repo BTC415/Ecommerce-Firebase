@@ -1,4 +1,3 @@
-import { RouteComponentProps } from 'react-router';
 import firebase from 'firebase/app';
 //interfaces
 export interface CurrentUser {
@@ -20,5 +19,3 @@ export interface UserCredentials {
   password: string;
   confirmPassword: string;
 }
-//router props
-export interface PropsWithRouter extends RouteComponentProps<any> {}

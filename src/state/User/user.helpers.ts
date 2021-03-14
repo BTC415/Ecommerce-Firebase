@@ -5,9 +5,9 @@ import { signInSuccess } from './user.action-creators';
 import { userRefType, userData, userAuth } from '../types';
 //importing firebase utils
 import { auth, handleUserProfile } from '../../firebase/utils';
-//helper functions
+
+//save user to db helper
 export function* getSnaphotFromUserAuth(user: userAuth, moreData?: any) {
-  //firebase user
   try {
     //getting currentUser object
     const userRef: userRefType = yield call(handleUserProfile, {
@@ -28,6 +28,7 @@ export function* getSnaphotFromUserAuth(user: userAuth, moreData?: any) {
   }
 }
 
+//reset password helper
 export const handleResetPasswordAPI = (email: string) => {
   const config = {
     url: 'https://localhost:3000/login',
