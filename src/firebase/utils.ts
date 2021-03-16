@@ -20,6 +20,7 @@ export const handleUserProfile = async ({ userAuth, moreData }: HandleUser) => {
   //getting currentUser properties
   const { uid, displayName, email } = userAuth;
   const timeStamp = new Date();
+  const userRoles = ['user'];
   //creating a doc with user id
   const userRef = db.doc(`users/${uid}`);
   //getting user's data
@@ -31,6 +32,7 @@ export const handleUserProfile = async ({ userAuth, moreData }: HandleUser) => {
         email,
         displayName,
         createdDate: timeStamp,
+        userRoles,
         ...moreData,
       });
     } catch (err) {

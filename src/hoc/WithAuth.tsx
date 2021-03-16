@@ -1,8 +1,8 @@
 import { useAuth } from '../hooks';
 
-const WithAuth: React.FC = props => {
+const WithAuth: React.FC = ({ children }) => {
   useAuth();
-  return <>{props.children}</>;
+  return <>{children}</>;
 };
 
 export default WithAuth;

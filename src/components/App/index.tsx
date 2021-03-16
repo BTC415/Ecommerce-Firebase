@@ -11,6 +11,7 @@ import Registration from '../../pages/Registration';
 import Login from '../../pages/Login';
 import Account from '../../pages/Account';
 import Recovery from '../../pages/Recovery';
+import Admin from '../../pages/Admin';
 //importing router utils
 import { Route } from 'react-router';
 //importing layouts
@@ -55,6 +56,14 @@ const App: React.FC = () => {
         render={() => (
           <MainLayout>
             <Recovery />
+          </MainLayout>
+        )}
+      />
+      <Route
+        path="/admin"
+        render={() => (
+          <MainLayout>
+            <Admin />
           </MainLayout>
         )}
       />
