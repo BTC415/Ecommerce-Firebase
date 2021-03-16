@@ -21,7 +21,7 @@ export function* getSnaphotFromUserAuth(user: userAuth, moreData?: any) {
         id: userData.id,
         displayName: userData.data()?.displayName,
         email: userData.data()?.email,
-        userRoles: ['user'],
+        userRoles: userData.data()?.userRoles,
       })
     );
   } catch (err) {
