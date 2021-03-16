@@ -20,3 +20,7 @@ export interface UserCredentials {
   password: string;
   confirmPassword: string;
 }
+export interface FormOptions {
+  name: string;
+  value: string;
+}
