@@ -5,6 +5,7 @@ import { useActions } from '../../hooks';
 import { useEffect } from 'react';
 //importing higher order components
 import WithAuth from '../../hoc/WithAuth';
+import WithAdminAuth from '../../hoc/WithAdminAuth';
 //importing pages
 import Homepage from '../../pages/Homepage';
 import Registration from '../../pages/Registration';
@@ -62,9 +63,11 @@ const App: React.FC = () => {
       <Route
         path="/admin"
         render={() => (
-          <MainLayout>
-            <Admin />
-          </MainLayout>
+          <WithAdminAuth>
+            <MainLayout>
+              <Admin />
+            </MainLayout>
+          </WithAdminAuth>
         )}
       />
       <Route

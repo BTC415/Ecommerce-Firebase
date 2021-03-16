@@ -1,5 +1,5 @@
-const WithAdminAuth = () => {
-  return <div></div>;
+const WithAdminAuth: React.FC = ({ children }) => {
+  return <>{children}</>;
 };
 
 export default WithAdminAuth;

@@ -4,6 +4,7 @@ export interface CurrentUser {
   email: string;
   displayName: string;
   id: string;
+  userRoles: string[];
 }
 export interface EmailPassword {
   email: string;
