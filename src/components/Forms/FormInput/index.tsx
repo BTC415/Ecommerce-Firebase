@@ -1,9 +1,6 @@
+import { JSXInput } from '../../../state/types';
 //input props
-interface FormInputProps
-  extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
+interface FormInputProps extends JSXInput {
   label?: string;
 }
 //form input component
