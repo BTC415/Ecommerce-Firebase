@@ -3,6 +3,7 @@ import { useActions } from '../hooks';
 //importing components
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import VerticalNav from '../components/VerticalNav';
 //importing router utils
 import { Link } from 'react-router-dom';
 //admin layout component
