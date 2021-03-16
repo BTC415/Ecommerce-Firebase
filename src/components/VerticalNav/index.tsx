@@ -8,7 +8,7 @@ const VerticalNav: React.FC = ({ children }) => {
   const { currentUser } = useTypedSelector(state => state.user);
   //user config
   const userProfileConfig = {
-    currentUser: currentUser!,
+    currentUser,
   };
   return (
     <div className="vertical__nav">

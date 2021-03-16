@@ -1,0 +1,23 @@
+.vertical__nav {
+  ul {
+    list-style: none;
+    font-size: 18px;
+    .home,
+    .sign__out {
+      line-height: 2.5;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      width: 100%;
+      padding: 0 10px;
+      cursor: pointer;
+      transition: 0.2s all ease-in-out;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-color: #fff;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
+}

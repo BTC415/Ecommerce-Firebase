@@ -17,13 +17,11 @@ const AdminLayout: React.FC = ({ children, ...otherProps }) => {
         <div className="sidebar">
           <VerticalNav>
             <ul>
-              <li>
+              <li className="home">
                 <Link to="/account">Home</Link>
               </li>
-              <li>
-                <span className="sign__out" onClick={() => emailSignOutStart()}>
-                  Sign Out
-                </span>
+              <li className="sign__out" onClick={() => emailSignOutStart()}>
+                <span>Sign Out</span>
               </li>
             </ul>
           </VerticalNav>

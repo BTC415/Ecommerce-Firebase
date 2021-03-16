@@ -240,6 +240,34 @@ footer {
   text-decoration: underline;
 }
 
+.vertical__nav ul {
+  list-style: none;
+  font-size: 18px;
+}
+
+.vertical__nav ul .home,
+.vertical__nav ul .sign__out {
+  line-height: 2.5;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 0 10px;
+  cursor: pointer;
+  -webkit-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
+}
+
+.vertical__nav ul .home:hover,
+.vertical__nav ul .sign__out:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: #fff;
+}
+
+.vertical__nav ul .home a,
+.vertical__nav ul .sign__out a {
+  text-decoration: none;
+  color: #000;
+}
+
 .user__profile {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -251,7 +279,7 @@ footer {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 30px 0;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -308,7 +336,7 @@ body {
 }
 
 .admin__layout .control__panel .sidebar {
-  border-right: 3px solid rgba(0, 0, 0, 0.1);
+  border-right: 2px solid rgba(0, 0, 0, 0.1);
   width: 20%;
 }
 /*# sourceMappingURL=default.css.map */
