@@ -132,7 +132,7 @@ footer {
   font-size: 18px;
   border: 2px solid #2b3945;
   outline: none;
-  padding: 10px 0;
+  padding: 10px;
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
@@ -213,6 +213,14 @@ footer {
   width: 100%;
 }
 
+.admin {
+  padding: 20px;
+}
+
+.admin ul li {
+  list-style: none;
+}
+
 .admin__toolbar {
   width: 100%;
   background-color: #2b3945;
@@ -262,8 +270,8 @@ footer {
   border-color: #fff;
 }
 
-.vertical__nav ul .home a,
-.vertical__nav ul .sign__out a {
+.vertical__nav ul li a {
+  display: block;
   text-decoration: none;
   color: #000;
 }
