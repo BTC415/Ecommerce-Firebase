@@ -13,7 +13,6 @@ const Admin = () => {
   const [productName, setProductName] = useState<string>('');
   const [productThumbnail, setProductThumbnail] = useState<string>('');
   const [productPrice, setProductPrice] = useState<number>(0);
-  const [productDesc, setProductDesc] = useState<string>('');
   //toggle modal function
   const toggleModal = () => setIsModalHidden(!isModalHidden);
   //modal config
@@ -30,7 +29,7 @@ const Admin = () => {
       <div className="call__to__actions">
         <ul>
           <li>
-            <Button>Add new product</Button>
+            <Button onClick={() => toggleModal()}>Add new product</Button>
           </li>
         </ul>
       </div>
@@ -71,7 +70,7 @@ const Admin = () => {
               max="10000.00"
               step="0.01"
               value={productPrice}
-              handleChange={e => setProductPrice(e.target.value)}
+              onChange={e => setProductPrice(parseFloat(e.target.value))}
             />
             <Button type="submit">Add product</Button>
           </form>

@@ -23,12 +23,15 @@
     transform: translate(-50%, -50%);
     background-color: white;
     width: 95%;
+    border-radius: 5px;
     padding: 2rem;
     max-width: 60rem;
     height: auto;
-    min-height: 40rem;
     pointer-events: all;
     max-height: 95vh;
     overflow: auto;
+    .form__input {
+      margin: 10px auto;
+    }
   }
 }

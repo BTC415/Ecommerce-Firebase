@@ -3,9 +3,12 @@ interface FormInputProps {
   label?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type: string;
-  value: string;
-  placeholder: string;
-  name: string;
+  value: string | number;
+  placeholder?: string;
+  name?: string;
+  min?: string;
+  max?: string;
+  step?: string;
 }
 //form input component
 const FormInput: React.FC<FormInputProps> = ({

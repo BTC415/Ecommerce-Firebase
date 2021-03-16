@@ -12,8 +12,8 @@ const Modal: React.FC<ModalProps> = ({
   if (isModalHidden) return null;
   return (
     <>
-      <div className="modal__overlay" onClick={() => toggleModal()} />,
-      <div className="moda__wrap">
+      <div className="modal__overlay" onClick={() => toggleModal()} />
+      <div className="modal__wrap">
         <div className="modal">{children}</div>
       </div>
     </>
