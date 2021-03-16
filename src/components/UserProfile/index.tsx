@@ -12,7 +12,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ currentUser }) => {
     <div className="user__profile">
       <ul>
         <li>
-          <div className="img">
+          <div className="img__container">
             <img src={userIMG} alt="user-avatar" />
           </div>
         </li>

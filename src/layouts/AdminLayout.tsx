@@ -28,7 +28,7 @@ const AdminLayout: React.FC = ({ children, ...otherProps }) => {
             </ul>
           </VerticalNav>
         </div>
-        <main className="wrapper">{children}</main>
+        <main className="content">{children}</main>
       </div>
       <Footer />
     </div>

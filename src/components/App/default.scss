@@ -38,3 +38,12 @@ body {
     margin: auto;
   }
 }
+
+.admin__layout .control__panel {
+  display: flex;
+  min-height: 90vh;
+  .sidebar {
+    border-right: 3px solid rgba(0, 0, 0, 0.1);
+    width: 20%;
+  }
+}
