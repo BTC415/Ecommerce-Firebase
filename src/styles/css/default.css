@@ -213,6 +213,33 @@ footer {
   width: 100%;
 }
 
+.admin__toolbar {
+  width: 100%;
+  background-color: #2b3945;
+  height: auto;
+}
+
+.admin__toolbar .container {
+  width: 85%;
+  overflow: hidden;
+  margin: auto;
+}
+
+.admin__toolbar .container ul {
+  text-align: right;
+  list-style: none;
+}
+
+.admin__toolbar .container li a {
+  line-height: 2;
+  color: white;
+  text-decoration: none;
+}
+
+.admin__toolbar .container li a:hover {
+  text-decoration: underline;
+}
+
 html,
 body {
   height: 100%;

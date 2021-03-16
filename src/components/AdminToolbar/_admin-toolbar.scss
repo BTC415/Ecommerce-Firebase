@@ -1,0 +1,22 @@
+.admin__toolbar {
+  width: 100%;
+  background-color: $dark-blue;
+  height: auto;
+  .container {
+    width: 85%;
+    overflow: hidden;
+    margin: auto;
+    ul {
+      text-align: right;
+      list-style: none;
+    }
+    li a {
+      line-height: 2;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

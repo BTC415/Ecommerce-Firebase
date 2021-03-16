@@ -3,6 +3,8 @@ import '../../styles/css/default.css';
 //importing hooks
 import { useActions } from '../../hooks';
 import { useEffect } from 'react';
+//importing components
+import AdminToolbar from '../AdminToolbar';
 //importing higher order components
 import WithAuth from '../../hoc/WithAuth';
 import WithAdminAuth from '../../hoc/WithAdminAuth';
@@ -14,7 +16,7 @@ import Account from '../../pages/Account';
 import Recovery from '../../pages/Recovery';
 import Admin from '../../pages/Admin';
 //importing router utils
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 //importing layouts
 import MainLayout from '../../layouts/MainLayout';
 //app component
@@ -27,59 +29,62 @@ const App: React.FC = () => {
   }, [checkUserSession]);
   return (
     <div className="app__container">
-      <Route
-        path="/"
-        exact
-        render={() => (
-          <MainLayout>
-            <Homepage />
-          </MainLayout>
-        )}
-      />
-      <Route
-        path="/registration"
-        render={() => (
-          <MainLayout>
-            <Registration />
-          </MainLayout>
-        )}
-      />
-      <Route
-        path="/login"
-        render={() => (
-          <MainLayout>
-            <Login />
-          </MainLayout>
-        )}
-      />
-      <Route
-        path="/recovery"
-        render={() => (
-          <MainLayout>
-            <Recovery />
-          </MainLayout>
-        )}
-      />
-      <Route
-        path="/admin"
-        render={() => (
-          <WithAdminAuth>
+      <AdminToolbar />
+      <Switch>
+        <Route
+          path="/"
+          exact
+          render={() => (
             <MainLayout>
-              <Admin />
+              <Homepage />
             </MainLayout>
-          </WithAdminAuth>
-        )}
-      />
-      <Route
-        path="/account"
-        render={() => (
-          <WithAuth>
+          )}
+        />
+        <Route
+          path="/registration"
+          render={() => (
             <MainLayout>
-              <Account />
+              <Registration />
             </MainLayout>
-          </WithAuth>
-        )}
-      />
+          )}
+        />
+        <Route
+          path="/login"
+          render={() => (
+            <MainLayout>
+              <Login />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/recovery"
+          render={() => (
+            <MainLayout>
+              <Recovery />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/admin"
+          render={() => (
+            <WithAdminAuth>
+              <MainLayout>
+                <Admin />
+              </MainLayout>
+            </WithAdminAuth>
+          )}
+        />
+        <Route
+          path="/account"
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <Account />
+              </MainLayout>
+            </WithAuth>
+          )}
+        />
+      </Switch>
     </div>
   );
 };
