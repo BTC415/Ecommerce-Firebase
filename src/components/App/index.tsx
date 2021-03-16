@@ -19,6 +19,7 @@ import Admin from '../../pages/Admin';
 import { Route, Switch } from 'react-router';
 //importing layouts
 import MainLayout from '../../layouts/MainLayout';
+import AdminLayout from '../../layouts/AdminLayout';
 //app component
 const App: React.FC = () => {
   //redux action & state
@@ -68,9 +69,9 @@ const App: React.FC = () => {
           path="/admin"
           render={() => (
             <WithAdminAuth>
-              <MainLayout>
+              <AdminLayout>
                 <Admin />
-              </MainLayout>
+              </AdminLayout>
             </WithAdminAuth>
           )}
         />
