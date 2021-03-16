@@ -1,14 +1,10 @@
 //input props
-interface FormInputProps {
+interface FormInputProps
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   label?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type: string;
-  value: string | number;
-  placeholder?: string;
-  name?: string;
-  min?: string;
-  max?: string;
-  step?: string;
 }
 //form input component
 const FormInput: React.FC<FormInputProps> = ({
