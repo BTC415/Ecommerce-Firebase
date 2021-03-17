@@ -25,7 +25,7 @@ export interface FormOptions {
   value: string;
 }
 export interface Product {
-  category: 'men' | 'women';
+  category: string;
   name: string;
   thumbnail: string;
   price: number;

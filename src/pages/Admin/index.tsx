@@ -26,6 +26,12 @@ const Admin = () => {
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    addProductStart({
+      category: productCategory,
+      name: productName,
+      price: productPrice,
+      thumbnail: productThumbnail,
+    });
   };
   return (
     <div className="admin">

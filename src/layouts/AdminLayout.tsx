@@ -1,5 +1,5 @@
 //importing hooks
-import { useActions } from '../hooks';
+import { useUserActions } from '../hooks';
 //importing components
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 //admin layout component
 const AdminLayout: React.FC = ({ children, ...otherProps }) => {
   //redux actions
-  const { emailSignOutStart } = useActions();
+  const { emailSignOutStart } = useUserActions();
   return (
     <div className="admin__layout">
       <Header {...otherProps} />
