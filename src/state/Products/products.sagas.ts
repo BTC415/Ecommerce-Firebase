@@ -3,12 +3,22 @@ import { takeLatest, call, all, put } from 'redux-saga/effects';
 //importing types
 import { ActionType } from './products.action-types';
 import { AddProductStartAction } from './products.actions';
-
+//importing helpers & fierbase utils
+import { auth } from '../../firebase/utils';
+import { handleAddProduct } from './products.helpers';
 //sagas
 export function* addProduct({
   payload: { category, name, price, thumbnail },
 }: AddProductStartAction) {
   try {
+    //adding product to firestore
+    yield handleAddProduct({
+      category,
+      name,
+      price,
+      thumbnail,
+      productAdminUserUID: auth.currentUser?.uid,
+    });
   } catch (err) {
     console.log(err.message);
   }

@@ -29,4 +29,5 @@ export interface Product {
   name: string;
   thumbnail: string;
   price: number;
+  productAdminUserUID?: string | undefined;
 }
