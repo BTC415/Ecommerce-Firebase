@@ -14,9 +14,9 @@ const initialState: ProductsState = {
 const productsReducer = (
   state: ProductsState = initialState,
   action: ProductsAction
-) => {
+): ProductsState => {
   switch (action.type) {
-    case ActionType.ADD_NEW_PRODUCT_START:
+    case ActionType.SET_PRODUCTS:
       return { ...state, products: action.payload };
     default:
       return state;
