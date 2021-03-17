@@ -1,6 +1,6 @@
 //importing hooks
-import { useState } from 'react';
-import { useProductsActions } from '../../hooks';
+import { useState, useEffect } from 'react';
+import { useProductsActions, useTypedSelector } from '../../hooks';
 //importing components
 import Button from '../../components/Forms/Button';
 import Modal from '../../components/Modal';
@@ -14,8 +14,9 @@ const Admin = () => {
   const [productName, setProductName] = useState<string>('');
   const [productThumbnail, setProductThumbnail] = useState<string>('');
   const [productPrice, setProductPrice] = useState<number>(0);
-  //redux actions
-  const { addProductStart } = useProductsActions();
+  //redux actions & state
+  const { addProductStart, fetchProductsStart } = useProductsActions();
+  const { products } = useTypedSelector(state => state.productsData);
   //toggle modal function
   const toggleModal = () => setIsModalHidden(!isModalHidden);
   //modal config
@@ -33,6 +34,10 @@ const Admin = () => {
       thumbnail: productThumbnail,
     });
   };
+  //fetching products
+  useEffect(() => {
+    fetchProductsStart();
+  }, [fetchProductsStart]);
   return (
     <div className="admin">
       <div className="call__to__actions">

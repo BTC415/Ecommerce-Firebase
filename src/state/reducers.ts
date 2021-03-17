@@ -5,7 +5,7 @@ import userReducer from './User/user.reducer';
 //reducers
 const reducers = combineReducers({
   user: userReducer,
-  products: productsReducer,
+  productsData: productsReducer,
 });
 export default reducers;
 //ensuring that typescript knows the type of our state

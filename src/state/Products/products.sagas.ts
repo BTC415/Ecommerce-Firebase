@@ -3,9 +3,12 @@ import { takeLatest, call, all, put } from 'redux-saga/effects';
 //importing types
 import { ActionType } from './products.action-types';
 import { AddProductStartAction } from './products.actions';
+import { Product } from '../interfaces';
 //importing helpers & fierbase utils
 import { auth } from '../../firebase/utils';
-import { handleAddProduct } from './products.helpers';
+import { handleAddProduct, handleFetchProducts } from './products.helpers';
+//importing actions
+import { setProducts } from './products.action-creators';
 //sagas
 export function* addProduct({
   payload: { category, name, price, thumbnail },
@@ -22,7 +25,18 @@ export function* addProduct({
       productAdminUserUID: auth.currentUser?.uid,
     });
   } catch (err) {
-    console.log(err.message);
+    //TODO ERROR
+  }
+}
+
+export function* fetchProducts() {
+  try {
+    //fetching products
+    const products: Product[] = yield handleFetchProducts();
+    //success
+    yield put(setProducts(products));
+  } catch (err) {
+    //TODO ERROR
   }
 }
 
@@ -32,8 +46,11 @@ export function* onProductAddStart() {
   yield takeLatest(ActionType.ADD_NEW_PRODUCT_START, addProduct);
 }
 
+export function* onFetchProductsStart() {
+  yield takeLatest(ActionType.FETCH_PRODUCTS_START, fetchProducts);
+}
 //global saga
 
 export default function* productsSagas() {
-  yield all([call(onProductAddStart)]);
+  yield all([call(onProductAddStart), call(onFetchProductsStart)]);
 }

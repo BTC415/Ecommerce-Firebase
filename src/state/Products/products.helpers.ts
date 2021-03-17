@@ -17,8 +17,8 @@ export const handleFetchProducts = () => {
   return new Promise((resolve, reject) => {
     db.collection('products')
       .get()
-      .then(snapshot => {
-        const products = snapshot.docs.map(doc => {
+      .then(productsRef => {
+        const products = productsRef.docs.map(doc => {
           return {
             ...doc.data(),
             documentId: doc.id,
