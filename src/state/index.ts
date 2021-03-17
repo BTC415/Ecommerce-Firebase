@@ -1,4 +1,7 @@
+//exporting action-creators
+export * as UserActionCreators from './User/user.action-creators';
+export * as ProductsActionCreators from './Products/products.action-creators';
+//exporting reducers and store
 export * from './store';
-export * as actionCreators from './User/user.action-creators';
 export * from './reducers';
 export * from './interfaces';

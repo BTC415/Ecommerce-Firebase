@@ -1,5 +1,6 @@
 //importing hooks
 import { useState } from 'react';
+import { useProductsActions } from '../../hooks';
 //importing components
 import Button from '../../components/Forms/Button';
 import Modal from '../../components/Modal';
@@ -13,6 +14,8 @@ const Admin = () => {
   const [productName, setProductName] = useState<string>('');
   const [productThumbnail, setProductThumbnail] = useState<string>('');
   const [productPrice, setProductPrice] = useState<number>(0);
+  //redux actions
+  const { addProductStart } = useProductsActions();
   //toggle modal function
   const toggleModal = () => setIsModalHidden(!isModalHidden);
   //modal config

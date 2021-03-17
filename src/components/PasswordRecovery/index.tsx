@@ -1,6 +1,6 @@
 //importing hooks
 import { useState, useEffect } from 'react';
-import { useActions, useTypedSelector } from '../../hooks';
+import { useUserActions, useTypedSelector } from '../../hooks';
 //import router utils
 import { useHistory } from 'react-router-dom';
 //importing components
@@ -14,7 +14,7 @@ const PasswordRecovery: React.FC = () => {
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions, router history & state
   const history = useHistory();
-  const { recoverPasswordStart, resetUserState } = useActions();
+  const { recoverPasswordStart, resetUserState } = useUserActions();
   const { recoverPasswordSuccess, userErrors } = useTypedSelector(
     state => state.user
   );

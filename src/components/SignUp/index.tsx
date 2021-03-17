@@ -1,6 +1,6 @@
 //importing hooks
 import { useState, useEffect } from 'react';
-import { useActions, useTypedSelector } from '../../hooks';
+import { useTypedSelector, useUserActions } from '../../hooks';
 //importing components
 import Button from '../Forms/Button';
 import FormInput from '../Forms/FormInput';
@@ -17,7 +17,7 @@ const SignUp: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   //redux actions, router history & state
   const history = useHistory();
-  const { emailSignUpStart, resetUserState } = useActions();
+  const { emailSignUpStart, resetUserState } = useUserActions();
   const { currentUser, userErrors } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {

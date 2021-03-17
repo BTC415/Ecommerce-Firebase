@@ -1,7 +1,7 @@
 //importing styles
 import '../../styles/css/default.css';
 //importing hooks
-import { useActions } from '../../hooks';
+import { useUserActions } from '../../hooks';
 import { useEffect } from 'react';
 //importing components
 import AdminToolbar from '../AdminToolbar';
@@ -23,7 +23,7 @@ import AdminLayout from '../../layouts/AdminLayout';
 //app component
 const App: React.FC = () => {
   //redux action & state
-  const { checkUserSession } = useActions();
+  const { checkUserSession } = useUserActions();
   //checking if user is signed in on first render
   useEffect(() => {
     checkUserSession();

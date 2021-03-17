@@ -1,6 +1,6 @@
 //importing hooks & router utils
 import { useEffect, useState } from 'react';
-import { useActions, useTypedSelector } from '../../hooks';
+import { useTypedSelector, useUserActions } from '../../hooks';
 import { Link } from 'react-router-dom';
 //importing components
 import Button from '../Forms/Button';
@@ -16,7 +16,11 @@ const SignIn: React.FC = () => {
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions, router history & state
   const history = useHistory();
-  const { emailSignInStart, googleSignInStart, resetUserState } = useActions();
+  const {
+    emailSignInStart,
+    googleSignInStart,
+    resetUserState,
+  } = useUserActions();
   const { currentUser, userErrors } = useTypedSelector(state => state.user);
   //reset form
   const resetForm = () => {

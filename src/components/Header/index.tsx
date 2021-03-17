@@ -1,12 +1,12 @@
 //importing hooks
-import { useTypedSelector, useActions } from '../../hooks';
+import { useTypedSelector, useUserActions } from '../../hooks';
 //router link
 import { Link } from 'react-router-dom';
 //header component
 const Header: React.FC = () => {
   //redux state & actions
   const { currentUser } = useTypedSelector(state => state.user);
-  const { emailSignOutStart } = useActions();
+  const { emailSignOutStart } = useUserActions();
   return (
     <header>
       <div className="container">
