@@ -1,10 +1,10 @@
 //importing types
 import { FormOptions } from '../../../state';
+import { JSXSelectElement } from '../../../state/types';
 //props interface
-interface FormSelectProps {
+interface FormSelectProps extends JSXSelectElement {
   label: string;
   options: FormOptions[];
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 //form select component
 const FormSelect: React.FC<FormSelectProps> = ({

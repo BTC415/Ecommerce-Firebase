@@ -1,6 +1,6 @@
-import { JSXInput } from '../../../state/types';
+import { JSXInputElement } from '../../../state/types';
 //input props
-interface FormInputProps extends JSXInput {
+interface FormInputProps extends JSXInputElement {
   label?: string;
 }
 //form input component
