@@ -11,12 +11,14 @@ export function* addProduct({
   payload: { category, name, price, thumbnail },
 }: AddProductStartAction) {
   try {
+    const timeStamp = new Date();
     //adding product to firestore
     yield handleAddProduct({
       category,
       name,
       price,
       thumbnail,
+      createdDate: timeStamp,
       productAdminUserUID: auth.currentUser?.uid,
     });
   } catch (err) {

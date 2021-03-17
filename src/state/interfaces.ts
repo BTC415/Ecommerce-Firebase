@@ -30,4 +30,5 @@ export interface Product {
   thumbnail: string;
   price: number;
   productAdminUserUID?: string | undefined;
+  createdDate?: Date;
 }

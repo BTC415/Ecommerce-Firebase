@@ -5,7 +5,7 @@ import { Product } from '../interfaces';
 //helpers
 export const handleAddProduct = (product: Product) => {
   return new Promise((resolve, reject) => {
-    db.collection('products ')
+    db.collection('products')
       .doc()
       .set(product)
       .then(res => resolve(res))
