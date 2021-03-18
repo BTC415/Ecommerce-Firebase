@@ -1,8 +1,7 @@
+//importing types
+import { JSXButton } from '../../../state/types';
 //button interface
-interface ButtonProps {
-  onClick?: () => any;
-  type?: 'submit';
-}
+interface ButtonProps extends JSXButton {}
 //button component
 const Button: React.FC<ButtonProps> = ({ children, ...otherProps }) => {
   return (

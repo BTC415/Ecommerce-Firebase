@@ -8,6 +8,10 @@ interface ProductProps {
 }
 //product component
 const Product: React.FC<ProductProps> = ({ name, price, thumbnail }) => {
+  //config
+  enum buttonConfig {
+    type = 'button',
+  }
   return (
     <div className="product__item">
       <div className="img__container">
@@ -18,7 +22,7 @@ const Product: React.FC<ProductProps> = ({ name, price, thumbnail }) => {
         <div className="product__price">${price}</div>
       </div>
       <div className="add__to__cart">
-        <Button>Add to cart</Button>
+        <Button {...buttonConfig}>Add to cart</Button>
       </div>
     </div>
   );
