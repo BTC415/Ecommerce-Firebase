@@ -121,6 +121,7 @@ footer {
   text-align: center;
   font-size: 16px;
   padding: 20px;
+  margin-top: 50px;
 }
 
 .btn {
@@ -424,6 +425,53 @@ footer {
 
 .modal__wrap .modal .form__input {
   margin: 10px auto;
+}
+
+.products h1 {
+  margin: 30px 0;
+}
+
+.products .products__grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  row-gap: 100px;
+  -webkit-column-gap: 50px;
+          column-gap: 50px;
+  grid-auto-rows: minmax(250px, 400px);
+}
+
+.product__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+.product__item .img__container {
+  height: 75%;
+}
+
+.product__item .img__container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.product__item .text__content .product__name {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product__item .text__content .product__price {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 html,

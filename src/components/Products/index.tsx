@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useProductsActions, useTypedSelector } from '../../hooks';
 import Product from './Product';
+import { v4 as uuidv4 } from 'uuid';
 //products component
 const ProductResults: React.FC = () => {
   //redux state & actions
@@ -23,19 +24,21 @@ const ProductResults: React.FC = () => {
     );
   }
   return (
-    <div className="products">
+    <div className="products" key={uuidv4()}>
       <h1>Browse Products</h1>
-      {products.map(product => {
-        //destructuring
-        const { name, price, thumbnail } = product;
-        //config
-        const productConfig = {
-          name,
-          price,
-          thumbnail,
-        };
-        return <Product {...productConfig} />;
-      })}
+      <div className="products__grid">
+        {products.map(product => {
+          //destructuring
+          const { name, price, thumbnail } = product;
+          //config
+          const productConfig = {
+            name,
+            price,
+            thumbnail,
+          };
+          return <Product {...productConfig} />;
+        })}
+      </div>
     </div>
   );
 };
