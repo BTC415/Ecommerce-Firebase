@@ -6,7 +6,11 @@ import { AddProductStartAction, DeleteProductStart } from './products.actions';
 import { Product } from '../interfaces';
 //importing helpers & fierbase utils
 import { auth } from '../../firebase/utils';
-import { handleAddProduct, handleFetchProducts } from './products.helpers';
+import {
+  handleAddProduct,
+  handleDeleteProduct,
+  handleFetchProducts,
+} from './products.helpers';
 //importing actions
 import { fetchProductsStart, setProducts } from './products.action-creators';
 //sagas
@@ -46,6 +50,10 @@ export function* fetchProducts() {
 
 export function* deleteProduct({ payload }: DeleteProductStart) {
   try {
+    //deleting product
+    yield handleDeleteProduct(payload);
+    //success
+    yield put(fetchProductsStart());
   } catch (err) {
     //TODO ERROR
   }
@@ -66,5 +74,9 @@ export function* onDeleteProductStart() {
 //global saga
 
 export default function* productsSagas() {
-  yield all([call(onProductAddStart), call(onFetchProductsStart)]);
+  yield all([
+    call(onProductAddStart),
+    call(onFetchProductsStart),
+    call(onDeleteProductStart),
+  ]);
 }

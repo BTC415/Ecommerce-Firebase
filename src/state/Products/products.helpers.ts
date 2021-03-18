@@ -29,3 +29,13 @@ export const handleFetchProducts = () => {
       .catch(err => reject(err));
   });
 };
+//deleting product helper
+export const handleDeleteProduct = (productID: string) => {
+  return new Promise((resolve, reject) => {
+    db.collection('products')
+      .doc(productID)
+      .delete()
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  });
+};

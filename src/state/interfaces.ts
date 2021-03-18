@@ -31,4 +31,5 @@ export interface Product {
   price: number;
   productAdminUserUID?: string;
   createdDate?: Date;
+  documentId?: string;
 }

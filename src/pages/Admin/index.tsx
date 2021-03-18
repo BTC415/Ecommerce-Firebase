@@ -121,9 +121,7 @@ const Admin = () => {
                 </div>
                 <div
                   className="delete__icon"
-                  onClick={() =>
-                    onDeleteProductHandler(product.productAdminUserUID)
-                  }
+                  onClick={() => onDeleteProductHandler(product.documentId!)}
                 >
                   <i className="fas fa-trash-alt"></i>
                 </div>
