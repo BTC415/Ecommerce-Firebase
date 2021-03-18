@@ -15,6 +15,7 @@ import Login from '../../pages/Login';
 import Account from '../../pages/Account';
 import Recovery from '../../pages/Recovery';
 import Admin from '../../pages/Admin';
+import Search from '../../pages/Search';
 //importing router utils
 import { Route, Switch } from 'react-router';
 //importing layouts
@@ -38,6 +39,15 @@ const App: React.FC = () => {
           render={() => (
             <MainLayout>
               <Homepage />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/search"
+          exact
+          render={() => (
+            <MainLayout>
+              <Search />
             </MainLayout>
           )}
         />

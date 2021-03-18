@@ -1,6 +1,7 @@
-//importing hooks
+//importing hooks & random id's
 import { useState, useEffect } from 'react';
 import { useProductsActions, useTypedSelector } from '../../hooks';
+import { v4 as uuidv4 } from 'uuid';
 //importing components
 import Button from '../../components/Forms/Button';
 import Modal from '../../components/Modal';
@@ -110,7 +111,7 @@ const Admin = () => {
       <div className="manage__products">
         {products.map(product => {
           return (
-            <div className="product__admin__card">
+            <div className="product__admin__card" key={uuidv4()}>
               <div className="img__container">
                 <img src={product.thumbnail} alt="product-preview" />
               </div>
