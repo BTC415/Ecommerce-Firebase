@@ -90,6 +90,21 @@ const Admin = () => {
           </form>
         </div>
       </Modal>
+      <div className="manage__products">
+        {products.map(product => {
+          return (
+            <div className="product__card">
+              <div className="img__container">
+                <img src={product.thumbnail} alt="product-preview" />
+              </div>
+              <div className="text__content">
+                <div className="product__name">Name: {product.name}</div>
+                <div className="product__price">Price: ${product.price}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

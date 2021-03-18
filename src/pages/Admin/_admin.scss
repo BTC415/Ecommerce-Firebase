@@ -1,6 +1,29 @@
 .admin {
   padding: 20px;
+  .call__to__actions {
+    display: inline-block;
+  }
   ul li {
     list-style: none;
+  }
+  .manage__products {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    .product__card {
+      border: 2px solid $dark-blue;
+      border-radius: 10px;
+      overflow: hidden;
+      .img__container {
+        img {
+          width: 100%;
+          border-bottom: 2px solid $dark-blue;
+        }
+      }
+      .text__content {
+        padding: 20px;
+      }
+    }
   }
 }

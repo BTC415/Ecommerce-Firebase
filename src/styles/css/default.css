@@ -217,8 +217,36 @@ footer {
   padding: 20px;
 }
 
+.admin .call__to__actions {
+  display: inline-block;
+}
+
 .admin ul li {
   list-style: none;
+}
+
+.admin .manage__products {
+  margin-top: 30px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.admin .manage__products .product__card {
+  border: 2px solid #2b3945;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.admin .manage__products .product__card .img__container img {
+  width: 100%;
+  border-bottom: 2px solid #2b3945;
+}
+
+.admin .manage__products .product__card .text__content {
+  padding: 20px;
 }
 
 .admin__toolbar {
