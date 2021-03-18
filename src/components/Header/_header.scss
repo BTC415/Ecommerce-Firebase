@@ -44,6 +44,10 @@ header {
       .registration__list {
         list-style: none;
         display: flex;
+        li {
+          padding-left: 15px;
+        }
+        li a,
         .log__out {
           text-decoration: none;
           color: $dark-blue;

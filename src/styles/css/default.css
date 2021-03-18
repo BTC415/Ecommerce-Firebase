@@ -67,6 +67,11 @@ header .container .registration .registration__list {
   display: flex;
 }
 
+header .container .registration .registration__list li {
+  padding-left: 15px;
+}
+
+header .container .registration .registration__list li a,
 header .container .registration .registration__list .log__out {
   text-decoration: none;
   color: #2b3945;

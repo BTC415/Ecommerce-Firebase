@@ -24,29 +24,29 @@ const Header: React.FC = () => {
               <Link to="/search">Search</Link>
             </li>
           </ul>
-          <div className="registration">
-            {currentUser && (
-              <ul className="registration__list">
-                <li>
-                  <Link to="/account">My Account</Link>
-                </li>
-                <li onClick={() => emailSignOutStart()} className="log__out">
-                  LogOut
-                </li>
-              </ul>
-            )}
-            {!currentUser && (
-              <ul className="registration__list">
-                <li>
-                  <Link to="/registration">Register</Link>
-                </li>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-              </ul>
-            )}
-          </div>
         </nav>
+        <div className="registration">
+          {currentUser && (
+            <ul className="registration__list">
+              <li>
+                <Link to="/account">My Account</Link>
+              </li>
+              <li onClick={() => emailSignOutStart()} className="log__out">
+                LogOut
+              </li>
+            </ul>
+          )}
+          {!currentUser && (
+            <ul className="registration__list">
+              <li>
+                <Link to="/registration">Register</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
     </header>
   );
