@@ -2,7 +2,11 @@
 import { Product } from '../interfaces';
 import { ActionType } from './products.action-types';
 //action type
-export type ProductsAction = AddProductStartAction | SetProductsAction;
+export type ProductsAction =
+  | AddProductStartAction
+  | SetProductsAction
+  | DeleteProductStart
+  | FetchProductsStartAction;
 //start action interfaces
 export interface AddProductStartAction {
   type: ActionType.ADD_NEW_PRODUCT_START;
@@ -10,6 +14,10 @@ export interface AddProductStartAction {
 }
 export interface FetchProductsStartAction {
   type: ActionType.FETCH_PRODUCTS_START;
+}
+export interface DeleteProductStart {
+  type: ActionType.DELETE_PRODUCT_START;
+  payload: string;
 }
 //other action interfaces
 interface SetProductsAction {

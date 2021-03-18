@@ -256,6 +256,19 @@ footer {
 
 .admin .manage__products .product__admin__card .text__content {
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.admin .manage__products .product__admin__card .text__content .delete__icon {
+  cursor: pointer;
 }
 
 .admin__toolbar {

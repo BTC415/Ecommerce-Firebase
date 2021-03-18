@@ -8,11 +8,16 @@ export const addProductStart = (productData: Product): ProductsAction => ({
   payload: productData,
 });
 
-export const fetchProductsStart = () => ({
+export const fetchProductsStart = (): ProductsAction => ({
   type: ActionType.FETCH_PRODUCTS_START,
 });
 
 export const setProducts = (products: Product[]): ProductsAction => ({
   type: ActionType.SET_PRODUCTS,
   payload: products,
+});
+
+export const deleteProductStart = (productID: string): ProductsAction => ({
+  type: ActionType.DELETE_PRODUCT_START,
+  payload: productID,
 });

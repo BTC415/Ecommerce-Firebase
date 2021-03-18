@@ -1,3 +1,9 @@
+//mixins
+@mixin flexBoxSpaceBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .admin {
   padding: 20px;
   .call__to__actions {
@@ -27,6 +33,10 @@
       }
       .text__content {
         padding: 20px;
+        @include flexBoxSpaceBetween();
+        .delete__icon {
+          cursor: pointer;
+        }
       }
     }
   }

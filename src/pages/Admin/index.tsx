@@ -15,7 +15,11 @@ const Admin = () => {
   const [productThumbnail, setProductThumbnail] = useState<string>('');
   const [productPrice, setProductPrice] = useState<number>(0);
   //redux actions & state
-  const { addProductStart, fetchProductsStart } = useProductsActions();
+  const {
+    addProductStart,
+    fetchProductsStart,
+    deleteProductStart,
+  } = useProductsActions();
   const { products } = useTypedSelector(state => state.productsData);
   //toggle modal function
   const toggleModal = () => setIsModalHidden(!isModalHidden);
@@ -42,6 +46,10 @@ const Admin = () => {
       thumbnail: productThumbnail,
     });
     resetForm();
+  };
+  //on delete product handler
+  const onDeleteProductHandler = (productID: string) => {
+    deleteProductStart(productID);
   };
   //fetching products
   useEffect(() => {
@@ -107,8 +115,18 @@ const Admin = () => {
                 <img src={product.thumbnail} alt="product-preview" />
               </div>
               <div className="text__content">
-                <div className="product__name">Name: {product.name}</div>
-                <div className="product__price">Price: ${product.price}</div>
+                <div className="product__details">
+                  <div className="product__name">Name: {product.name}</div>
+                  <div className="product__price">Price: ${product.price}</div>
+                </div>
+                <div
+                  className="delete__icon"
+                  onClick={() =>
+                    onDeleteProductHandler(product.productAdminUserUID)
+                  }
+                >
+                  <i className="fas fa-trash-alt"></i>
+                </div>
               </div>
             </div>
           );
