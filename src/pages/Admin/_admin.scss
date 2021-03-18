@@ -16,7 +16,7 @@
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: 250px;
+    grid-auto-rows: minmax(200px, 350px);
     gap: 30px;
     .product__admin__card {
       border: 2px solid $dark-blue;

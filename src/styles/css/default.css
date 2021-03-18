@@ -231,8 +231,7 @@ footer {
   display: grid;
   -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  -ms-grid-rows: 250px;
-      grid-template-rows: 250px;
+  grid-auto-rows: minmax(200px, 350px);
   gap: 30px;
 }
 

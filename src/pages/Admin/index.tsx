@@ -40,13 +40,19 @@ const Admin = () => {
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addProductStart({
-      category: productCategory,
-      name: productName,
-      price: productPrice,
-      thumbnail: productThumbnail,
-    });
-    resetForm();
+    if (
+      productName.length > 0 &&
+      productPrice > 0 &&
+      productThumbnail.length > 0
+    ) {
+      addProductStart({
+        category: productCategory,
+        name: productName,
+        price: productPrice,
+        thumbnail: productThumbnail,
+      });
+      resetForm();
+    }
   };
   //on delete product handler
   const onDeleteProductHandler = (productID: string) => {

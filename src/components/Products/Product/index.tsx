@@ -10,8 +10,13 @@ interface ProductProps {
 const Product: React.FC<ProductProps> = ({ name, price, thumbnail }) => {
   return (
     <div className="product__item" key={uuidv4()}>
-      <div className="product__name">{name}</div>
-      <div className="product__price">{price}</div>
+      <div className="img__container">
+        <img src={thumbnail} alt={name} />
+      </div>
+      <div className="text__content">
+        <div className="product__name">{name}</div>
+        <div className="product__price">${price}</div>
+      </div>
     </div>
   );
 };
