@@ -24,6 +24,14 @@ const Admin = () => {
     isModalHidden,
     toggleModal,
   };
+  //resetting the form
+  const resetForm = () => {
+    setProductCategory('mens');
+    setProductName('');
+    setProductPrice(0);
+    setProductThumbnail('');
+    setIsModalHidden(true);
+  };
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,6 +41,7 @@ const Admin = () => {
       price: productPrice,
       thumbnail: productThumbnail,
     });
+    resetForm();
   };
   //fetching products
   useEffect(() => {

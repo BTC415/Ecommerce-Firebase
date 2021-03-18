@@ -10,14 +10,18 @@
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: 250px;
     gap: 30px;
     .product__admin__card {
       border: 2px solid $dark-blue;
       border-radius: 10px;
       overflow: hidden;
       .img__container {
+        height: 50%;
         img {
           width: 100%;
+          height: 100%;
+          object-fit: cover;
           border-bottom: 2px solid $dark-blue;
         }
       }

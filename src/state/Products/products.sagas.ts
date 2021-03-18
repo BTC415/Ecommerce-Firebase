@@ -8,7 +8,7 @@ import { Product } from '../interfaces';
 import { auth } from '../../firebase/utils';
 import { handleAddProduct, handleFetchProducts } from './products.helpers';
 //importing actions
-import { setProducts } from './products.action-creators';
+import { fetchProductsStart, setProducts } from './products.action-creators';
 //sagas
 export function* addProduct({
   payload: { category, name, price, thumbnail },
@@ -24,6 +24,8 @@ export function* addProduct({
       createdDate: timeStamp,
       productAdminUserUID: auth.currentUser?.uid,
     });
+    //fetching products (success)
+    yield put(fetchProductsStart());
   } catch (err) {
     //TODO ERROR
   }

@@ -231,6 +231,8 @@ footer {
   display: grid;
   -ms-grid-columns: (minmax(200px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  -ms-grid-rows: 250px;
+      grid-template-rows: 250px;
   gap: 30px;
 }
 
@@ -240,8 +242,15 @@ footer {
   overflow: hidden;
 }
 
+.admin .manage__products .product__admin__card .img__container {
+  height: 50%;
+}
+
 .admin .manage__products .product__admin__card .img__container img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-bottom: 2px solid #2b3945;
 }
 
