@@ -23,12 +23,27 @@ header {
         }
       }
     }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      ul {
+        display: flex;
+        list-style: none;
+        li {
+          padding-left: 15px;
+          a {
+            text-decoration: none;
+            color: $dark-blue;
+            font-size: 18px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
     .registration {
       .registration__list {
         list-style: none;
         display: flex;
-        gap: 20px;
-        li a,
         .log__out {
           text-decoration: none;
           color: $dark-blue;

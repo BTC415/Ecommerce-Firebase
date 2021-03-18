@@ -34,15 +34,39 @@ header .container .logo__container a h1 {
   color: #2b3945;
 }
 
+header .container nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header .container nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+header .container nav ul li {
+  padding-left: 15px;
+}
+
+header .container nav ul li a {
+  text-decoration: none;
+  color: #2b3945;
+  font-size: 18px;
+  cursor: pointer;
+}
+
 header .container .registration .registration__list {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 20px;
 }
 
-header .container .registration .registration__list li a,
 header .container .registration .registration__list .log__out {
   text-decoration: none;
   color: #2b3945;
