@@ -93,7 +93,7 @@ const Admin = () => {
       <div className="manage__products">
         {products.map(product => {
           return (
-            <div className="product__card">
+            <div className="product__admin__card">
               <div className="img__container">
                 <img src={product.thumbnail} alt="product-preview" />
               </div>

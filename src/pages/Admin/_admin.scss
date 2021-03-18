@@ -11,7 +11,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px;
-    .product__card {
+    .product__admin__card {
       border: 2px solid $dark-blue;
       border-radius: 10px;
       overflow: hidden;

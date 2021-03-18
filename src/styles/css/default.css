@@ -234,18 +234,18 @@ footer {
   gap: 30px;
 }
 
-.admin .manage__products .product__card {
+.admin .manage__products .product__admin__card {
   border: 2px solid #2b3945;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.admin .manage__products .product__card .img__container img {
+.admin .manage__products .product__admin__card .img__container img {
   width: 100%;
   border-bottom: 2px solid #2b3945;
 }
 
-.admin .manage__products .product__card .text__content {
+.admin .manage__products .product__admin__card .text__content {
   padding: 20px;
 }
 
