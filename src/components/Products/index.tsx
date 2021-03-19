@@ -1,14 +1,15 @@
 //importing hooks & random id's
 import { useEffect } from 'react';
 import { useProductsActions, useTypedSelector } from '../../hooks';
-import Product from './Product';
 import { v4 as uuidv4 } from 'uuid';
+//importing components
+import Product from './Product';
+import FormSelect from '../Forms/FormSelect';
 //products component
 const ProductResults: React.FC = () => {
   //redux state & actions
   const { fetchProductsStart } = useProductsActions();
   const { products } = useTypedSelector(state => state.productsData);
-
   //fetching products
   useEffect(() => {
     fetchProductsStart();
@@ -23,9 +24,27 @@ const ProductResults: React.FC = () => {
       </div>
     );
   }
+  //config
+  const filtersConfig = {
+    options: [
+      {
+        name: 'Show all',
+        value: '',
+      },
+      {
+        name: 'Mens',
+        value: 'mens',
+      },
+      {
+        name: 'Womens',
+        value: 'womens',
+      },
+    ],
+  };
   return (
     <div className="products" key={uuidv4()}>
       <h1>Browse Products</h1>
+      <FormSelect {...filtersConfig} />
       <div className="products__grid">
         {products.map(product => {
           //destructuring

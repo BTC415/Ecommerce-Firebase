@@ -3,7 +3,7 @@ import { FormOptions } from '../../../state';
 import { JSXSelectElement } from '../../../state/types';
 //props interface
 interface FormSelectProps extends JSXSelectElement {
-  label: string;
+  label?: string;
   options: FormOptions[];
 }
 //form select component
@@ -18,7 +18,6 @@ const FormSelect: React.FC<FormSelectProps> = ({
   return (
     <div className="form__row">
       {label && <label>{label}</label>}
-
       <select onChange={onChange} {...otherProps}>
         {options.map((option, index) => {
           const { value, name } = option;

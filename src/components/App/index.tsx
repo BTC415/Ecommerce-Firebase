@@ -52,6 +52,14 @@ const App: React.FC = () => {
           )}
         />
         <Route
+          path="/search: filterType"
+          render={() => (
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          )}
+        />
+        <Route
           path="/registration"
           render={() => (
             <MainLayout>
