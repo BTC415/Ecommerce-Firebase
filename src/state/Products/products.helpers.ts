@@ -15,7 +15,11 @@ export const handleAddProduct = (product: Product) => {
 //fetching products helper
 export const handleFetchProducts = (filterType: string) => {
   return new Promise((resolve, reject) => {
-    db.collection('products')
+    let collectionRef = db.collection('products').orderBy('createdDate');
+    //checking if filtertype is valid
+    if (filterType.length > 0)
+      collectionRef = collectionRef.where('category', '==', filterType);
+    collectionRef
       .get()
       .then(productsRef => {
         const products = productsRef.docs.map(doc => {
