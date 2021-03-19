@@ -13,7 +13,7 @@ export const handleAddProduct = (product: Product) => {
   });
 };
 //fetching products helper
-export const handleFetchProducts = () => {
+export const handleFetchProducts = (filterType: string) => {
   return new Promise((resolve, reject) => {
     db.collection('products')
       .get()

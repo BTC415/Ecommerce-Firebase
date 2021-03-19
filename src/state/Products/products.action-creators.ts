@@ -8,8 +8,11 @@ export const addProductStart = (productData: Product): ProductsAction => ({
   payload: productData,
 });
 
-export const fetchProductsStart = (): ProductsAction => ({
+export const fetchProductsStart = (
+  filterType: string = ''
+): ProductsAction => ({
   type: ActionType.FETCH_PRODUCTS_START,
+  payload: filterType,
 });
 
 export const setProducts = (products: Product[]): ProductsAction => ({

@@ -14,6 +14,7 @@ export interface AddProductStartAction {
 }
 export interface FetchProductsStartAction {
   type: ActionType.FETCH_PRODUCTS_START;
+  payload: string;
 }
 export interface DeleteProductStart {
   type: ActionType.DELETE_PRODUCT_START;
