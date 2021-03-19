@@ -1,22 +1,28 @@
 //importing hooks & random id's
 import { useEffect } from 'react';
 import { useProductsActions, useTypedSelector } from '../../hooks';
+import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 //importing components
 import Product from './Product';
 import FormSelect from '../Forms/FormSelect';
 //products component
 const ProductResults: React.FC = () => {
-  //redux state & actions
+  //redux state, router history & actions
+  const history = useHistory();
   const { fetchProductsStart } = useProductsActions();
   const { products } = useTypedSelector(state => state.productsData);
   //fetching products
   useEffect(() => {
     fetchProductsStart();
   }, [fetchProductsStart]);
+  //on change handler
+  const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const target = e.target.value;
+    history.push(`/search/${target}`);
+  };
   //type guards
   if (!Array.isArray(products)) return null;
-
   if (products.length < 1) {
     return (
       <div className="products">
@@ -40,6 +46,7 @@ const ProductResults: React.FC = () => {
         value: 'womens',
       },
     ],
+    onChange: onChangeHandler,
   };
   return (
     <div className="products" key={uuidv4()}>
@@ -54,6 +61,7 @@ const ProductResults: React.FC = () => {
             name,
             price,
             thumbnail,
+            key: uuidv4(),
           };
           return <Product {...productConfig} />;
         })}

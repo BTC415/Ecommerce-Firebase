@@ -52,7 +52,7 @@ const App: React.FC = () => {
           )}
         />
         <Route
-          path="/search: filterType"
+          path="/search/:filterType"
           render={() => (
             <MainLayout>
               <Search />
