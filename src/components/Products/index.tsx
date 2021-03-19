@@ -15,8 +15,8 @@ const ProductResults: React.FC = () => {
   const { products } = useTypedSelector(state => state.productsData);
   //fetching products
   useEffect(() => {
-    fetchProductsStart();
-  }, [fetchProductsStart]);
+    fetchProductsStart(filterType);
+  }, [fetchProductsStart, filterType]);
   //on change handler
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const target = e.target.value;
