@@ -1,7 +1,7 @@
 //importing hooks & random id's
 import { useEffect } from 'react';
 import { useProductsActions, useTypedSelector } from '../../hooks';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 //importing components
 import Product from './Product';
@@ -10,6 +10,7 @@ import FormSelect from '../Forms/FormSelect';
 const ProductResults: React.FC = () => {
   //redux state, router history & actions
   const history = useHistory();
+  const { filterType } = useParams<{ filterType: string }>();
   const { fetchProductsStart } = useProductsActions();
   const { products } = useTypedSelector(state => state.productsData);
   //fetching products
@@ -32,6 +33,7 @@ const ProductResults: React.FC = () => {
   }
   //config
   const filtersConfig = {
+    defaultValue: filterType,
     options: [
       {
         name: 'Show all',

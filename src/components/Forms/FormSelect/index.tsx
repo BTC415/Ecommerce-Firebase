@@ -8,6 +8,7 @@ interface FormSelectProps extends JSXSelectElement {
 }
 //form select component
 const FormSelect: React.FC<FormSelectProps> = ({
+  defaultValue,
   options,
   onChange,
   label,
@@ -18,7 +19,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
   return (
     <div className="form__row">
       {label && <label>{label}</label>}
-      <select onChange={onChange} {...otherProps}>
+      <select onChange={onChange} {...otherProps} value={defaultValue}>
         {options.map((option, index) => {
           const { value, name } = option;
           return (
