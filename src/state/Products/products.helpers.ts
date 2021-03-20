@@ -2,7 +2,7 @@
 import { db } from '../../firebase/utils';
 //importing types
 import { Product } from '../interfaces';
-//adding products helper
+//adding products helper functions
 export const handleAddProduct = (product: Product) => {
   return new Promise((resolve, reject) => {
     db.collection('products')
