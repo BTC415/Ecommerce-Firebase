@@ -13,13 +13,13 @@ const ProductResults: React.FC = () => {
   const history = useHistory();
   const { filterType } = useParams<{ filterType: string }>();
   const { fetchProductsStart } = useProductsActions();
-  const { data, queryDoc } = useTypedSelector(
+  const { data, queryDoc, isLastPage } = useTypedSelector(
     state => state.productsData.products
   );
   //fetching products
   useEffect(() => {
     fetchProductsStart(filterType);
-  }, [fetchProductsStart, filterType, queryDoc]);
+  }, [fetchProductsStart, filterType]);
   //on change handler
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const target = e.target.value;
@@ -27,7 +27,7 @@ const ProductResults: React.FC = () => {
   };
   //on load more handler
   const onLoadMoreHandler = () => {
-    if (queryDoc) fetchProductsStart(filterType, queryDoc);
+    if (queryDoc) fetchProductsStart(filterType, queryDoc, data);
   };
   //type guards
   if (!Array.isArray(data)) return null;
@@ -59,6 +59,7 @@ const ProductResults: React.FC = () => {
   };
   const loadMoreConfig = {
     onLoadMore: onLoadMoreHandler,
+    isLastPage,
   };
   return (
     <div className="products" key={uuidv4()}>

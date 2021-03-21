@@ -16,6 +16,7 @@ export const handleAddProduct = (product: ProductData) => {
 export const handleFetchProducts = ({
   filterType,
   startAfterDoc,
+  persistProducts,
 }: FetchProductsParams) => {
   return new Promise((resolve, reject) => {
     //page size
@@ -34,20 +35,23 @@ export const handleFetchProducts = ({
     collectionRef
       .get()
       .then(productsRef => {
-        const totalCount = productsRef.size;
-        const data = [
-          ...productsRef.docs.map(doc => {
-            return {
-              ...doc.data(),
-              documentId: doc.id,
-            };
-          }),
-        ];
-        resolve({
-          data,
-          queryDoc: productsRef.docs[totalCount - 1],
-          isLastPage: totalCount < 1,
-        });
+        if (persistProducts) {
+          const totalCount = productsRef.size;
+          const data = [
+            ...persistProducts,
+            ...productsRef.docs.map(doc => {
+              return {
+                ...doc.data(),
+                documentId: doc.id,
+              };
+            }),
+          ];
+          resolve({
+            data,
+            queryDoc: productsRef.docs[totalCount - 1],
+            isLastPage: totalCount < 1,
+          });
+        }
       })
       .catch(err => reject(err));
   });

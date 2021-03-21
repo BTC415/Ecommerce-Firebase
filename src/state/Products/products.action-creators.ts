@@ -10,11 +10,12 @@ export const addProductStart = (productData: ProductData): ProductsAction => ({
 });
 
 export const fetchProductsStart = (
-  filterType?: string,
-  startAfterDoc?: doc
+  filterType: string = '',
+  startAfterDoc?: doc,
+  persistProducts: ProductData[] = []
 ): ProductsAction => ({
   type: ActionType.FETCH_PRODUCTS_START,
-  payload: { filterType, startAfterDoc },
+  payload: { filterType, startAfterDoc, persistProducts },
 });
 
 export const setProducts = (products: Products): ProductsAction => ({
