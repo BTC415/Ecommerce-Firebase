@@ -13,9 +13,7 @@ const ProductResults: React.FC = () => {
   const history = useHistory();
   const { filterType } = useParams<{ filterType: string }>();
   const { fetchProductsStart } = useProductsActions();
-  const {
-    products: { data },
-  } = useTypedSelector(state => state.productsData);
+  const { data } = useTypedSelector(state => state.productsData.products);
   //fetching products
   useEffect(() => {
     fetchProductsStart(filterType);

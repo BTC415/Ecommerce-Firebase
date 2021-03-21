@@ -7,7 +7,7 @@ import {
   DeleteProductStart,
   FetchProductsStartAction,
 } from './products.actions';
-import { Product } from '../interfaces';
+import { Products } from '../interfaces';
 //importing helpers & fierbase utils
 import { auth } from '../../firebase/utils';
 import {
@@ -45,7 +45,7 @@ export function* fetchProducts({ payload }: FetchProductsStartAction) {
   let filterType = payload;
   try {
     //fetching products
-    const products: Product[] = yield handleFetchProducts({ filterType });
+    const products: Products = yield handleFetchProducts({ filterType });
     //success
     yield put(setProducts(products));
   } catch (err) {

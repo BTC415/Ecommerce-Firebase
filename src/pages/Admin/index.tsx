@@ -21,7 +21,7 @@ const Admin = () => {
     fetchProductsStart,
     deleteProductStart,
   } = useProductsActions();
-  const { products } = useTypedSelector(state => state.productsData);
+  const { data } = useTypedSelector(state => state.productsData.products);
   //toggle modal function
   const toggleModal = () => setIsModalHidden(!isModalHidden);
   //modal config
@@ -115,8 +115,8 @@ const Admin = () => {
         </div>
       </Modal>
       <div className="manage__products">
-        {products.map(product => {
-          const { price, name, thumbnail, documentId } = product.data;
+        {data.map(productData => {
+          const { price, name, thumbnail, documentId } = productData;
           return (
             <div className="product__admin__card" key={uuidv4()}>
               <div className="img__container">
