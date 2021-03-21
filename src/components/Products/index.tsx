@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 //importing components
 import Product from './Product';
 import FormSelect from '../Forms/FormSelect';
+import LoadMore from '../LoadMore';
 //products component
 const ProductResults: React.FC = () => {
   //redux state, router history & actions
@@ -22,6 +23,8 @@ const ProductResults: React.FC = () => {
     const target = e.target.value;
     history.push(`/search/${target}`);
   };
+  //on load more handler
+  const onLoadMoreHandler = () => {};
   //type guards
   if (!Array.isArray(products)) return null;
   if (products.length < 1) {
@@ -31,7 +34,7 @@ const ProductResults: React.FC = () => {
       </div>
     );
   }
-  //config
+  //configs
   const filtersConfig = {
     defaultValue: filterType,
     options: [
@@ -49,6 +52,9 @@ const ProductResults: React.FC = () => {
       },
     ],
     onChange: onChangeHandler,
+  };
+  const loadMoreConfig = {
+    onLoadMore: onLoadMoreHandler,
   };
   return (
     <div className="products" key={uuidv4()}>
@@ -68,6 +74,7 @@ const ProductResults: React.FC = () => {
           return <Product {...productConfig} />;
         })}
       </div>
+      <LoadMore {...loadMoreConfig} />
     </div>
   );
 };
