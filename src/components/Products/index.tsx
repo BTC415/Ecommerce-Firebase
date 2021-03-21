@@ -13,18 +13,22 @@ const ProductResults: React.FC = () => {
   const history = useHistory();
   const { filterType } = useParams<{ filterType: string }>();
   const { fetchProductsStart } = useProductsActions();
-  const { data } = useTypedSelector(state => state.productsData.products);
+  const { data, queryDoc } = useTypedSelector(
+    state => state.productsData.products
+  );
   //fetching products
   useEffect(() => {
-    fetchProductsStart(filterType);
-  }, [fetchProductsStart, filterType]);
+    fetchProductsStart({ filterType });
+  }, [fetchProductsStart, filterType, queryDoc]);
   //on change handler
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const target = e.target.value;
     history.push(`/search/${target}`);
   };
   //on load more handler
-  const onLoadMoreHandler = () => {};
+  const onLoadMoreHandler = () => {
+    if (queryDoc) fetchProductsStart({ filterType, startAfterDoc: queryDoc });
+  };
   //type guards
   if (!Array.isArray(data)) return null;
   if (data.length < 1) {

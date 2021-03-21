@@ -1,6 +1,6 @@
 //importing types
 import { ActionType } from './products.action-types';
-import { Products, ProductData } from '../interfaces';
+import { Products, ProductData, FetchProductsParams } from '../interfaces';
 import { ProductsAction } from './products.actions';
 //start action creators
 export const addProductStart = (productData: ProductData): ProductsAction => ({
@@ -8,9 +8,10 @@ export const addProductStart = (productData: ProductData): ProductsAction => ({
   payload: productData,
 });
 
-export const fetchProductsStart = (
-  filterType: string = ''
-): ProductsAction => ({
+export const fetchProductsStart = ({
+  filterType,
+  startAfterDoc,
+}: FetchProductsParams): ProductsAction => ({
   type: ActionType.FETCH_PRODUCTS_START,
   payload: filterType,
 });

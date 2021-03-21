@@ -34,7 +34,7 @@ export function* addProduct({
         productAdminUserUID: auth.currentUser.uid,
       });
       //fetching products (success)
-      yield put(fetchProductsStart());
+      yield put(fetchProductsStart({ filterType: payload }));
     }
   } catch (err) {
     //TODO ERROR
@@ -58,7 +58,7 @@ export function* deleteProduct({ payload }: DeleteProductStart) {
     //deleting product
     yield handleDeleteProduct(payload);
     //success
-    yield put(fetchProductsStart());
+    yield put(fetchProductsStart({ filterType: payload }));
   } catch (err) {
     //TODO ERROR
   }

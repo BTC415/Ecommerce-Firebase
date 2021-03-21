@@ -36,7 +36,7 @@ export interface ProductData {
 }
 export interface Products {
   data: ProductData[];
-  queryDoc: queryDoc;
+  queryDoc?: queryDoc | null;
   isLastPage: boolean;
 }
 export interface FetchProductsParams {
