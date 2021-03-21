@@ -15,7 +15,13 @@ export const handleAddProduct = (product: Product) => {
 //fetching products helper
 export const handleFetchProducts = (filterType: string) => {
   return new Promise((resolve, reject) => {
-    let collectionRef = db.collection('products').orderBy('createdDate');
+    //page size
+    const pageSize = 6;
+    //collection reference
+    let collectionRef = db
+      .collection('products')
+      .orderBy('createdDate')
+      .limit(pageSize);
     //checking if filtertype is valid
     if (filterType.length > 0)
       collectionRef = collectionRef.where('category', '==', filterType);

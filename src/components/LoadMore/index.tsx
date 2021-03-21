@@ -6,7 +6,7 @@ interface LoadMoreProps {
 }
 //load more component
 const LoadMore: React.FC<LoadMoreProps> = ({ onLoadMore = () => {} }) => {
-  return <Button>Load more</Button>;
+  return <Button onClick={() => onLoadMore()}>Load more</Button>;
 };
 
 export default LoadMore;
