@@ -40,6 +40,6 @@ export interface Products {
   isLastPage: boolean;
 }
 export interface FetchProductsParams {
-  filterType: string;
-  startAfterDoc?: doc;
+  filterType: string | undefined;
+  startAfterDoc: doc | undefined;
 }

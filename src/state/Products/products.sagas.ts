@@ -34,7 +34,7 @@ export function* addProduct({
         productAdminUserUID: auth.currentUser.uid,
       });
       //fetching products (success)
-      yield put(fetchProductsStart({ filterType: payload }));
+      yield put(fetchProductsStart());
     }
   } catch (err) {
     //TODO ERROR
@@ -45,7 +45,7 @@ export function* fetchProducts({ payload }: FetchProductsStartAction) {
   let filterType = payload;
   try {
     //fetching products
-    const products: Products = yield handleFetchProducts({ filterType });
+    const products: Products = yield handleFetchProducts(filterType);
     //success
     yield put(setProducts(products));
   } catch (err) {
@@ -58,7 +58,7 @@ export function* deleteProduct({ payload }: DeleteProductStart) {
     //deleting product
     yield handleDeleteProduct(payload);
     //success
-    yield put(fetchProductsStart({ filterType: payload }));
+    yield put(fetchProductsStart(payload));
   } catch (err) {
     //TODO ERROR
   }

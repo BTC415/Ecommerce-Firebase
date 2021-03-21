@@ -18,7 +18,7 @@ const ProductResults: React.FC = () => {
   );
   //fetching products
   useEffect(() => {
-    fetchProductsStart({ filterType });
+    fetchProductsStart(filterType);
   }, [fetchProductsStart, filterType, queryDoc]);
   //on change handler
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -27,7 +27,7 @@ const ProductResults: React.FC = () => {
   };
   //on load more handler
   const onLoadMoreHandler = () => {
-    if (queryDoc) fetchProductsStart({ filterType, startAfterDoc: queryDoc });
+    if (queryDoc) fetchProductsStart(filterType, queryDoc);
   };
   //type guards
   if (!Array.isArray(data)) return null;

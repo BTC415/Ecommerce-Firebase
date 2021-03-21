@@ -26,7 +26,7 @@ export const handleFetchProducts = ({
       .orderBy('createdDate')
       .limit(pageSize);
     //checking if filtertype is valid
-    if (filterType.length > 0)
+    if (filterType && filterType.length > 0)
       collectionRef = collectionRef.where('category', '==', filterType);
     //checking if there is a last doc
     if (startAfterDoc) collectionRef = collectionRef.startAfter(startAfterDoc);

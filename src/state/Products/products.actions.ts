@@ -1,5 +1,5 @@
 //importing types
-import { ProductData, Products } from '../interfaces';
+import { FetchProductsParams, ProductData, Products } from '../interfaces';
 import { ActionType } from './products.action-types';
 //action type
 export type ProductsAction =
@@ -14,7 +14,7 @@ export interface AddProductStartAction {
 }
 export interface FetchProductsStartAction {
   type: ActionType.FETCH_PRODUCTS_START;
-  payload: string;
+  payload: FetchProductsParams;
 }
 export interface DeleteProductStart {
   type: ActionType.DELETE_PRODUCT_START;
