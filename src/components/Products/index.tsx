@@ -59,7 +59,6 @@ const ProductResults: React.FC = () => {
   };
   const loadMoreConfig = {
     onLoadMore: onLoadMoreHandler,
-    isLastPage,
   };
   return (
     <div className="products" key={uuidv4()}>
@@ -79,7 +78,7 @@ const ProductResults: React.FC = () => {
           return <Product {...productConfig} />;
         })}
       </div>
-      <LoadMore {...loadMoreConfig} />
+      {!isLastPage && <LoadMore {...loadMoreConfig} />}
     </div>
   );
 };

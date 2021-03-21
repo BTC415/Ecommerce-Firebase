@@ -504,10 +504,6 @@ footer {
   margin-bottom: 10px;
 }
 
-.hide {
-  display: none !important;
-}
-
 html,
 body {
   height: 100%;
