@@ -1,7 +1,7 @@
 //importing firebase utils
 import { db } from '../../firebase/utils';
 //importing types
-import { Product } from '../interfaces';
+import { FetchProductsParams, Product } from '../interfaces';
 //adding products helper functions
 export const handleAddProduct = (product: Product) => {
   return new Promise((resolve, reject) => {
@@ -13,7 +13,10 @@ export const handleAddProduct = (product: Product) => {
   });
 };
 //fetching products helper
-export const handleFetchProducts = (filterType: string) => {
+export const handleFetchProducts = ({
+  filterType,
+  startAfterDoc,
+}: FetchProductsParams) => {
   return new Promise((resolve, reject) => {
     //page size
     const pageSize = 6;
@@ -25,16 +28,24 @@ export const handleFetchProducts = (filterType: string) => {
     //checking if filtertype is valid
     if (filterType.length > 0)
       collectionRef = collectionRef.where('category', '==', filterType);
+    //checking if there is a last doc
+    if (startAfterDoc) collectionRef = collectionRef.startAfter(startAfterDoc);
+    //getting products
     collectionRef
       .get()
       .then(productsRef => {
+        const totalCount = productsRef.size;
         const products = productsRef.docs.map(doc => {
           return {
             ...doc.data(),
             documentId: doc.id,
           };
         });
-        resolve(products);
+        resolve({
+          products,
+          queryDoc: productsRef.docs[totalCount - 1],
+          isLastPage: totalCount < 1,
+        });
       })
       .catch(err => reject(err));
   });

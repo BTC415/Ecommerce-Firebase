@@ -42,9 +42,10 @@ export function* addProduct({
 }
 
 export function* fetchProducts({ payload }: FetchProductsStartAction) {
+  let filterType = payload;
   try {
     //fetching products
-    const products: Product[] = yield handleFetchProducts(payload);
+    const products: Product[] = yield handleFetchProducts({ filterType });
     //success
     yield put(setProducts(products));
   } catch (err) {

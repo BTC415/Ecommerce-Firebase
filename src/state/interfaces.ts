@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import { doc } from './types';
 //interfaces
 export interface CurrentUser {
   email: string;
@@ -32,4 +33,8 @@ export interface Product {
   productAdminUserUID?: string;
   createdDate?: Date;
   documentId?: string;
+}
+export interface FetchProductsParams {
+  filterType: string;
+  startAfterDoc: doc;
 }
