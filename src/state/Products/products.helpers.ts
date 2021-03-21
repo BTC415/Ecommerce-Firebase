@@ -1,9 +1,9 @@
 //importing firebase utils
 import { db } from '../../firebase/utils';
 //importing types
-import { FetchProductsParams, Product } from '../interfaces';
+import { FetchProductsParams, ProductData } from '../interfaces';
 //adding products helper functions
-export const handleAddProduct = (product: Product) => {
+export const handleAddProduct = (product: ProductData) => {
   return new Promise((resolve, reject) => {
     db.collection('products')
       .doc()
@@ -35,14 +35,16 @@ export const handleFetchProducts = ({
       .get()
       .then(productsRef => {
         const totalCount = productsRef.size;
-        const products = productsRef.docs.map(doc => {
-          return {
-            ...doc.data(),
-            documentId: doc.id,
-          };
-        });
+        const data = [
+          ...productsRef.docs.map(doc => {
+            return {
+              ...doc.data(),
+              documentId: doc.id,
+            };
+          }),
+        ];
         resolve({
-          products,
+          data,
           queryDoc: productsRef.docs[totalCount - 1],
           isLastPage: totalCount < 1,
         });

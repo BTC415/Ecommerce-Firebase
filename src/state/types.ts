@@ -4,6 +4,7 @@ import firebase from 'firebase/app';
 export type userRefType = firebase.firestore.DocumentReference<firebase.firestore.DocumentData>;
 export type userData = firebase.firestore.DocumentSnapshot<firebase.firestore.DocumentData>;
 export type doc = firebase.firestore.QueryDocumentSnapshot<firebase.firestore.DocumentData>;
+export type queryDoc = firebase.firestore.QueryDocumentSnapshot<firebase.firestore.DocumentData> | null;
 export type userAuth = firebase.User | null;
 export type JSXInputElement = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,

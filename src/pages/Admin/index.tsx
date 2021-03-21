@@ -116,19 +116,20 @@ const Admin = () => {
       </Modal>
       <div className="manage__products">
         {products.map(product => {
+          const { price, name, thumbnail, documentId } = product.data;
           return (
             <div className="product__admin__card" key={uuidv4()}>
               <div className="img__container">
-                <img src={product.thumbnail} alt="product-preview" />
+                <img src={thumbnail} alt="product-preview" />
               </div>
               <div className="text__content">
                 <div className="product__details">
-                  <div className="product__name">Name: {product.name}</div>
-                  <div className="product__price">Price: ${product.price}</div>
+                  <div className="product__name">Name: {name}</div>
+                  <div className="product__price">Price: ${price}</div>
                 </div>
                 <div
                   className="delete__icon"
-                  onClick={() => onDeleteProductHandler(product.documentId!)}
+                  onClick={() => onDeleteProductHandler(documentId!)}
                 >
                   <i className="fas fa-trash-alt"></i>
                 </div>

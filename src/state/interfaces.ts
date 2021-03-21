@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { doc } from './types';
+import { doc, queryDoc } from './types';
 //interfaces
 export interface CurrentUser {
   email: string;
@@ -25,7 +25,7 @@ export interface FormOptions {
   name: string;
   value: string;
 }
-export interface Product {
+export interface ProductData {
   category: string;
   name: string;
   thumbnail: string;
@@ -34,7 +34,12 @@ export interface Product {
   createdDate?: Date;
   documentId?: string;
 }
+export interface Products {
+  data: ProductData[];
+  queryDoc: queryDoc;
+  isLastPage: boolean;
+}
 export interface FetchProductsParams {
   filterType: string;
-  startAfterDoc: doc;
+  startAfterDoc?: doc;
 }

@@ -1,14 +1,18 @@
 //importing types
-import { Product } from '../interfaces';
+import { Products } from '../interfaces';
 import { ActionType } from './products.action-types';
 import { ProductsAction } from './products.actions';
 //state interface
 interface ProductsState {
-  products: Product[];
+  products: Products;
 }
 //initial state
 const initialState: ProductsState = {
-  products: [],
+  products: {
+    data: [],
+    isLastPage: false,
+    queryDoc: null,
+  },
 };
 //reducer
 const productsReducer = (

@@ -19,7 +19,7 @@ import {
 import { fetchProductsStart, setProducts } from './products.action-creators';
 //sagas
 export function* addProduct({
-  payload: { category, name, price, thumbnail },
+  payload: { name, category, price, thumbnail },
 }: AddProductStartAction) {
   try {
     const timeStamp = new Date();

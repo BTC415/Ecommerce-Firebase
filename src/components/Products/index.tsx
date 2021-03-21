@@ -13,7 +13,9 @@ const ProductResults: React.FC = () => {
   const history = useHistory();
   const { filterType } = useParams<{ filterType: string }>();
   const { fetchProductsStart } = useProductsActions();
-  const { products } = useTypedSelector(state => state.productsData);
+  const {
+    products: { data },
+  } = useTypedSelector(state => state.productsData);
   //fetching products
   useEffect(() => {
     fetchProductsStart(filterType);
@@ -26,8 +28,8 @@ const ProductResults: React.FC = () => {
   //on load more handler
   const onLoadMoreHandler = () => {};
   //type guards
-  if (!Array.isArray(products)) return null;
-  if (products.length < 1) {
+  if (!Array.isArray(data)) return null;
+  if (data.length < 1) {
     return (
       <div className="products">
         <p>No search results. Please make sure there are products.</p>
@@ -61,9 +63,9 @@ const ProductResults: React.FC = () => {
       <h1>Browse Products</h1>
       <FormSelect {...filtersConfig} />
       <div className="products__grid">
-        {products.map(product => {
+        {data.map(productData => {
           //destructuring
-          const { name, price, thumbnail } = product;
+          const { name, price, thumbnail } = productData;
           //config
           const productConfig = {
             name,
