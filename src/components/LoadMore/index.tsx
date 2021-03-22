@@ -2,7 +2,7 @@
 import Button from '../Forms/Button';
 //props interface
 interface LoadMoreProps {
-  onLoadMore: () => any;
+  onLoadMore: () => void;
 }
 //load more component
 const LoadMore: React.FC<LoadMoreProps> = ({ onLoadMore = () => {} }) => {
