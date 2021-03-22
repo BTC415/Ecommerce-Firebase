@@ -1,6 +1,7 @@
 //importing hooks & random id's
 import { useState, useEffect } from 'react';
 import { useProductsActions, useTypedSelector } from '../../hooks';
+import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 //importing components
 import Button from '../../components/Forms/Button';
@@ -16,17 +17,22 @@ const Admin = () => {
   const [productName, setProductName] = useState<string>('');
   const [productThumbnail, setProductThumbnail] = useState<string>('');
   const [productPrice, setProductPrice] = useState<number>(0);
-  //redux actions & state
+  //redux state, router history & actions
   const {
     addProductStart,
     fetchProductsStart,
     deleteProductStart,
   } = useProductsActions();
-  const { data } = useTypedSelector(state => state.productsData.products);
+  const { filterType } = useParams<{ filterType: string }>();
+  const { data, queryDoc, isLastPage } = useTypedSelector(
+    state => state.productsData.products
+  );
   //toggle modal function
   const toggleModal = () => setIsModalHidden(!isModalHidden);
   //on load more
-  const onLoadMore = () => {};
+  const onLoadMore = () => {
+    if (queryDoc) fetchProductsStart(filterType, queryDoc, data);
+  };
   //configs
   const configModal = {
     isModalHidden,
@@ -144,7 +150,7 @@ const Admin = () => {
           );
         })}
       </div>
-      <LoadMore {...loadMoreConfig} />
+      {!isLastPage && <LoadMore {...loadMoreConfig} />}
     </div>
   );
 };
