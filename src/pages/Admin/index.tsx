@@ -7,6 +7,7 @@ import Button from '../../components/Forms/Button';
 import Modal from '../../components/Modal';
 import FormSelect from '../../components/Forms/FormSelect';
 import FormInput from '../../components/Forms/FormInput';
+import LoadMore from '../../components/LoadMore';
 //admin component
 const Admin = () => {
   //local state
@@ -24,10 +25,15 @@ const Admin = () => {
   const { data } = useTypedSelector(state => state.productsData.products);
   //toggle modal function
   const toggleModal = () => setIsModalHidden(!isModalHidden);
-  //modal config
+  //on load more
+  const onLoadMore = () => {};
+  //configs
   const configModal = {
     isModalHidden,
     toggleModal,
+  };
+  const loadMoreConfig = {
+    onLoadMore,
   };
   //resetting the form
   const resetForm = () => {
@@ -138,6 +144,7 @@ const Admin = () => {
           );
         })}
       </div>
+      <LoadMore {...loadMoreConfig} />
     </div>
   );
 };
