@@ -300,6 +300,10 @@ footer {
   cursor: pointer;
 }
 
+.admin .btn {
+  margin-top: 50px;
+}
+
 .admin__toolbar {
   width: 100%;
   background-color: #2b3945;
