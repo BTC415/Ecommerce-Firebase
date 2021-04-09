@@ -12,11 +12,11 @@ import LoadMore from '../../components/LoadMore';
 //admin component
 const Admin = () => {
   //local state
-  const [isModalHidden, setIsModalHidden] = useState<boolean>(true);
-  const [productCategory, setProductCategory] = useState<string>('mens');
-  const [productName, setProductName] = useState<string>('');
-  const [productThumbnail, setProductThumbnail] = useState<string>('');
-  const [productPrice, setProductPrice] = useState<number>(0);
+  const [isModalHidden, setIsModalHidden] = useState(true);
+  const [productCategory, setProductCategory] = useState('mens');
+  const [productName, setProductName] = useState('');
+  const [productThumbnail, setProductThumbnail] = useState('');
+  const [productPrice, setProductPrice] = useState(0);
   //redux state, router history & actions
   const {
     addProductStart,
