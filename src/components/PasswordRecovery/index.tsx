@@ -10,7 +10,7 @@ import Button from '../Forms/Button';
 //email password form component
 const PasswordRecovery: React.FC = () => {
   //local state
-  const [email, setEmail] = useState<string>('');
+  const [email, setEmail] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions, router history & state
   const history = useHistory();
