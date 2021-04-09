@@ -47,7 +47,7 @@ interface SignInSuccessAction {
   type: ActionType.SIGN_IN_SUCCESS;
   payload: CurrentUser | null;
 }
-export interface SignOutSuccessAction {
+interface SignOutSuccessAction {
   type: ActionType.SIGN_OUT_SUCCESS;
   payload: CurrentUser | null;
 }

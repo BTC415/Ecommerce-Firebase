@@ -11,8 +11,8 @@ import { useHistory } from 'react-router-dom';
 //sign in component
 const SignIn: React.FC = () => {
   //local state
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
   //redux actions, router history & state
   const history = useHistory();

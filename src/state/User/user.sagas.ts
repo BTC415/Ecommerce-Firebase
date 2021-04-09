@@ -80,6 +80,7 @@ export function* emailSignUp({
 
 export function* isUserAuthenticated() {
   try {
+    //saving user auth status
     const userAuth: userAuth = yield getCurrentUser();
     if (!userAuth) return;
     yield getSnaphotFromUserAuth(userAuth);
