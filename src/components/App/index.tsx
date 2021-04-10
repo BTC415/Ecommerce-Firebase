@@ -16,6 +16,7 @@ import Account from '../../pages/Account';
 import Recovery from '../../pages/Recovery';
 import Admin from '../../pages/Admin';
 import Search from '../../pages/Search';
+import ProductDetails from '../../pages/ProductDetails';
 //importing router utils
 import { Route, Switch } from 'react-router';
 //importing layouts
@@ -56,6 +57,14 @@ const App: React.FC = () => {
           render={() => (
             <MainLayout>
               <Search />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/product/:productID"
+          render={() => (
+            <MainLayout>
+              <ProductDetails />
             </MainLayout>
           )}
         />
