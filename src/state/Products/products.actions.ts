@@ -6,7 +6,9 @@ export type ProductsAction =
   | AddProductStartAction
   | SetProductsAction
   | DeleteProductStart
-  | FetchProductsStartAction;
+  | FetchProductsStartAction
+  | SetProductAction
+  | FetchProductStartAction;
 //start action interfaces
 export interface AddProductStartAction {
   type: ActionType.ADD_NEW_PRODUCT_START;
@@ -16,6 +18,10 @@ export interface FetchProductsStartAction {
   type: ActionType.FETCH_PRODUCTS_START;
   payload: FetchProductsParams;
 }
+export interface FetchProductStartAction {
+  type: ActionType.FETCH_PRODUCT_START;
+  payload: string;
+}
 export interface DeleteProductStart {
   type: ActionType.DELETE_PRODUCT_START;
   payload: string;
@@ -24,4 +30,8 @@ export interface DeleteProductStart {
 interface SetProductsAction {
   type: ActionType.SET_PRODUCTS;
   payload: Products;
+}
+interface SetProductAction {
+  type: ActionType.SET_PRODUCT;
+  payload: ProductData;
 }

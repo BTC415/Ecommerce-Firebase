@@ -18,9 +18,18 @@ export const fetchProductsStart = (
   payload: { filterType, startAfterDoc, persistProducts },
 });
 
+export const fetchProductStart = (productID: string): ProductsAction => ({
+  type: ActionType.FETCH_PRODUCT_START,
+  payload: productID,
+});
+
 export const setProducts = (products: Products): ProductsAction => ({
   type: ActionType.SET_PRODUCTS,
   payload: products,
+});
+export const setProduct = (product: ProductData): ProductsAction => ({
+  type: ActionType.SET_PRODUCT,
+  payload: product,
 });
 
 export const deleteProductStart = (productID: string): ProductsAction => ({
