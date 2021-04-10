@@ -56,6 +56,20 @@ export const handleFetchProducts = ({
       .catch(err => reject(err));
   });
 };
+//fetching product helper
+export const handleFetchProduct = (productID: string) => {
+  return new Promise((resolve, reject) => {
+    db.collection('products')
+      .doc(productID)
+      .get()
+      .then(productRef => {
+        if (productRef.exists) {
+          resolve(productRef.data());
+        }
+      })
+      .catch(err => reject(err));
+  });
+};
 //deleting product helper
 export const handleDeleteProduct = (productID: string) => {
   return new Promise((resolve, reject) => {
