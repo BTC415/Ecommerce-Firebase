@@ -66,16 +66,7 @@ const ProductResults: React.FC = () => {
       <FormSelect {...filtersConfig} />
       <div className="products__grid">
         {data.map(productData => {
-          //destructuring
-          const { name, price, thumbnail } = productData;
-          //config
-          const productConfig = {
-            name,
-            price,
-            thumbnail,
-            key: uuidv4(),
-          };
-          return <Product {...productConfig} />;
+          return <Product {...productData} />;
         })}
       </div>
       {!isLastPage && <LoadMore {...loadMoreConfig} />}

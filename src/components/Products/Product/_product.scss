@@ -10,6 +10,10 @@
     }
   }
   .text__content {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
     .product__name {
       margin-top: 10px;
       font-size: 20px;
