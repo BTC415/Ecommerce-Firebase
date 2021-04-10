@@ -1,10 +1,11 @@
 //importing types
-import { Products } from '../interfaces';
+import { ProductData, Products } from '../interfaces';
 import { ActionType } from './products.action-types';
 import { ProductsAction } from './products.actions';
 //state interface
 interface ProductsState {
   products: Products;
+  product: ProductData | null;
 }
 //initial state
 const initialState: ProductsState = {
@@ -13,6 +14,7 @@ const initialState: ProductsState = {
     isLastPage: false,
     queryDoc: null,
   },
+  product: null,
 };
 //reducer
 const productsReducer = (
@@ -22,6 +24,8 @@ const productsReducer = (
   switch (action.type) {
     case ActionType.SET_PRODUCTS:
       return { ...state, products: action.payload };
+    case ActionType.SET_PRODUCT:
+      return { ...state, product: action.payload };
     default:
       return state;
   }
