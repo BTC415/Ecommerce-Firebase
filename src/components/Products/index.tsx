@@ -66,7 +66,7 @@ const ProductResults: React.FC = () => {
       <FormSelect {...filtersConfig} />
       <div className="products__grid">
         {data.map(productData => {
-          return <Product {...productData} />;
+          return <Product {...productData} key={uuidv4()} />;
         })}
       </div>
       {!isLastPage && <LoadMore {...loadMoreConfig} />}
