@@ -17,6 +17,7 @@ const Admin = () => {
   const [productName, setProductName] = useState('');
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
+  // const [productDescription, setProductDescription] = useState('');
   //redux state, router history & actions
   const {
     addProductStart,
