@@ -7,12 +7,16 @@ import Button from '../Forms/Button';
 const ProductCard = () => {
   //redux state, actions & router params
   const { productID } = useParams<{ productID: string }>();
-  const { fetchProductStart } = useProductsActions();
+  const { fetchProductStart, setProduct } = useProductsActions();
   const { product } = useTypedSelector(state => state.productsData);
   //fetching product
   useEffect(() => {
     fetchProductStart(productID);
-  }, [fetchProductStart, productID]);
+    //cleanup
+    return () => {
+      setProduct(null);
+    };
+  }, [fetchProductStart, productID, setProduct]);
   //type guards
   if (!product) return null;
   //destructuring

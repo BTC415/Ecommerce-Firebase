@@ -33,5 +33,5 @@ interface SetProductsAction {
 }
 interface SetProductAction {
   type: ActionType.SET_PRODUCT;
-  payload: ProductData;
+  payload: ProductData | null;
 }

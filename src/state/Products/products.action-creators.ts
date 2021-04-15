@@ -27,7 +27,7 @@ export const setProducts = (products: Products): ProductsAction => ({
   type: ActionType.SET_PRODUCTS,
   payload: products,
 });
-export const setProduct = (product: ProductData): ProductsAction => ({
+export const setProduct = (product: ProductData | null): ProductsAction => ({
   type: ActionType.SET_PRODUCT,
   payload: product,
 });
