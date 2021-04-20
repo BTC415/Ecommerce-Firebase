@@ -21,7 +21,6 @@ const Admin = () => {
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
   const [productDescription, setProductDescription] = useState('');
-  // const [productDescription, setProductDescription] = useState('');
   //redux state, router history & actions
   const {
     addProductStart,
@@ -53,6 +52,7 @@ const Admin = () => {
     setProductPrice(0);
     setProductThumbnail('');
     setIsModalHidden(true);
+    setProductDescription('');
   };
   //on submit handler
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {

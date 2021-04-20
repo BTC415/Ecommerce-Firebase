@@ -24,18 +24,13 @@ import {
   setProducts,
 } from './products.action-creators';
 //sagas
-export function* addProduct({
-  payload: { name, category, price, thumbnail },
-}: AddProductStartAction) {
+export function* addProduct({ payload }: AddProductStartAction) {
   try {
     const timeStamp = new Date();
     if (auth.currentUser) {
       //adding product to firestore
       yield handleAddProduct({
-        category,
-        name,
-        price,
-        thumbnail,
+        ...payload,
         createdDate: timeStamp,
         productAdminUserUID: auth.currentUser.uid,
       });
