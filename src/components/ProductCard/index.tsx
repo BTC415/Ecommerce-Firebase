@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProductsActions, useTypedSelector } from '../../hooks/index';
+//importing components
 import Button from '../Forms/Button';
 //product card
 const ProductCard = () => {

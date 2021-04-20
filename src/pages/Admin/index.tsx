@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import { useProductsActions, useTypedSelector } from '../../hooks';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+//importing editor
+//@ts-ignore
+import CKEditor from 'ckeditor4-react';
 //importing components
 import Button from '../../components/Forms/Button';
 import Modal from '../../components/Modal';
@@ -17,6 +20,7 @@ const Admin = () => {
   const [productName, setProductName] = useState('');
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
+  const [productDescription, setProductDescription] = useState('');
   // const [productDescription, setProductDescription] = useState('');
   //redux state, router history & actions
   const {
@@ -63,6 +67,7 @@ const Admin = () => {
         name: productName,
         price: productPrice,
         thumbnail: productThumbnail,
+        description: productDescription,
       });
       resetForm();
     }
@@ -88,6 +93,7 @@ const Admin = () => {
         <div className="addNewProductForm">
           <form onSubmit={onSubmitHandler}>
             <h2>Add new product</h2>
+
             <FormSelect
               label="Category"
               options={[
@@ -102,18 +108,21 @@ const Admin = () => {
               ]}
               onChange={e => setProductCategory(e.target.value)}
             />
+
             <FormInput
               label="Name"
               type="text"
               value={productName}
               onChange={e => setProductName(e.target.value)}
             />
+
             <FormInput
               label="Main image URL"
               type="url"
               value={productThumbnail}
               onChange={e => setProductThumbnail(e.target.value)}
             />
+
             <FormInput
               label="Price"
               type="number"
@@ -123,6 +132,11 @@ const Admin = () => {
               value={productPrice}
               onChange={e => setProductPrice(parseFloat(e.target.value))}
             />
+
+            <CKEditor
+              onChange={(e: any) => setProductDescription(e.editor.getData())}
+            />
+
             <Button type="submit">Add product</Button>
           </form>
         </div>

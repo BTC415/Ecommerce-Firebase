@@ -28,11 +28,12 @@ export interface FormOptions {
 export interface ProductData {
   category: string;
   name: string;
+  description: string;
   thumbnail: string;
+  documentId?: string;
   price: number;
   productAdminUserUID?: string;
   createdDate?: Date;
-  documentId?: string;
 }
 export interface Products {
   data: ProductData[];
