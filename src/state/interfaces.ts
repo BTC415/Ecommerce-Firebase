@@ -34,6 +34,7 @@ export interface ProductData {
   price: number;
   productAdminUserUID?: string;
   createdDate?: Date;
+  quantity: number;
 }
 export interface Products {
   data: ProductData[];
