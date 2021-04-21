@@ -1,7 +1,10 @@
 //importing hooks
 import { useTypedSelector, useUserActions } from '../../hooks';
-//router link
+//importing utils
 import { Link } from 'react-router-dom';
+//importing font awesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 //header component
 const Header: React.FC = () => {
   //redux state & actions
@@ -26,26 +29,32 @@ const Header: React.FC = () => {
           </ul>
         </nav>
         <div className="registration">
-          {currentUser && (
-            <ul className="registration__list">
-              <li>
-                <Link to="/account">My Account</Link>
-              </li>
-              <li onClick={() => emailSignOutStart()} className="log__out">
-                LogOut
-              </li>
-            </ul>
-          )}
-          {!currentUser && (
-            <ul className="registration__list">
-              <li>
-                <Link to="/registration">Register</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </ul>
-          )}
+          <ul className="registration__list">
+            <li className="cart">
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span>(0)</span>
+            </li>
+            {currentUser && (
+              <>
+                <li>
+                  <Link to="/account">My Account</Link>
+                </li>
+                <li onClick={() => emailSignOutStart()} className="log__out">
+                  LogOut
+                </li>
+              </>
+            )}
+            {!currentUser && (
+              <>
+                <li>
+                  <Link to="/registration">Register</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
       </div>
     </header>

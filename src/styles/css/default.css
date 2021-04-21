@@ -71,6 +71,20 @@ header .container .registration .registration__list li {
   padding-left: 15px;
 }
 
+header .container .registration .registration__list li.cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
 header .container .registration .registration__list li a,
 header .container .registration .registration__list .log__out {
   text-decoration: none;

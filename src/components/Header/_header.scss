@@ -47,6 +47,13 @@ header {
         li {
           padding-left: 15px;
         }
+        li.cart {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
         li a,
         .log__out {
           text-decoration: none;
