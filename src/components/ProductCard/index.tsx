@@ -1,7 +1,13 @@
 //importing hooks
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useProductsActions, useTypedSelector } from '../../hooks/index';
+import {
+  useProductsActions,
+  useTypedSelector,
+  useCartActions,
+} from '../../hooks/index';
+//importing types
+import { ProductData } from '../../state';
 //importing components
 import Button from '../Forms/Button';
 //product card
@@ -9,6 +15,7 @@ const ProductCard = () => {
   //redux state, actions & router params
   const { productID } = useParams<{ productID: string }>();
   const { fetchProductStart, setProduct } = useProductsActions();
+  const { addProduct } = useCartActions();
   const { product } = useTypedSelector(state => state.productsData);
   //fetching product
   useEffect(() => {
@@ -26,6 +33,10 @@ const ProductCard = () => {
   enum buttonConfig {
     type = 'button',
   }
+  //on click handler
+  const handleAddToCart = (product: ProductData) => {
+    addProduct(product);
+  };
   return (
     <div className="product__card">
       <div className="product__hero">
@@ -40,7 +51,9 @@ const ProductCard = () => {
         />
       </div>
       <div className="add__to__cart">
-        <Button {...buttonConfig}>Add to cart</Button>
+        <Button {...buttonConfig} onClick={() => handleAddToCart(product)}>
+          Add to cart
+        </Button>
       </div>
     </div>
   );
