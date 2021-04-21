@@ -1,6 +1,6 @@
 //importing selector
 import { createSelector } from 'reselect';
 //importing types
-import { State } from '../types';
+import { RootState } from '../reducers';
 //Selectors
-const selectCartData = (state: State) => state.cart;
+const selectCartData = (state: RootState) => state.cart;
