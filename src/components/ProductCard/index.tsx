@@ -21,7 +21,7 @@ const ProductCard = () => {
   //type guards
   if (!product) return null;
   //destructuring
-  const { name, price, thumbnail } = product;
+  const { name, price, thumbnail, description } = product;
   //config
   enum buttonConfig {
     type = 'button',
@@ -34,6 +34,10 @@ const ProductCard = () => {
       <div className="product__details">
         <div className="product__name">{name}</div>
         <div className="product__price">${price}</div>
+        <span
+          className="product__description"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
       <div className="add__to__cart">
         <Button {...buttonConfig}>Add to cart</Button>

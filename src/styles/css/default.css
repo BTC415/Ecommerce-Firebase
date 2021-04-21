@@ -532,6 +532,12 @@ footer {
 
 .product__card .product__details .product__price {
   font-size: 20px;
+  margin-top: 10px;
+}
+
+.product__card .product__details .product__description {
+  display: block;
+  margin-top: 20px;
 }
 
 .product__card .add__to__cart {
