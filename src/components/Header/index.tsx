@@ -9,6 +9,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const Header: React.FC = () => {
   //redux state & actions
   const { currentUser } = useTypedSelector(state => state.user);
+  const { cartItems } = useTypedSelector(state => state.cart);
   const { emailSignOutStart } = useUserActions();
   return (
     <header>

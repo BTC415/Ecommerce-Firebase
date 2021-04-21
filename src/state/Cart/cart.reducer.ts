@@ -4,7 +4,7 @@ import { ProductData } from '../interfaces';
 import { AddProductAction } from './cart.actions';
 import { handleAddToCart } from './cart.helpers';
 //state interface
-interface CartState {
+export interface CartState {
   cartItems: ProductData[];
 }
 //initial state

@@ -3,7 +3,7 @@ import { ProductData, Products } from '../interfaces';
 import { ActionType } from './products.action-types';
 import { ProductsAction } from './products.actions';
 //state interface
-interface ProductsState {
+export interface ProductsState {
   products: Products;
   product: ProductData | null;
 }
