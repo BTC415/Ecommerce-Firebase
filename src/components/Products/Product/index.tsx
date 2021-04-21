@@ -1,3 +1,5 @@
+//importing hooks
+import { useCartActions, useTypedSelector } from '../../../hooks';
 //importing router utils
 import { Link } from 'react-router-dom';
 //importing components
@@ -10,18 +12,17 @@ interface ProductProps {
   documentId?: string;
 }
 //product component
-const Product: React.FC<ProductProps> = ({
-  name,
-  price,
-  thumbnail,
-  documentId,
-}) => {
+const Product: React.FC<ProductProps> = product => {
+  //destructuring
+  const { name, price, thumbnail, documentId } = product;
   //type guards
   if (!documentId) return null;
   //config
   enum buttonConfig {
     type = 'button',
   }
+  //on click handler
+  const handleAddToCart = () => {};
   return (
     <div className="product__item">
       <div className="img__container">

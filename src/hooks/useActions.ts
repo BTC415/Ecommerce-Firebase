@@ -1,6 +1,10 @@
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
-import { ProductsActionCreators, UserActionCreators } from '../state';
+import {
+  CartActionCreators,
+  ProductsActionCreators,
+  UserActionCreators,
+} from '../state';
 import { useMemo } from 'react';
 
 //use actions custom hooks
@@ -17,5 +21,13 @@ export const useProductsActions = () => {
   //binding actions just once (avoiding infinite loops)
   return useMemo(() => {
     return bindActionCreators(ProductsActionCreators, dispatch);
+  }, [dispatch]);
+};
+
+export const useCartActions = () => {
+  const dispatch = useDispatch();
+  //binding actions just once (avoiding infinite loops)
+  return useMemo(() => {
+    return bindActionCreators(CartActionCreators, dispatch);
   }, [dispatch]);
 };
