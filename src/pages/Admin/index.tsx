@@ -68,6 +68,7 @@ const Admin = () => {
         price: productPrice,
         thumbnail: productThumbnail,
         description: productDescription,
+        quantity: 1,
       });
       resetForm();
     }

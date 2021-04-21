@@ -17,7 +17,7 @@ export const handleAddToCart = (
   const cartItemExists = existingCartItem(prevCartItems, nextCartItem);
   //checking if item already exists
   if (cartItemExists) {
-    prevCartItems.map(cartItem =>
+    return prevCartItems.map(cartItem =>
       cartItem.documentId === nextCartItem.documentId
         ? {
             ...nextCartItem,

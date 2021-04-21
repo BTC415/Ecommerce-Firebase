@@ -2,6 +2,7 @@
 import { ActionType } from './cart.action-types';
 import { ProductData } from '../interfaces';
 import { AddProductAction } from './cart.actions';
+import { handleAddToCart } from './cart.helpers';
 //state interface
 interface CartState {
   cartItems: ProductData[];
@@ -19,7 +20,7 @@ const cartReducer = (
     case ActionType.ADD_TO_CART:
       return {
         ...state,
-        cartItems: [...state.cartItems, { ...action.payload }],
+        cartItems: handleAddToCart(state.cartItems, action.payload),
       };
     default:
       return state;
