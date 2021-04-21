@@ -6,3 +6,5 @@ export * as CartActionCreators from './Cart/cart.action-creators';
 export * from './store';
 export * from './reducers';
 export * from './interfaces';
+//exporting selectors
+export * from './Cart/cart.selectors';

@@ -1,5 +1,6 @@
 //importing hooks
 import { useTypedSelector, useUserActions } from '../../hooks';
+import { selectCartItemsCount } from '../../state';
 //importing utils
 import { Link } from 'react-router-dom';
 //importing font awesome icons
@@ -9,7 +10,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const Header: React.FC = () => {
   //redux state & actions
   const { currentUser } = useTypedSelector(state => state.user);
-  const { cartItems } = useTypedSelector(state => state.cart);
+  const totalCartItems = useTypedSelector(state => selectCartItemsCount(state));
   const { emailSignOutStart } = useUserActions();
   return (
     <header>
@@ -33,7 +34,7 @@ const Header: React.FC = () => {
           <ul className="registration__list">
             <li className="cart">
               <FontAwesomeIcon icon={faShoppingCart} />
-              <span>(0)</span>
+              <span>({totalCartItems})</span>
             </li>
             {currentUser && (
               <>
