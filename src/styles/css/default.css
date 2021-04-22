@@ -71,7 +71,12 @@ header .container .registration .registration__list li {
   padding-left: 15px;
 }
 
-header .container .registration .registration__list li.cart {
+header .container .registration .registration__list a {
+  color: black !important;
+  text-decoration: none;
+}
+
+header .container .registration .registration__list a li.cart {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

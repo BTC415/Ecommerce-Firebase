@@ -17,6 +17,7 @@ import Recovery from '../../pages/Recovery';
 import Admin from '../../pages/Admin';
 import Search from '../../pages/Search';
 import ProductDetails from '../../pages/ProductDetails';
+import Cart from '../../pages/Cart';
 //importing router utils
 import { Route, Switch } from 'react-router';
 //importing layouts
@@ -65,6 +66,14 @@ const App: React.FC = () => {
           render={() => (
             <MainLayout>
               <ProductDetails />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/cart"
+          render={() => (
+            <MainLayout>
+              <Cart />
             </MainLayout>
           )}
         />

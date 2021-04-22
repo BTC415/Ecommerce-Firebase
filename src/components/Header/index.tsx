@@ -32,10 +32,12 @@ const Header: React.FC = () => {
         </nav>
         <div className="registration">
           <ul className="registration__list">
-            <li className="cart">
-              <FontAwesomeIcon icon={faShoppingCart} />
-              <span>({totalCartItems})</span>
-            </li>
+            <Link to="/cart">
+              <li className="cart">
+                <FontAwesomeIcon icon={faShoppingCart} />
+                <span>({totalCartItems})</span>
+              </li>
+            </Link>
             {currentUser && (
               <>
                 <li>
