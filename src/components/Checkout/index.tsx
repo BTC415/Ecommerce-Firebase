@@ -4,7 +4,8 @@ import { selectCartItems } from '../../state';
 import { createStructuredSelector } from 'reselect';
 //importing font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClosedCaptioning } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import Button from '../Forms/Button';
 //checkout
 const Checkout = () => {
   //redux actions & state
@@ -28,18 +29,25 @@ const Checkout = () => {
               <div className="description">{description}</div>
               <div className="quantity__container">
                 <ul>
-                  <li>-</li>
+                  <li className="operator">-</li>
                   <li>{quantity}</li>
-                  <li>+</li>
+                  <li className="operator">+</li>
                 </ul>
               </div>
               <div className="price">${price}</div>
               <div className="remove">
-                <FontAwesomeIcon icon={faClosedCaptioning} />
+                <FontAwesomeIcon icon={faTimes} />
               </div>
             </div>
           );
         })}
+        <div className="total">
+          <h2>Total: $0</h2>
+        </div>
+        <div className="call__to__actions">
+          <Button>Continue Shopping</Button>
+          <Button>Checkout</Button>
+        </div>
       </div>
     </div>
   );

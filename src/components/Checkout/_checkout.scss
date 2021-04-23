@@ -1,0 +1,42 @@
+.checkout {
+  margin-top: 30px;
+  .cart {
+    .product__checkout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 30px;
+      .thumbnail {
+        width: 200px;
+        height: 200px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .quantity__container {
+        ul {
+          display: flex;
+          list-style: none;
+          align-items: center;
+          gap: 20px;
+          .operator {
+            font-size: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+      .remove {
+        cursor: pointer;
+      }
+    }
+    .total {
+      margin: 30px 0;
+    }
+    .call__to__actions {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}
