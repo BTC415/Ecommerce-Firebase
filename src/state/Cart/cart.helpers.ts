@@ -34,3 +34,12 @@ export const handleAddToCart = (
     },
   ];
 };
+
+export const handleRemoveCartItem = (
+  prevCartItems: ProductData[],
+  cartItemToRemove: ProductData
+) => {
+  return prevCartItems.filter(
+    cartItem => cartItem.documentId !== cartItemToRemove.documentId
+  );
+};

@@ -2,8 +2,8 @@
 import { ActionType } from './cart.action-types';
 import { ProductData } from '../interfaces';
 //importing actions & helpers
-import { AddProductAction } from './cart.actions';
-import { handleAddToCart } from './cart.helpers';
+import { CartAction } from './cart.actions';
+import { handleAddToCart, handleRemoveCartItem } from './cart.helpers';
 //state interface
 export interface CartState {
   cartItems: ProductData[];
@@ -15,13 +15,18 @@ const initialState: CartState = {
 //reducer
 const cartReducer = (
   state: CartState = initialState,
-  action: AddProductAction
+  action: CartAction
 ): CartState => {
   switch (action.type) {
     case ActionType.ADD_TO_CART:
       return {
         ...state,
         cartItems: handleAddToCart(state.cartItems, action.payload),
+      };
+    case ActionType.REMOVE_CART_ITEM:
+      return {
+        ...state,
+        cartItems: handleRemoveCartItem(state.cartItems, action.payload),
       };
     default:
       return state;
