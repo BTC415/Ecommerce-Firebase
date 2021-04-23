@@ -1,6 +1,7 @@
 //importing types
 import { ActionType } from './cart.action-types';
 import { ProductData } from '../interfaces';
+//importing actions & helpers
 import { AddProductAction } from './cart.actions';
 import { handleAddToCart } from './cart.helpers';
 //state interface
