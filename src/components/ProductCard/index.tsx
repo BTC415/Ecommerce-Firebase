@@ -1,6 +1,6 @@
 //importing hooks
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import {
   useProductsActions,
   useTypedSelector,
@@ -12,7 +12,8 @@ import { ProductData } from '../../state';
 import Button from '../Forms/Button';
 //product card
 const ProductCard = () => {
-  //redux state, actions & router params
+  //redux state, actions & router utils
+  const history = useHistory();
   const { productID } = useParams<{ productID: string }>();
   const { fetchProductStart, setProduct } = useProductsActions();
   const { addCartItem } = useCartActions();
@@ -36,6 +37,7 @@ const ProductCard = () => {
   //on click handler
   const handleAddToCart = (product: ProductData) => {
     addCartItem(product);
+    history.push('/cart');
   };
   return (
     <div className="product__card">

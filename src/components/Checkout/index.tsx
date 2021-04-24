@@ -1,5 +1,7 @@
-//importing hooks & types
+//importing hooks
 import { useTypedSelector, useCartActions } from '../../hooks';
+import { useHistory } from 'react-router-dom';
+//importing types & selectors
 import { ProductData, selectCartItems, selectCartTotal } from '../../state';
 import { createStructuredSelector } from 'reselect';
 //importing utils
@@ -11,7 +13,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Button from '../Forms/Button';
 //checkout
 const Checkout = () => {
-  //redux actions & state
+  //redux actions & state, router utils
+  const history = useHistory();
   const { cartItems, total } = useTypedSelector(
     createStructuredSelector({
       cartItems: selectCartItems,
@@ -80,7 +83,7 @@ const Checkout = () => {
             <h2>Total: ${showTwoNumbersAfterDecimal(total)}</h2>
           </div>
           <div className="call__to__actions">
-            <Button>Continue Shopping</Button>
+            <Button onClick={() => history.goBack()}>Continue Shopping</Button>
             <Button>Checkout</Button>
           </div>
         </div>

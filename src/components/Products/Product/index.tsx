@@ -1,5 +1,6 @@
 //importing hooks
 import { useCartActions } from '../../../hooks';
+import { useHistory } from 'react-router-dom';
 //importing utils
 import { Link } from 'react-router-dom';
 //importing types
@@ -12,8 +13,9 @@ interface ProductProps {
 }
 //product component
 const Product: React.FC<ProductProps> = ({ product }) => {
-  //redux actions
+  //redux actions & router history
   const { addCartItem } = useCartActions();
+  const history = useHistory();
   //destructuring
   const { name, price, thumbnail, documentId } = product;
   //type guards
@@ -25,6 +27,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   //on click handler
   const handleAddToCart = (product: ProductData) => {
     addCartItem(product);
+    history.push('/cart');
   };
   return (
     <div className="product__item">
