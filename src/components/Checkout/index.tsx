@@ -1,6 +1,6 @@
 //importing hooks & types
 import { useTypedSelector, useCartActions } from '../../hooks';
-import { selectCartItems } from '../../state';
+import { ProductData, selectCartItems } from '../../state';
 import { createStructuredSelector } from 'reselect';
 //importing font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,10 +15,13 @@ const Checkout = () => {
       cartItems: selectCartItems,
     })
   );
-  const { removeCartItem } = useCartActions();
-  //on click handler
+  const { removeCartItem, addProduct } = useCartActions();
+  //on click handlers
   const handleRemoveCartItem = (documentId: string) => {
     removeCartItem(documentId);
+  };
+  const handleAddProduct = (product: ProductData) => {
+    addProduct(product);
   };
   return (
     <div className="checkout">
@@ -44,7 +47,12 @@ const Checkout = () => {
                   <ul>
                     <li className="operator">-</li>
                     <li>{quantity}</li>
-                    <li className="operator">+</li>
+                    <li
+                      className="operator"
+                      onClick={() => handleAddProduct(product)}
+                    >
+                      +
+                    </li>
                   </ul>
                 </div>
                 <div className="price">${price}</div>
