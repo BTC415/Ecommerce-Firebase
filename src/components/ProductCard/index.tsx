@@ -15,7 +15,7 @@ const ProductCard = () => {
   //redux state, actions & router params
   const { productID } = useParams<{ productID: string }>();
   const { fetchProductStart, setProduct } = useProductsActions();
-  const { addProduct } = useCartActions();
+  const { addCartItem } = useCartActions();
   const { product } = useTypedSelector(state => state.productsData);
   //fetching product
   useEffect(() => {
@@ -35,7 +35,7 @@ const ProductCard = () => {
   }
   //on click handler
   const handleAddToCart = (product: ProductData) => {
-    addProduct(product);
+    addCartItem(product);
   };
   return (
     <div className="product__card">

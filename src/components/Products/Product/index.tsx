@@ -13,7 +13,7 @@ interface ProductProps {
 //product component
 const Product: React.FC<ProductProps> = ({ product }) => {
   //redux actions
-  const { addProduct } = useCartActions();
+  const { addCartItem } = useCartActions();
   //destructuring
   const { name, price, thumbnail, documentId } = product;
   //type guards
@@ -24,7 +24,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   }
   //on click handler
   const handleAddToCart = (product: ProductData) => {
-    addProduct(product);
+    addCartItem(product);
   };
   return (
     <div className="product__item">
