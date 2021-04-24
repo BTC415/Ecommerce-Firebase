@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers';
 import saga from './saga';
+import { persistStore } from 'redux-persist';
 //getting typescript to work with devtools
 declare global {
   interface Window {
@@ -19,5 +20,7 @@ export const store = createStore(
   {},
   composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 );
+//redux persist
+export const persistor = persistStore(store);
 //running redux saga
 sagaMiddleware.run(saga);
