@@ -19,5 +19,5 @@ export interface DeleteCartItemAction {
 
 export interface ReduceCartItemAction {
   type: ActionType.REDUCE_CART_ITEM;
-  payload: string;
+  payload: ProductData;
 }

@@ -12,15 +12,15 @@ export const existingCartItem = (
 
 export const handleAddCartItem = (
   prevCartItems: ProductData[],
-  nextCartItem: ProductData
+  cartItemToAdd: ProductData
 ) => {
-  const cartItemExists = existingCartItem(prevCartItems, nextCartItem);
+  const cartItemExists = existingCartItem(prevCartItems, cartItemToAdd);
   //checking if item already exists
   if (cartItemExists) {
     return prevCartItems.map(cartItem =>
-      cartItem.documentId === nextCartItem.documentId
+      cartItem.documentId === cartItemToAdd.documentId
         ? {
-            ...nextCartItem,
+            ...cartItemToAdd,
             quantity: cartItem.quantity + 1,
           }
         : cartItem
@@ -29,7 +29,7 @@ export const handleAddCartItem = (
   return [
     ...prevCartItems,
     {
-      ...nextCartItem,
+      ...cartItemToAdd,
       quantity: 1,
     },
   ];
@@ -39,5 +39,31 @@ export const handleRemoveCartItem = (
   prevCartItems: ProductData[],
   documentId: string
 ) => {
+  //removing cart item
   return prevCartItems.filter(cartItem => cartItem.documentId !== documentId);
+};
+
+export const handleReduceCartItem = (
+  prevCartItems: ProductData[],
+  cartItemToReduce: ProductData
+) => {
+  //getting cart item
+  const existingCartItem = prevCartItems.find(
+    cartItem => cartItem.documentId === cartItemToReduce.documentId
+  );
+  //removing cart item when qty is 1
+  if (existingCartItem?.quantity === 1) {
+    return prevCartItems.filter(
+      cartItem => cartItem.documentId !== existingCartItem.documentId
+    );
+  }
+  //reducing logic
+  return prevCartItems.map(cartItem =>
+    cartItem.documentId === existingCartItem?.documentId
+      ? {
+          ...cartItem,
+          quantity: cartItem.quantity - 1,
+        }
+      : cartItem
+  );
 };
