@@ -10,7 +10,7 @@ export const existingCartItem = (
   );
 };
 
-export const handleAddToCart = (
+export const handleAddCartItem = (
   prevCartItems: ProductData[],
   nextCartItem: ProductData
 ) => {

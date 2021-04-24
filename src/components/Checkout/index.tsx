@@ -15,13 +15,13 @@ const Checkout = () => {
       cartItems: selectCartItems,
     })
   );
-  const { removeCartItem, addProduct } = useCartActions();
+  const { removeCartItem, addCartItem } = useCartActions();
   //on click handlers
   const handleRemoveCartItem = (documentId: string) => {
     removeCartItem(documentId);
   };
   const handleAddProduct = (product: ProductData) => {
-    addProduct(product);
+    addCartItem(product);
   };
   return (
     <div className="checkout">

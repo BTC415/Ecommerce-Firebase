@@ -3,7 +3,7 @@ import { ActionType } from './cart.action-types';
 import { ProductData } from '../interfaces';
 //importing actions & helpers
 import { CartAction } from './cart.actions';
-import { handleAddToCart, handleRemoveCartItem } from './cart.helpers';
+import { handleAddCartItem, handleRemoveCartItem } from './cart.helpers';
 //state interface
 export interface CartState {
   cartItems: ProductData[];
@@ -21,7 +21,7 @@ const cartReducer = (
     case ActionType.ADD_CART_ITEM:
       return {
         ...state,
-        cartItems: handleAddToCart(state.cartItems, action.payload),
+        cartItems: handleAddCartItem(state.cartItems, action.payload),
       };
     case ActionType.REMOVE_CART_ITEM:
       return {

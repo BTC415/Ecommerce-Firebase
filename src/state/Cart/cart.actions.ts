@@ -2,7 +2,10 @@
 import { ProductData } from '../interfaces';
 import { ActionType } from './cart.action-types';
 //action type
-export type CartAction = AddCartItemAction | DeleteCartItemAction;
+export type CartAction =
+  | AddCartItemAction
+  | DeleteCartItemAction
+  | ReduceCartItemAction;
 //action interfaces
 export interface AddCartItemAction {
   type: ActionType.ADD_CART_ITEM;
