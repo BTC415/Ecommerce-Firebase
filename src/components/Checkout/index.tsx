@@ -2,6 +2,8 @@
 import { useTypedSelector, useCartActions } from '../../hooks';
 import { ProductData, selectCartItems, selectCartTotal } from '../../state';
 import { createStructuredSelector } from 'reselect';
+//importing utils
+import { showTwoNumbersAfterDecimal } from '../../Utils';
 //importing font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -75,7 +77,7 @@ const Checkout = () => {
             );
           })}
           <div className="total">
-            <h2>Total: ${total}</h2>
+            <h2>Total: ${showTwoNumbersAfterDecimal(total)}</h2>
           </div>
           <div className="call__to__actions">
             <Button>Continue Shopping</Button>

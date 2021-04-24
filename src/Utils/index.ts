@@ -6,3 +6,7 @@ export const checkUserIsAdmin = (currentUser: CurrentUser | null) => {
   if (currentUser.userRoles.includes('admin')) return true;
   return false;
 };
+
+export const showTwoNumbersAfterDecimal = (num: number) => {
+  return (Math.round(num * 100) / 100).toFixed(2);
+};
