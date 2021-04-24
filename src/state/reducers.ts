@@ -12,13 +12,12 @@ const reducers = combineReducers({
   productsData: productsReducer,
   cart: cartReducer,
 });
-export default persistReducer(
-  {
-    key: 'root',
-    storage,
-    whitelist: ['cart'],
-  },
-  reducers
-);
+//config
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['cart'],
+};
+export default persistReducer(persistConfig, reducers);
 //ensuring that typescript knows the type of our state
 export type RootState = ReturnType<typeof reducers>;
