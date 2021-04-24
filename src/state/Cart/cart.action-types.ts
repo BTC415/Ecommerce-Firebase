@@ -1,5 +1,6 @@
 //types
 export enum ActionType {
-  ADD_TO_CART = 'ADD_TO_CART',
+  ADD_CART_ITEM = 'ADD_CART_ITEM',
   REMOVE_CART_ITEM = 'REMOVE_CART_ITEM',
+  REDUCE_CART_ITEM = 'REDUCE_CART_ITEM',
 }

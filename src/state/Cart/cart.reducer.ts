@@ -18,7 +18,7 @@ const cartReducer = (
   action: CartAction
 ): CartState => {
   switch (action.type) {
-    case ActionType.ADD_TO_CART:
+    case ActionType.ADD_CART_ITEM:
       return {
         ...state,
         cartItems: handleAddToCart(state.cartItems, action.payload),
