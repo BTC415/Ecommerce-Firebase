@@ -1,6 +1,6 @@
 //importing hooks & types
 import { useTypedSelector, useCartActions } from '../../hooks';
-import { ProductData, selectCartItems } from '../../state';
+import { ProductData, selectCartItems, selectCartTotal } from '../../state';
 import { createStructuredSelector } from 'reselect';
 //importing font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,18 +10,22 @@ import Button from '../Forms/Button';
 //checkout
 const Checkout = () => {
   //redux actions & state
-  const { cartItems } = useTypedSelector(
+  const { cartItems, total } = useTypedSelector(
     createStructuredSelector({
       cartItems: selectCartItems,
+      total: selectCartTotal,
     })
   );
-  const { removeCartItem, addCartItem } = useCartActions();
+  const { removeCartItem, addCartItem, reduceCartItem } = useCartActions();
   //on click handlers
   const handleRemoveCartItem = (documentId: string) => {
     removeCartItem(documentId);
   };
   const handleAddProduct = (product: ProductData) => {
     addCartItem(product);
+  };
+  const handleReduceCartItem = (product: ProductData) => {
+    reduceCartItem(product);
   };
   return (
     <div className="checkout">
@@ -45,7 +49,12 @@ const Checkout = () => {
                 <div className="description">{description}</div>
                 <div className="quantity__container">
                   <ul>
-                    <li className="operator">-</li>
+                    <li
+                      className="operator"
+                      onClick={() => handleReduceCartItem(product)}
+                    >
+                      -
+                    </li>
                     <li>{quantity}</li>
                     <li
                       className="operator"
@@ -66,7 +75,7 @@ const Checkout = () => {
             );
           })}
           <div className="total">
-            <h2>Total: $0</h2>
+            <h2>Total: ${total}</h2>
           </div>
           <div className="call__to__actions">
             <Button>Continue Shopping</Button>

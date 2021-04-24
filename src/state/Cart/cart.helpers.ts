@@ -47,19 +47,15 @@ export const handleReduceCartItem = (
   prevCartItems: ProductData[],
   cartItemToReduce: ProductData
 ) => {
-  //getting cart item
-  const existingCartItem = prevCartItems.find(
-    cartItem => cartItem.documentId === cartItemToReduce.documentId
-  );
   //removing cart item when qty is 1
-  if (existingCartItem?.quantity === 1) {
+  if (cartItemToReduce?.quantity === 1) {
     return prevCartItems.filter(
-      cartItem => cartItem.documentId !== existingCartItem.documentId
+      cartItem => cartItem.documentId !== cartItemToReduce.documentId
     );
   }
   //reducing logic
   return prevCartItems.map(cartItem =>
-    cartItem.documentId === existingCartItem?.documentId
+    cartItem.documentId === cartItemToReduce?.documentId
       ? {
           ...cartItem,
           quantity: cartItem.quantity - 1,
