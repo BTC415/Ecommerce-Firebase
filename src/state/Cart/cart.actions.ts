@@ -11,5 +11,5 @@ export interface AddProductAction {
 
 export interface DeleteProductAction {
   type: ActionType.REMOVE_CART_ITEM;
-  payload: ProductData;
+  payload: string;
 }

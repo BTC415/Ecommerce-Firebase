@@ -7,7 +7,7 @@ export const addProduct = (nextCartItem: ProductData) => ({
   payload: nextCartItem,
 });
 
-export const removeCartItem = (cartItem: ProductData) => ({
+export const removeCartItem = (documentId: string) => ({
   type: ActionType.REMOVE_CART_ITEM,
-  payload: cartItem,
+  payload: documentId,
 });

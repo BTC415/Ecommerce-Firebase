@@ -37,9 +37,7 @@ export const handleAddToCart = (
 
 export const handleRemoveCartItem = (
   prevCartItems: ProductData[],
-  cartItemToRemove: ProductData
+  documentId: string
 ) => {
-  return prevCartItems.filter(
-    cartItem => cartItem.documentId !== cartItemToRemove.documentId
-  );
+  return prevCartItems.filter(cartItem => cartItem.documentId !== documentId);
 };

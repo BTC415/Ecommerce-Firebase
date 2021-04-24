@@ -1,10 +1,11 @@
 //importing hooks & types
 import { useTypedSelector, useCartActions } from '../../hooks';
-import { ProductData, selectCartItems } from '../../state';
+import { selectCartItems } from '../../state';
 import { createStructuredSelector } from 'reselect';
 //importing font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+//importing components
 import Button from '../Forms/Button';
 //checkout
 const Checkout = () => {
@@ -16,8 +17,8 @@ const Checkout = () => {
   );
   const { removeCartItem } = useCartActions();
   //on click handler
-  const handleRemoveCartItem = (product: ProductData) => {
-    removeCartItem(product);
+  const handleRemoveCartItem = (documentId: string) => {
+    removeCartItem(documentId);
   };
   return (
     <div className="checkout">
@@ -26,7 +27,13 @@ const Checkout = () => {
         <div className="cart">
           {cartItems.map(product => {
             //destructuring
-            const { thumbnail, description, quantity, price } = product;
+            const {
+              thumbnail,
+              description,
+              quantity,
+              price,
+              documentId,
+            } = product;
             return (
               <div className="product__checkout">
                 <div className="thumbnail">
@@ -43,7 +50,7 @@ const Checkout = () => {
                 <div className="price">${price}</div>
                 <div
                   className="remove"
-                  onClick={() => handleRemoveCartItem(product)}
+                  onClick={() => handleRemoveCartItem(documentId!)}
                 >
                   <FontAwesomeIcon icon={faTimes} />
                 </div>
