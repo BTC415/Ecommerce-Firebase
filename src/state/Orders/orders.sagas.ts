@@ -4,7 +4,12 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { ActionType } from './orders.action-types';
 import { SaveOrderHistoryStartAction } from './orders.actions';
 //sagas
-export function* saveOrder({ payload }: SaveOrderHistoryStartAction) {}
+export function* saveOrder({ payload }: SaveOrderHistoryStartAction) {
+  try {
+  } catch (err) {
+    console.log(err.message);
+  }
+}
 
 //start sagas
 export function* onSaveOrderHistoryStart() {
