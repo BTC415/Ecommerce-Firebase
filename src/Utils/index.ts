@@ -35,5 +35,5 @@ export const notEnoughInfo = (
 };
 
 export const stripeAPI = axios.create({
-  baseURL: 'http://localhost:8282',
+  baseURL: process.env.REACT_APP_API_URL,
 });

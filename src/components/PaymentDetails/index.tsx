@@ -65,7 +65,7 @@ const PaymentDetails = () => {
           },
         },
       })
-      .then(({ data }) => {
+      .then(({ data: client_secret }) => {
         //creating payment
         stripe
           ?.createPaymentMethod({
@@ -78,7 +78,7 @@ const PaymentDetails = () => {
           })
           .then(({ paymentMethod }) => {
             stripe
-              .confirmCardPayment(data.client_secret, {
+              .confirmCardPayment(client_secret, {
                 payment_method: paymentMethod?.id,
               })
               .then(({ paymentIntent }) => {
