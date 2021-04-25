@@ -1,6 +1,7 @@
 //importing components
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
+import { CountryDropdown } from 'react-country-region-selector';
 //payment details
 const PaymentDetails = () => {
   //on submit handler
@@ -19,6 +20,13 @@ const PaymentDetails = () => {
           <FormInput placeholder="City" type="text" />
           <FormInput placeholder="State" type="text" />
           <FormInput placeholder="Postal Code" type="text" />
+          <div className="form__input__container checkout__input">
+            <CountryDropdown
+              valueType="short"
+              value=""
+              onChange={e => console.log(e)}
+            />
+          </div>
         </div>
         <div className="group">
           <h2>Billing Address</h2>
@@ -28,6 +36,13 @@ const PaymentDetails = () => {
           <FormInput placeholder="City" type="text" />
           <FormInput placeholder="State" type="text" />
           <FormInput placeholder="Postal Code" type="text" />
+          <div className="form__input__container checkout__input">
+            <CountryDropdown
+              valueType="short"
+              value=""
+              onChange={e => console.log(e)}
+            />
+          </div>
         </div>
         <div className="group">
           <h2>Card Details</h2>
