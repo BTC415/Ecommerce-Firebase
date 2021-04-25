@@ -1,8 +1,8 @@
 //importing types
 import { ActionType } from './products.action-types';
-import { Products, ProductData } from '../interfaces';
+import { Products, ProductData } from '../../interfaces';
 import { ProductsAction } from './products.actions';
-import { doc } from '../types';
+import { doc } from '../../../types';
 //start action creators
 export const addProductStart = (productData: ProductData): ProductsAction => ({
   type: ActionType.ADD_NEW_PRODUCT_START,

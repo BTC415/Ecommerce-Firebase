@@ -7,7 +7,7 @@ import {
   useCartActions,
 } from '../../hooks/index';
 //importing types
-import { ProductData } from '../../state';
+import { ProductData } from '../../interfaces';
 //importing components
 import Button from '../Forms/Button';
 //product card

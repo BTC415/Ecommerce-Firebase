@@ -1,6 +1,6 @@
 //importing types
 import { ActionType } from './user.action-types';
-import { CurrentUser, EmailPassword, UserCredentials } from '../interfaces';
+import { CurrentUser, EmailPassword, UserCredentials } from '../../interfaces';
 //importing firebase utils
 import { CurrentUserAction } from './user.actions';
 //start action creators

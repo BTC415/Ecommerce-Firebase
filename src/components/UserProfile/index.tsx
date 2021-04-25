@@ -1,5 +1,5 @@
 //importing types & img
-import { CurrentUser } from '../../state';
+import { CurrentUser } from '../../interfaces';
 import userIMG from './../../assets/images/user.png';
 //props interface
 interface UserProfileProps {

@@ -8,7 +8,7 @@ import {
   FetchProductsStartAction,
   FetchProductStartAction,
 } from './products.actions';
-import { ProductData, Products } from '../interfaces';
+import { ProductData, Products } from '../../interfaces';
 //importing helpers & fierbase utils
 import { auth } from '../../firebase/utils';
 import {

@@ -2,7 +2,8 @@
 import { useTypedSelector, useCartActions } from '../../hooks';
 import { useHistory } from 'react-router-dom';
 //importing types & selectors
-import { ProductData, selectCartItems, selectCartTotal } from '../../state';
+import { selectCartItems, selectCartTotal } from '../../state';
+import { ProductData } from '../../interfaces';
 import { createStructuredSelector } from 'reselect';
 //importing utils
 import { showTwoNumbersAfterDecimal } from '../../Utils';

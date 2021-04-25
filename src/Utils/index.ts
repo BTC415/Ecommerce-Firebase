@@ -1,4 +1,4 @@
-import { CurrentUser } from '../state';
+import { CurrentUser } from '../interfaces';
 //utility functions
 export const checkUserIsAdmin = (currentUser: CurrentUser | null) => {
   //checking if user is an admin logic

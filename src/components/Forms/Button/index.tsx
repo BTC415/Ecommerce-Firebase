@@ -1,5 +1,5 @@
 //importing types
-import { JSXButton } from '../../../state/types';
+import { JSXButton } from '../../../../types';
 //button interface
 interface ButtonProps extends JSXButton {}
 //button component

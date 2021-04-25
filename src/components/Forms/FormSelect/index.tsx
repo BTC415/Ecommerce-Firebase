@@ -1,6 +1,6 @@
 //importing types
-import { FormOptions } from '../../../state';
-import { JSXSelectElement } from '../../../state/types';
+import { FormOptions } from '../../../interfaces';
+import { JSXSelectElement } from '../../../../types';
 //props interface
 interface FormSelectProps extends JSXSelectElement {
   label?: string;

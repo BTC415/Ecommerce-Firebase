@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { doc, queryDoc } from './types';
+import { doc, queryDoc } from '../../types';
 //interfaces
 export interface CurrentUser {
   email: string;

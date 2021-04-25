@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import { firebaseConfig } from './config';
 //importing interfaces
-import { HandleUser } from '../state/interfaces';
+import { HandleUser } from '../interfaces';
 //exporing utilities
 export const app = firebase.initializeApp(firebaseConfig);
 export const auth = app.auth();

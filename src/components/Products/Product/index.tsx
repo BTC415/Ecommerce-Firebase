@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 //importing utils
 import { Link } from 'react-router-dom';
 //importing types
-import { ProductData } from '../../../state';
+import { ProductData } from '../../../interfaces';
 //importing components
 import Button from '../../Forms/Button';
 //props interface

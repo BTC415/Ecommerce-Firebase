@@ -1,5 +1,5 @@
 //importing types
-import { ProductData, Products } from '../interfaces';
+import { ProductData, Products } from '../../interfaces';
 import { ActionType } from './products.action-types';
 import { ProductsAction } from './products.actions';
 //state interface

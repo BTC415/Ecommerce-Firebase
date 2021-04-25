@@ -1,5 +1,5 @@
 //importing types
-import { ProductData } from '../interfaces';
+import { ProductData } from '../../interfaces';
 import { ActionType } from './cart.action-types';
 //action type
 export type CartAction =

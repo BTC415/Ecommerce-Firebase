@@ -1,7 +1,7 @@
 //importing firebase utils
 import { db } from '../../firebase/utils';
 //importing types
-import { FetchProductsParams, ProductData } from '../interfaces';
+import { FetchProductsParams, ProductData } from '../../interfaces';
 //adding products helper functions
 export const handleAddProduct = (product: ProductData) => {
   return new Promise((resolve, reject) => {

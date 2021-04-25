@@ -7,7 +7,7 @@ import {
   EmailSignUpStartAction,
   PasswordRecoveryStartAction,
 } from './user.actions';
-import { userAuth } from '../types';
+import { userAuth } from '../../../types';
 import {
   signOutSuccess,
   userError,

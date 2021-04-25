@@ -1,14 +1,17 @@
+//importing hooks
+import { useState } from 'react';
 //importing components
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
 //payment details
 const PaymentDetails = () => {
+  //local state
+  // const
   //on submit handler
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
-
   return (
     <div className="payment__details">
       <form onSubmit={handleFormSubmit}>

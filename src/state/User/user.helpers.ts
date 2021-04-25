@@ -2,7 +2,7 @@
 import { call, put } from 'redux-saga/effects';
 //importing types & actions
 import { signInSuccess } from './user.action-creators';
-import { userAuth, userRefType, userData } from '../types';
+import { userAuth, userRefType, userData } from '../../../types';
 //importing firebase utils
 import { auth, handleUserProfile } from '../../firebase/utils';
 //save user to db helper

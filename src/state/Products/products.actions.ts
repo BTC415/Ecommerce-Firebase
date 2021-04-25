@@ -1,5 +1,5 @@
 //importing types
-import { FetchProductsParams, ProductData, Products } from '../interfaces';
+import { FetchProductsParams, ProductData, Products } from '../../interfaces';
 import { ActionType } from './products.action-types';
 //action type
 export type ProductsAction =

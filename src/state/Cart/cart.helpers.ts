@@ -1,5 +1,5 @@
 //importing types
-import { ProductData } from '../interfaces';
+import { ProductData } from '../../interfaces';
 //helpers
 export const existingCartItem = (
   prevCartItems: ProductData[],
