@@ -82,7 +82,9 @@ const App: React.FC = () => {
           path="/payment"
           render={() => (
             <MainLayout>
-              <Payment />
+              <WithAuth>
+                <Payment />
+              </WithAuth>
             </MainLayout>
           )}
         />

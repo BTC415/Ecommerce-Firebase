@@ -1,11 +1,10 @@
 //importing stripe utils
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { publishableKey } from '../../stripe/config';
 //importing components
 import PaymentDetails from '../../components/PaymentDetails';
 //stripe init
-const stripePromise = loadStripe(publishableKey);
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_API_KEY!);
 //payment
 const Payment = () => {
   return (

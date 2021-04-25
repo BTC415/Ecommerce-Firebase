@@ -85,7 +85,7 @@ const Checkout = () => {
           </div>
           <div className="call__to__actions">
             <Button onClick={() => history.goBack()}>Continue Shopping</Button>
-            <Button>Checkout</Button>
+            <Button onClick={() => history.push('/payment')}>Checkout</Button>
           </div>
         </div>
       ) : (
