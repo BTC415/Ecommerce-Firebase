@@ -28,6 +28,37 @@ const PaymentDetails = () => {
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+  //handling shipping info
+  const handleShipping = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setShippingAddress({
+      ...shippingAddress,
+      [name]: value,
+    });
+  };
+  //handling billing info
+  const handleBilling = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setBillingAddress({
+      ...billingAddress,
+      [name]: value,
+    });
+  };
+  //handling country info
+  const handleCountryInfo = (
+    value: string,
+    addressType: 'shipping' | 'billing'
+  ) => {
+    addressType === 'shipping'
+      ? setShippingAddress({
+          ...shippingAddress,
+          country: value,
+        })
+      : setBillingAddress({
+          ...billingAddress,
+          country: value,
+        });
+  };
   return (
     <div className="payment__details">
       <form onSubmit={handleFormSubmit}>
@@ -42,56 +73,39 @@ const PaymentDetails = () => {
           <FormInput
             placeholder="Line 1"
             type="text"
+            name="line1"
             value={shippingAddress.line1}
-            onChange={e =>
-              setShippingAddress({ ...shippingAddress, line1: e.target.value })
-            }
+            onChange={e => handleShipping(e)}
           />
           <FormInput
             placeholder="Line 2"
             type="text"
             value={shippingAddress.line2}
-            onChange={e =>
-              setShippingAddress({ ...shippingAddress, line2: e.target.value })
-            }
+            onChange={e => handleShipping(e)}
           />
           <FormInput
             placeholder="City"
             type="text"
             value={shippingAddress.city}
-            onChange={e =>
-              setShippingAddress({ ...shippingAddress, city: e.target.value })
-            }
+            onChange={e => handleShipping(e)}
           />
           <FormInput
             placeholder="State"
             type="text"
             value={shippingAddress.state}
-            onChange={e =>
-              setShippingAddress({ ...shippingAddress, state: e.target.value })
-            }
+            onChange={e => handleShipping(e)}
           />
           <FormInput
             placeholder="Postal Code"
             type="text"
             value={shippingAddress.postalCode}
-            onChange={e =>
-              setShippingAddress({
-                ...shippingAddress,
-                postalCode: e.target.value,
-              })
-            }
+            onChange={e => handleShipping(e)}
           />
           <div className="form__input__container checkout__input">
             <CountryDropdown
               valueType="short"
               value={shippingAddress.country}
-              onChange={value =>
-                setShippingAddress({
-                  ...shippingAddress,
-                  country: value,
-                })
-              }
+              onChange={value => handleCountryInfo(value, 'shipping')}
             />
           </div>
         </div>
@@ -107,67 +121,37 @@ const PaymentDetails = () => {
             placeholder="Line 1"
             type="text"
             value={billingAddress.line1}
-            onChange={e =>
-              setBillingAddress({
-                ...billingAddress,
-                line1: e.target.value,
-              })
-            }
+            onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="Line 2"
             type="text"
             value={billingAddress.line2}
-            onChange={e =>
-              setBillingAddress({
-                ...billingAddress,
-                line2: e.target.value,
-              })
-            }
+            onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="City"
             type="text"
             value={billingAddress.city}
-            onChange={e =>
-              setBillingAddress({
-                ...billingAddress,
-                city: e.target.value,
-              })
-            }
+            onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="State"
             type="text"
             value={billingAddress.state}
-            onChange={e =>
-              setBillingAddress({
-                ...billingAddress,
-                state: e.target.value,
-              })
-            }
+            onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="Postal Code"
             type="text"
             value={billingAddress.postalCode}
-            onChange={e =>
-              setBillingAddress({
-                ...billingAddress,
-                postalCode: e.target.value,
-              })
-            }
+            onChange={e => handleBilling(e)}
           />
           <div className="form__input__container checkout__input">
             <CountryDropdown
               valueType="short"
               value={billingAddress.country}
-              onChange={value =>
-                setBillingAddress({
-                  ...billingAddress,
-                  country: value,
-                })
-              }
+              onChange={value => handleCountryInfo(value, 'billing')}
             />
           </div>
         </div>
