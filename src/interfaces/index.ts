@@ -52,6 +52,6 @@ export interface Address {
   line2: string;
   city: string;
   state: string;
-  postalCode: string;
+  postal_code: string;
   country: string;
 }

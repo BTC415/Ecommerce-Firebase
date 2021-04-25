@@ -23,17 +23,17 @@ export const notEnoughInfo = (
     !shippingAddress.city ||
     !shippingAddress.country ||
     !shippingAddress.state ||
-    !shippingAddress.postalCode ||
+    !shippingAddress.postal_code ||
     !billingAddress.line1 ||
     !billingAddress.city ||
     !billingAddress.country ||
     !billingAddress.state ||
-    !billingAddress.postalCode ||
+    !billingAddress.postal_code ||
     !recipientName ||
     !nameOnCard
   );
 };
 
 export const stripeAPI = axios.create({
-  baseURL: process.env.LOCAL_API_URL,
+  baseURL: 'http://localhost:8282',
 });

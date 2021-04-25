@@ -19,7 +19,7 @@ const initialAddress: Address = {
   line2: '',
   city: '',
   state: '',
-  postalCode: '',
+  postal_code: '',
   country: '',
 };
 //payment details
@@ -56,7 +56,7 @@ const PaymentDetails = () => {
     if (needMoreInfo) return;
     //posting to api
     stripeAPI
-      .post('http://localhost:8282/payment/create', {
+      .post('/payments/create', {
         amount: total * 100,
         shipping: {
           name: recipientName,
@@ -171,8 +171,8 @@ const PaymentDetails = () => {
             required
             placeholder="Postal Code"
             type="text"
-            name="postalCode"
-            value={shippingAddress.postalCode}
+            name="postal_code"
+            value={shippingAddress.postal_code}
             onChange={e => handleShipping(e)}
           />
           <div className="form__input__container checkout__input" aria-required>
@@ -229,8 +229,8 @@ const PaymentDetails = () => {
             required
             placeholder="Postal Code"
             type="text"
-            name="postalCode"
-            value={billingAddress.postalCode}
+            name="postal_code"
+            value={billingAddress.postal_code}
             onChange={e => handleBilling(e)}
           />
           <div className="form__input__container checkout__input" aria-required>
