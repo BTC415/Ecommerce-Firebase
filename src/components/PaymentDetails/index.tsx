@@ -18,10 +18,10 @@ const initialAddress: Address = {
 //payment details
 const PaymentDetails = () => {
   //local state
-  const [billingAddress, setBillingAddress] = useState<Address>(initialAddress);
   const [shippingAddress, setShippingAddress] = useState<Address>(
     initialAddress
   );
+  const [billingAddress, setBillingAddress] = useState<Address>(initialAddress);
   const [recipientName, setRecipientName] = useState('');
   const [nameOnCard, setNameOnCard] = useState('');
   //on submit handler
@@ -33,17 +33,65 @@ const PaymentDetails = () => {
       <form onSubmit={handleFormSubmit}>
         <div className="group">
           <h2>Shipping Address</h2>
-          <FormInput placeholder="Recipient Name" type="text" />
-          <FormInput placeholder="Line 1" type="text" />
-          <FormInput placeholder="Line 2" type="text" />
-          <FormInput placeholder="City" type="text" />
-          <FormInput placeholder="State" type="text" />
-          <FormInput placeholder="Postal Code" type="text" />
+          <FormInput
+            placeholder="Recipient Name"
+            type="text"
+            value={recipientName}
+            onChange={e => setRecipientName(e.target.value)}
+          />
+          <FormInput
+            placeholder="Line 1"
+            type="text"
+            value={shippingAddress.line1}
+            onChange={e =>
+              setShippingAddress({ ...shippingAddress, line1: e.target.value })
+            }
+          />
+          <FormInput
+            placeholder="Line 2"
+            type="text"
+            value={shippingAddress.line2}
+            onChange={e =>
+              setShippingAddress({ ...shippingAddress, line2: e.target.value })
+            }
+          />
+          <FormInput
+            placeholder="City"
+            type="text"
+            value={shippingAddress.city}
+            onChange={e =>
+              setShippingAddress({ ...shippingAddress, city: e.target.value })
+            }
+          />
+          <FormInput
+            placeholder="State"
+            type="text"
+            value={shippingAddress.state}
+            onChange={e =>
+              setShippingAddress({ ...shippingAddress, state: e.target.value })
+            }
+          />
+          <FormInput
+            placeholder="Postal Code"
+            type="text"
+            value={shippingAddress.postalCode}
+            onChange={e =>
+              setShippingAddress({
+                ...shippingAddress,
+                postalCode: e.target.value,
+              })
+            }
+          />
           <div className="form__input__container checkout__input">
             <CountryDropdown
               valueType="short"
-              value=""
-              onChange={e => console.log(e)}
+              value={shippingAddress.country}
+              onChange={value =>
+                setShippingAddress({
+                  ...shippingAddress,
+                  country: value,
+                })
+              }
             />
           </div>
         </div>
