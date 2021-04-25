@@ -2,10 +2,10 @@
 import { useState } from 'react';
 //importing components
 import FormInput from '../Forms/FormInput';
-import Button from '../Forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
 //importing types
 import { Address } from '../../interfaces';
+import { AddressType } from '../../../types';
 //initial address
 const initialAddress: Address = {
   line1: '',
@@ -45,10 +45,7 @@ const PaymentDetails = () => {
     });
   };
   //handling country info
-  const handleCountryInfo = (
-    value: string,
-    addressType: 'shipping' | 'billing'
-  ) => {
+  const handleCountryInfo = (value: string, addressType: AddressType) => {
     addressType === 'shipping'
       ? setShippingAddress({
           ...shippingAddress,

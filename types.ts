@@ -18,3 +18,4 @@ export type JSXButton = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
+export type AddressType = 'shipping' | 'billing';
