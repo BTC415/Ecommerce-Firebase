@@ -8,7 +8,7 @@ import { createStructuredSelector } from 'reselect';
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
-import { CardElement, useElements } from '@stripe/react-stripe-js';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 //importing types
 import { Address } from '../../interfaces';
 import { AddressType } from '../../../types';
@@ -30,8 +30,10 @@ const PaymentDetails = () => {
       total: selectCartTotal,
     })
   );
-  //local state & elements
+  //hooks
   const elements = useElements();
+  const stripe = useStripe();
+  //local state
   const [shippingAddress, setShippingAddress] = useState<Address>(
     initialAddress
   );
@@ -41,8 +43,9 @@ const PaymentDetails = () => {
   //on submit handler
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!elements) return;
     //getting card element
-    const cardElement = elements?.getElement('card');
+    const cardElement = elements.getElement('card')!;
     //type guard
     const needMoreInfo = notEnoughInfo(
       shippingAddress,
@@ -62,8 +65,26 @@ const PaymentDetails = () => {
           },
         },
       })
-      .then(({ data: clientSecret }) => {
-        console.log(clientSecret);
+      .then(({ data }) => {
+        //creating payment
+        stripe
+          ?.createPaymentMethod({
+            type: 'card',
+            card: cardElement,
+            billing_details: {
+              name: nameOnCard,
+              address: { ...billingAddress },
+            },
+          })
+          .then(({ paymentMethod }) => {
+            stripe
+              .confirmCardPayment(data.clientSecret, {
+                payment_method: paymentMethod?.id,
+              })
+              .then(({ paymentIntent }) => {
+                console.log(paymentIntent);
+              });
+          });
       });
   };
   //handling shipping info
