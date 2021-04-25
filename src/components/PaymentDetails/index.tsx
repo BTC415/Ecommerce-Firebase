@@ -2,10 +2,13 @@
 import { useState } from 'react';
 //importing components
 import FormInput from '../Forms/FormInput';
+import Button from '../Forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
+import { CardElement, useElements } from '@stripe/react-stripe-js';
 //importing types
 import { Address } from '../../interfaces';
 import { AddressType } from '../../../types';
+import { notEnoughInfo } from '../../Utils';
 //initial address
 const initialAddress: Address = {
   line1: '',
@@ -17,7 +20,8 @@ const initialAddress: Address = {
 };
 //payment details
 const PaymentDetails = () => {
-  //local state
+  //local state & elements
+  const elements = useElements();
   const [shippingAddress, setShippingAddress] = useState<Address>(
     initialAddress
   );
@@ -27,6 +31,16 @@ const PaymentDetails = () => {
   //on submit handler
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //getting card element
+    const cardElement = elements?.getElement('card');
+    //type guard
+    const needMoreInfo = notEnoughInfo(
+      shippingAddress,
+      billingAddress,
+      recipientName,
+      nameOnCard
+    );
+    if (needMoreInfo) return;
   };
   //handling shipping info
   const handleShipping = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,12 +70,21 @@ const PaymentDetails = () => {
           country: value,
         });
   };
+  //card config
+  const cardConfig = {
+    iconStyle: 'solid' as 'solid',
+    style: {
+      base: { fontSize: '16px' },
+    },
+    hidePostalCode: true,
+  };
   return (
     <div className="payment__details">
       <form onSubmit={handleFormSubmit}>
         <div className="group">
           <h2>Shipping Address</h2>
           <FormInput
+            required
             placeholder="Recipient Name"
             type="text"
             value={recipientName}
@@ -69,6 +92,7 @@ const PaymentDetails = () => {
             onChange={e => setRecipientName(e.target.value)}
           />
           <FormInput
+            required
             placeholder="Line 1"
             type="text"
             name="line1"
@@ -83,6 +107,7 @@ const PaymentDetails = () => {
             onChange={e => handleShipping(e)}
           />
           <FormInput
+            required
             placeholder="City"
             type="text"
             name="city"
@@ -90,6 +115,7 @@ const PaymentDetails = () => {
             onChange={e => handleShipping(e)}
           />
           <FormInput
+            required
             placeholder="State"
             type="text"
             name="state"
@@ -97,13 +123,14 @@ const PaymentDetails = () => {
             onChange={e => handleShipping(e)}
           />
           <FormInput
+            required
             placeholder="Postal Code"
             type="text"
             name="postalCode"
             value={shippingAddress.postalCode}
             onChange={e => handleShipping(e)}
           />
-          <div className="form__input__container checkout__input">
+          <div className="form__input__container checkout__input" aria-required>
             <CountryDropdown
               name="country"
               valueType="short"
@@ -115,6 +142,7 @@ const PaymentDetails = () => {
         <div className="group">
           <h2>Billing Address</h2>
           <FormInput
+            required
             placeholder="Name on Card"
             type="text"
             name="nameOnCard"
@@ -122,6 +150,7 @@ const PaymentDetails = () => {
             onChange={e => setNameOnCard(e.target.value)}
           />
           <FormInput
+            required
             placeholder="Line 1"
             type="text"
             name="line1"
@@ -136,6 +165,7 @@ const PaymentDetails = () => {
             onChange={e => handleBilling(e)}
           />
           <FormInput
+            required
             placeholder="City"
             type="text"
             name="city"
@@ -143,6 +173,7 @@ const PaymentDetails = () => {
             onChange={e => handleBilling(e)}
           />
           <FormInput
+            required
             placeholder="State"
             type="text"
             name="state"
@@ -150,13 +181,14 @@ const PaymentDetails = () => {
             onChange={e => handleBilling(e)}
           />
           <FormInput
+            required
             placeholder="Postal Code"
             type="text"
             name="postalCode"
             value={billingAddress.postalCode}
             onChange={e => handleBilling(e)}
           />
-          <div className="form__input__container checkout__input">
+          <div className="form__input__container checkout__input" aria-required>
             <CountryDropdown
               name="country"
               valueType="short"
@@ -167,7 +199,9 @@ const PaymentDetails = () => {
         </div>
         <div className="group">
           <h2>Card Details</h2>
+          <CardElement options={cardConfig} className="card__element" />
         </div>
+        <Button type="submit">Pay Now</Button>
       </form>
     </div>
   );
