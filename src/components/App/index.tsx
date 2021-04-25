@@ -18,6 +18,7 @@ import Admin from '../../pages/Admin';
 import Search from '../../pages/Search';
 import ProductDetails from '../../pages/ProductDetails';
 import Cart from '../../pages/Cart';
+import Payment from '../../pages/Payment';
 //importing router utils
 import { Route, Switch } from 'react-router';
 //importing layouts
@@ -74,6 +75,14 @@ const App: React.FC = () => {
           render={() => (
             <MainLayout>
               <Cart />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/payment"
+          render={() => (
+            <MainLayout>
+              <Payment />
             </MainLayout>
           )}
         />
