@@ -1,8 +1,9 @@
 //importing hooks
-import { useState } from 'react';
-import { useTypedSelector } from '../../hooks';
+import { useState, useEffect } from 'react';
+import { useTypedSelector, useCartActions } from '../../hooks';
+import { useHistory } from 'react-router-dom';
 //importing selectors
-import { selectCartTotal } from '../../state';
+import { selectCartItemsCount, selectCartTotal } from '../../state';
 import { createStructuredSelector } from 'reselect';
 //importing components
 import FormInput from '../Forms/FormInput';
@@ -24,13 +25,15 @@ const initialAddress: Address = {
 };
 //payment details
 const PaymentDetails = () => {
-  //redux state
-  const { total } = useTypedSelector(
+  //redux state, actions, history & stripe hooks
+  const { total, itemCount } = useTypedSelector(
     createStructuredSelector({
       total: selectCartTotal,
+      itemCount: selectCartItemsCount,
     })
   );
-  //hooks
+  const history = useHistory();
+  const { clearCart } = useCartActions();
   const elements = useElements();
   const stripe = useStripe();
   //local state
@@ -40,6 +43,12 @@ const PaymentDetails = () => {
   const [billingAddress, setBillingAddress] = useState<Address>(initialAddress);
   const [recipientName, setRecipientName] = useState('');
   const [nameOnCard, setNameOnCard] = useState('');
+  //redirecting only if cleared items
+  useEffect(() => {
+    if (itemCount < 1) {
+      history.push('/');
+    }
+  }, [history, itemCount]);
   //on submit handler
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -82,7 +91,7 @@ const PaymentDetails = () => {
                 payment_method: paymentMethod?.id,
               })
               .then(({ paymentIntent }) => {
-                console.log(paymentIntent);
+                clearCart();
               });
           });
       });
