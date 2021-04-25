@@ -68,6 +68,7 @@ const PaymentDetails = () => {
             placeholder="Recipient Name"
             type="text"
             value={recipientName}
+            name="recipientName"
             onChange={e => setRecipientName(e.target.value)}
           />
           <FormInput
@@ -80,29 +81,34 @@ const PaymentDetails = () => {
           <FormInput
             placeholder="Line 2"
             type="text"
+            name="line2"
             value={shippingAddress.line2}
             onChange={e => handleShipping(e)}
           />
           <FormInput
             placeholder="City"
             type="text"
+            name="city"
             value={shippingAddress.city}
             onChange={e => handleShipping(e)}
           />
           <FormInput
             placeholder="State"
             type="text"
+            name="state"
             value={shippingAddress.state}
             onChange={e => handleShipping(e)}
           />
           <FormInput
             placeholder="Postal Code"
             type="text"
+            name="postalCode"
             value={shippingAddress.postalCode}
             onChange={e => handleShipping(e)}
           />
           <div className="form__input__container checkout__input">
             <CountryDropdown
+              name="country"
               valueType="short"
               value={shippingAddress.country}
               onChange={value => handleCountryInfo(value, 'shipping')}
@@ -114,41 +120,48 @@ const PaymentDetails = () => {
           <FormInput
             placeholder="Name on Card"
             type="text"
+            name="nameOnCard"
             value={nameOnCard}
             onChange={e => setNameOnCard(e.target.value)}
           />
           <FormInput
             placeholder="Line 1"
             type="text"
+            name="line1"
             value={billingAddress.line1}
             onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="Line 2"
             type="text"
+            name="line2"
             value={billingAddress.line2}
             onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="City"
             type="text"
+            name="city"
             value={billingAddress.city}
             onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="State"
             type="text"
+            name="state"
             value={billingAddress.state}
             onChange={e => handleBilling(e)}
           />
           <FormInput
             placeholder="Postal Code"
             type="text"
+            name="postalCode"
             value={billingAddress.postalCode}
             onChange={e => handleBilling(e)}
           />
           <div className="form__input__container checkout__input">
             <CountryDropdown
+              name="country"
               valueType="short"
               value={billingAddress.country}
               onChange={value => handleCountryInfo(value, 'billing')}
