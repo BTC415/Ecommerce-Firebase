@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Address, CurrentUser } from '../interfaces';
 //utility functions
 export const checkUserIsAdmin = (currentUser: CurrentUser | null) => {
@@ -32,3 +33,7 @@ export const notEnoughInfo = (
     !nameOnCard
   );
 };
+
+export const stripeAPI = axios.create({
+  baseURL: process.env.LOCAL_API_URL,
+});
