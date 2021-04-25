@@ -1,5 +1,9 @@
 //importing hooks
 import { useState } from 'react';
+import { useTypedSelector } from '../../hooks';
+//importing selectors
+import { selectCartTotal } from '../../state';
+import { createStructuredSelector } from 'reselect';
 //importing components
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
@@ -8,7 +12,7 @@ import { CardElement, useElements } from '@stripe/react-stripe-js';
 //importing types
 import { Address } from '../../interfaces';
 import { AddressType } from '../../../types';
-import { notEnoughInfo } from '../../Utils';
+import { notEnoughInfo, stripeAPI } from '../../Utils';
 //initial address
 const initialAddress: Address = {
   line1: '',
@@ -20,6 +24,12 @@ const initialAddress: Address = {
 };
 //payment details
 const PaymentDetails = () => {
+  //redux state
+  const { total } = useTypedSelector(
+    createStructuredSelector({
+      total: selectCartTotal,
+    })
+  );
   //local state & elements
   const elements = useElements();
   const [shippingAddress, setShippingAddress] = useState<Address>(
@@ -41,6 +51,20 @@ const PaymentDetails = () => {
       nameOnCard
     );
     if (needMoreInfo) return;
+    //posting to api
+    stripeAPI
+      .post('/payments/create', {
+        amount: total * 100,
+        shipping: {
+          name: recipientName,
+          address: {
+            ...shippingAddress,
+          },
+        },
+      })
+      .then(({ data: clientSecret }) => {
+        console.log(clientSecret);
+      });
   };
   //handling shipping info
   const handleShipping = (event: React.ChangeEvent<HTMLInputElement>) => {
