@@ -56,7 +56,7 @@ const PaymentDetails = () => {
     if (needMoreInfo) return;
     //posting to api
     stripeAPI
-      .post('/payments/create', {
+      .post('http://localhost:8282/payment/create', {
         amount: total * 100,
         shipping: {
           name: recipientName,
@@ -78,7 +78,7 @@ const PaymentDetails = () => {
           })
           .then(({ paymentMethod }) => {
             stripe
-              .confirmCardPayment(data.clientSecret, {
+              .confirmCardPayment(data.client_secret, {
                 payment_method: paymentMethod?.id,
               })
               .then(({ paymentIntent }) => {
