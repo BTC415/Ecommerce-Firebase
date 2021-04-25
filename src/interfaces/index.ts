@@ -55,3 +55,8 @@ export interface Address {
   postal_code: string;
   country: string;
 }
+
+export interface Order {
+  orderTotal: number;
+  orderItems: ProductData[];
+}
