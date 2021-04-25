@@ -5,7 +5,8 @@ import { ActionType } from './cart.action-types';
 export type CartAction =
   | AddCartItemAction
   | DeleteCartItemAction
-  | ReduceCartItemAction;
+  | ReduceCartItemAction
+  | ClearCart;
 //action interfaces
 export interface AddCartItemAction {
   type: ActionType.ADD_CART_ITEM;
@@ -20,4 +21,8 @@ export interface DeleteCartItemAction {
 export interface ReduceCartItemAction {
   type: ActionType.REDUCE_CART_ITEM;
   payload: ProductData;
+}
+
+export interface ClearCart {
+  type: ActionType.CLEAR_CART;
 }
