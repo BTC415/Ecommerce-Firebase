@@ -97,17 +97,77 @@ const PaymentDetails = () => {
         </div>
         <div className="group">
           <h2>Billing Address</h2>
-          <FormInput placeholder="Name on Card" type="text" />
-          <FormInput placeholder="Line 1" type="text" />
-          <FormInput placeholder="Line 2" type="text" />
-          <FormInput placeholder="City" type="text" />
-          <FormInput placeholder="State" type="text" />
-          <FormInput placeholder="Postal Code" type="text" />
+          <FormInput
+            placeholder="Name on Card"
+            type="text"
+            value={nameOnCard}
+            onChange={e => setNameOnCard(e.target.value)}
+          />
+          <FormInput
+            placeholder="Line 1"
+            type="text"
+            value={billingAddress.line1}
+            onChange={e =>
+              setBillingAddress({
+                ...billingAddress,
+                line1: e.target.value,
+              })
+            }
+          />
+          <FormInput
+            placeholder="Line 2"
+            type="text"
+            value={billingAddress.line2}
+            onChange={e =>
+              setBillingAddress({
+                ...billingAddress,
+                line2: e.target.value,
+              })
+            }
+          />
+          <FormInput
+            placeholder="City"
+            type="text"
+            value={billingAddress.city}
+            onChange={e =>
+              setBillingAddress({
+                ...billingAddress,
+                city: e.target.value,
+              })
+            }
+          />
+          <FormInput
+            placeholder="State"
+            type="text"
+            value={billingAddress.state}
+            onChange={e =>
+              setBillingAddress({
+                ...billingAddress,
+                state: e.target.value,
+              })
+            }
+          />
+          <FormInput
+            placeholder="Postal Code"
+            type="text"
+            value={billingAddress.postalCode}
+            onChange={e =>
+              setBillingAddress({
+                ...billingAddress,
+                postalCode: e.target.value,
+              })
+            }
+          />
           <div className="form__input__container checkout__input">
             <CountryDropdown
               valueType="short"
-              value=""
-              onChange={e => console.log(e)}
+              value={billingAddress.country}
+              onChange={value =>
+                setBillingAddress({
+                  ...billingAddress,
+                  country: value,
+                })
+              }
             />
           </div>
         </div>
