@@ -625,6 +625,17 @@ footer {
   gap: 20px;
 }
 
+.payment__details {
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.payment__details form h2 {
+  margin: 20px 0;
+}
+
 html,
 body {
   height: 100%;
