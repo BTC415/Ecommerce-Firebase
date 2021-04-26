@@ -21,5 +21,5 @@ export interface GetOrderHistoryStartAction {
 //other action interfaces
 interface SetOrderHistoryAction {
   type: ActionType.SET_ORDER_HISTORY;
-  payload: any;
+  payload: Order[];
 }

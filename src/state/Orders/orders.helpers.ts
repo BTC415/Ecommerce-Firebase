@@ -12,3 +12,26 @@ export const handleSaveOrder = (order: Order) => {
       .catch(err => reject(err));
   });
 };
+
+export const handleGetOrderHistory = (uid: string) => {
+  return new Promise((resolve, reject) => {
+    //ordering orders
+    let ordersRef = db.collection('orders').orderBy('orderCreatedDate');
+    ordersRef = ordersRef.where('orderUserId', '==', uid);
+    //getting orders
+    ordersRef
+      .get()
+      .then(snapshot => {
+        const data = [
+          ...snapshot.docs.map(doc => {
+            return {
+              ...doc.data(),
+              documentId: doc.id,
+            };
+          }),
+        ];
+        resolve({ data });
+      })
+      .catch(err => reject(err));
+  });
+};
