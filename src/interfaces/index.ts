@@ -76,4 +76,5 @@ export interface Order {
   orderItems: ProductDataLite[];
   orderUserId?: string;
   orderCreatedDate?: Date;
+  documentId?: string;
 }

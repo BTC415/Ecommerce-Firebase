@@ -8,7 +8,7 @@ const Account = () => {
   const { getOrderHistoryStart } = useOrdersActions();
   //fetching order history
   useEffect(() => {
-    if (currentUser) getOrderHistoryStart(currentUser?.id);
+    if (currentUser) getOrderHistoryStart(currentUser.id);
   }, [getOrderHistoryStart, currentUser]);
 
   return <div>Account</div>;
