@@ -7,24 +7,29 @@ export interface CurrentUser {
   id: string;
   userRoles: string[];
 }
+
 export interface EmailPassword {
   email: string;
   password: string;
 }
+
 export interface HandleUser {
   userAuth: firebase.User | null;
   moreData?: any;
 }
+
 export interface UserCredentials {
   displayName: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
+
 export interface FormOptions {
   name: string;
   value: string;
 }
+
 export interface ProductData {
   category: string;
   name: string;
@@ -36,11 +41,21 @@ export interface ProductData {
   createdDate?: Date;
   quantity: number;
 }
+
+export interface ProductDataLite {
+  name: string;
+  thumbnail: string;
+  documentId?: string;
+  price: number;
+  quantity: number;
+}
+
 export interface Products {
   data: ProductData[];
   queryDoc?: queryDoc | null;
   isLastPage: boolean;
 }
+
 export interface FetchProductsParams {
   filterType: string;
   startAfterDoc?: doc;
@@ -58,5 +73,7 @@ export interface Address {
 
 export interface Order {
   orderTotal: number;
-  orderItems: ProductData[];
+  orderItems: ProductDataLite[];
+  orderUserId?: string;
+  orderCreatedDate?: Date;
 }
