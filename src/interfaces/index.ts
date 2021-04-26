@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { doc, queryDoc } from '../../types';
+import { ColumnName, doc, queryDoc } from '../../types';
 //interfaces
 export interface CurrentUser {
   email: string;
@@ -77,4 +77,9 @@ export interface Order {
   orderUserId?: string;
   orderCreatedDate?: Date;
   documentId?: string;
+}
+
+export interface Column {
+  id: ColumnName;
+  lable: string;
 }

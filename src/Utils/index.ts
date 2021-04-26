@@ -1,5 +1,8 @@
+//import utils
 import axios from 'axios';
-import { Address, CurrentUser } from '../interfaces';
+import { ColumnName } from '../../types';
+import { Address, CurrentUser, Column } from '../interfaces';
+import moment from 'moment';
 //utility functions
 export const checkUserIsAdmin = (currentUser: CurrentUser | null) => {
   //checking if user is an admin logic
@@ -37,3 +40,38 @@ export const notEnoughInfo = (
 export const stripeAPI = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
+
+export const columns: Column[] = [
+  {
+    id: 'orderCreatedDate',
+    lable: 'Order Date',
+  },
+  {
+    id: 'documentId',
+    lable: 'Order ID',
+  },
+  {
+    id: 'orderTotal',
+    lable: 'Amount',
+  },
+];
+
+export const styles: React.CSSProperties = {
+  fontSize: '16px',
+  cursor: 'pointer',
+  width: '10%',
+};
+
+export const formatText = (
+  columnName: ColumnName,
+  columnValue: string | Date | undefined | number
+) => {
+  switch (columnName) {
+    case 'orderTotal':
+      return `$${columnValue}`;
+    case 'orderCreatedDate':
+      return moment(columnValue).format('DD/MM/YYYY');
+    default:
+      return columnValue;
+  }
+};

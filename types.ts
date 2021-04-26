@@ -19,3 +19,9 @@ export type JSXButton = React.DetailedHTMLProps<
   HTMLButtonElement
 >;
 export type AddressType = 'shipping' | 'billing';
+export type ColumnName =
+  | 'orderTotal'
+  | 'orderTotal'
+  | 'orderUserId'
+  | 'orderCreatedDate'
+  | 'documentId';
