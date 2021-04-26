@@ -1,8 +1,8 @@
 //importing utils
 import { v4 as uuidv4 } from 'uuid';
-import { columns, styles } from '../../Utils';
+import { columns, styles, formatText } from '../../Utils';
 //importing types
-import { Column, Order } from '../../interfaces';
+import { Order } from '../../interfaces';
 //importing components
 import {
   TableContainer,
@@ -42,9 +42,10 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
                     //rendering based on prop
                     const columnName = column.id;
                     const columnValue = row[columnName];
+                    const formattedText = formatText(columnName, columnValue);
                     return (
                       <TableCell key={uuidv4()} style={styles}>
-                        {}
+                        {formattedText}
                       </TableCell>
                     );
                   })}
