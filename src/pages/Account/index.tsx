@@ -14,7 +14,7 @@ const Account = () => {
   }, [getOrderHistoryStart, currentUser]);
 
   return (
-    <div>
+    <div className="account">
       <h1>Order History</h1>
       <OrderHistory orders={orderHistory} />
     </div>

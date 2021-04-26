@@ -263,6 +263,10 @@ footer {
   width: 100%;
 }
 
+.account h1 {
+  margin: 20px 15px;
+}
+
 .admin {
   padding: 20px;
 }
@@ -677,5 +681,9 @@ body {
 .admin__layout .control__panel .sidebar {
   border-right: 2px solid rgba(0, 0, 0, 0.1);
   width: 20%;
+}
+
+.admin__layout .content {
+  width: 100%;
 }
 /*# sourceMappingURL=default.css.map */
