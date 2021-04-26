@@ -52,7 +52,7 @@ const PaymentDetails = () => {
   //redirecting only if cleared items
   useEffect(() => {
     if (itemCount < 1) {
-      history.push('/');
+      history.push('/account');
     }
   }, [history, itemCount]);
   //on submit handler

@@ -126,9 +126,9 @@ const App: React.FC = () => {
           path="/account"
           render={() => (
             <WithAuth>
-              <MainLayout>
+              <AdminLayout>
                 <Account />
-              </MainLayout>
+              </AdminLayout>
             </WithAuth>
           )}
         />
