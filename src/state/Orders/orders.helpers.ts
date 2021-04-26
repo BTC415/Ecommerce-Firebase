@@ -30,7 +30,7 @@ export const handleGetOrderHistory = (uid: string) => {
             };
           }),
         ];
-        resolve({ data });
+        resolve(data);
       })
       .catch(err => reject(err));
   });

@@ -62,15 +62,12 @@ export const styles: React.CSSProperties = {
   width: '100%',
 };
 
-export const formatText = (
-  columnName: ColumnName,
-  columnValue: string | Date | undefined | number
-) => {
+export const formatText = (columnName: ColumnName, columnValue: any) => {
   switch (columnName) {
     case 'orderTotal':
       return `$${columnValue}`;
     case 'orderCreatedDate':
-      return moment(columnValue).format('DD/MM/YYYY');
+      return moment(columnValue.nano).format('DD/MM/YYYY');
     default:
       return columnValue;
   }

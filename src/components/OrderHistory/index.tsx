@@ -19,7 +19,7 @@ interface OrderHistoryProps {
 //order history
 const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
   return (
-    <TableContainer>
+    <TableContainer className="order__table">
       <Table>
         <TableHead>
           <TableRow>
