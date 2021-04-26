@@ -6,11 +6,13 @@ import userReducer from './User/user.reducer';
 import { persistReducer } from 'redux-persist';
 //importing local storage
 import storage from 'redux-persist/lib/storage';
+import ordersReducer from './Orders/orders.reducer';
 //reducers
 const reducers = combineReducers({
   user: userReducer,
   productsData: productsReducer,
   cart: cartReducer,
+  orders: ordersReducer,
 });
 //config
 const persistConfig = {
