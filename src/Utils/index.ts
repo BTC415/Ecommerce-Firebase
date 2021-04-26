@@ -59,7 +59,7 @@ export const columns: Column[] = [
 export const styles: React.CSSProperties = {
   fontSize: '16px',
   cursor: 'pointer',
-  width: '10%',
+  width: '100%',
 };
 
 export const formatText = (

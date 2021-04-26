@@ -16,7 +16,6 @@ import {
 interface OrderHistoryProps {
   orders: Order[];
 }
-
 //order history
 const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
   return (
@@ -34,7 +33,8 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {orders.length > 0 &&
+          {Array.isArray(orders) &&
+            orders.length > 0 &&
             orders.map(row => {
               return (
                 <TableRow key={uuidv4()}>
