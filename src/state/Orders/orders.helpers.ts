@@ -35,3 +35,20 @@ export const handleGetOrderHistory = (uid: string) => {
       .catch(err => reject(err));
   });
 };
+
+export const handleGetOrder = (orderId: string) => {
+  return new Promise((resolve, reject) => {
+    db.collection('orders')
+      .doc(orderId)
+      .get()
+      .then(snapshot => {
+        if (snapshot.exists) {
+          resolve({
+            ...snapshot.data(),
+            documentId: orderId,
+          });
+        }
+      })
+      .catch(err => reject(err));
+  });
+};
