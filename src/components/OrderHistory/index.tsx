@@ -1,3 +1,5 @@
+//importing hooks
+import { useHistory } from 'react-router-dom';
 //importing utils
 import { v4 as uuidv4 } from 'uuid';
 import { columns, styles, formatText } from '../../Utils';
@@ -18,6 +20,8 @@ interface OrderHistoryProps {
 }
 //order history
 const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
+  //history
+  const history = useHistory();
   return (
     <TableContainer className="order__table">
       <Table>
@@ -36,8 +40,12 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
           {Array.isArray(orders) &&
             orders.length > 0 &&
             orders.map(row => {
+              const { documentId } = row;
               return (
-                <TableRow key={uuidv4()}>
+                <TableRow
+                  key={uuidv4()}
+                  onClick={() => history.push(`/order/${documentId}`)}
+                >
                   {columns.map(column => {
                     //rendering based on prop
                     const columnName = column.id;
