@@ -1,7 +1,7 @@
 //import utils
 import axios from 'axios';
-import { ColumnName } from '../../types';
-import { Address, CurrentUser, Column } from '../interfaces';
+import { OrderHistoryColumnName } from '../../types';
+import { Address, CurrentUser, OrderHistoryColumn } from '../interfaces';
 import moment from 'moment';
 //utility functions
 export const checkUserIsAdmin = (currentUser: CurrentUser | null) => {
@@ -41,7 +41,7 @@ export const stripeAPI = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-export const columns: Column[] = [
+export const orderHistoryColumns: OrderHistoryColumn[] = [
   {
     id: 'orderCreatedDate',
     lable: 'Order Date',
@@ -62,7 +62,10 @@ export const styles: React.CSSProperties = {
   width: '100%',
 };
 
-export const formatText = (columnName: ColumnName, columnValue: any) => {
+export const formatText = (
+  columnName: OrderHistoryColumnName,
+  columnValue: any
+) => {
   switch (columnName) {
     case 'orderTotal':
       return `$${columnValue}`;

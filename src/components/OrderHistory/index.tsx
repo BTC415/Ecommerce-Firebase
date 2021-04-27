@@ -2,7 +2,7 @@
 import { useHistory } from 'react-router-dom';
 //importing utils
 import { v4 as uuidv4 } from 'uuid';
-import { columns, styles, formatText } from '../../Utils';
+import { orderHistoryColumns, styles, formatText } from '../../Utils';
 //importing types
 import { Order } from '../../interfaces';
 //importing components
@@ -27,7 +27,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
       <Table>
         <TableHead>
           <TableRow>
-            {columns.map(column => {
+            {orderHistoryColumns.map(column => {
               return (
                 <TableCell key={uuidv4()} style={styles}>
                   {column.lable}
@@ -46,7 +46,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
                   key={uuidv4()}
                   onClick={() => history.push(`/order/${documentId}`)}
                 >
-                  {columns.map(column => {
+                  {orderHistoryColumns.map(column => {
                     //rendering based on prop
                     const columnName = column.id;
                     const columnValue = row[columnName];
