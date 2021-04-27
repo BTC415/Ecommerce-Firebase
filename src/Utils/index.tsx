@@ -1,7 +1,12 @@
 //import utils
 import axios from 'axios';
-import { OrderHistoryColumnName } from '../../types';
-import { Address, CurrentUser, OrderHistoryColumn } from '../interfaces';
+import { OrderDetailsColumnName, OrderHistoryColumnName } from '../../types';
+import {
+  Address,
+  CurrentUser,
+  OrderDetailsColumns,
+  OrderHistoryColumn,
+} from '../interfaces';
 import moment from 'moment';
 //utility functions
 export const checkUserIsAdmin = (currentUser: CurrentUser | null) => {
@@ -56,6 +61,25 @@ export const orderHistoryColumns: OrderHistoryColumn[] = [
   },
 ];
 
+export const orderDetailsColumns: OrderDetailsColumns[] = [
+  {
+    id: 'thumbnail',
+    label: '',
+  },
+  {
+    id: 'name',
+    label: 'Name',
+  },
+  {
+    id: 'price',
+    label: 'Price',
+  },
+  {
+    id: 'quantity',
+    label: 'Quantity',
+  },
+];
+
 export const styles: React.CSSProperties = {
   fontSize: '16px',
   cursor: 'pointer',
@@ -63,14 +87,16 @@ export const styles: React.CSSProperties = {
 };
 
 export const formatText = (
-  columnName: OrderHistoryColumnName,
+  columnName: OrderHistoryColumnName | OrderDetailsColumnName,
   columnValue: any
 ) => {
   switch (columnName) {
-    case 'orderTotal':
+    case 'orderTotal' || 'price':
       return `$${columnValue}`;
     case 'orderCreatedDate':
       return moment(columnValue.nano).format('DD/MM/YYYY');
+    case 'thumbnail':
+      return <img src={columnValue} width={250} alt="thumbnail" />;
     default:
       return columnValue;
   }

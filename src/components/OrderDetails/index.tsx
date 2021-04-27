@@ -8,19 +8,63 @@ import {
   TableRow,
   TableCell,
 } from '@material-ui/core';
+//importing utils
+import { orderDetailsColumns, styles, formatText } from '../../Utils';
+import { v4 as uuidv4 } from 'uuid';
 //props interface
 interface OrderDetailsProps {
   order: Order;
 }
 //order details
 const OrderDetails: React.FC<OrderDetailsProps> = ({ order }) => {
+  //destructuring
+  const orderItems = order && order.orderItems;
   return (
     <TableContainer>
       <Table>
         <TableHead>
-          <TableRow></TableRow>
+          <TableRow>
+            {orderDetailsColumns.map(column => {
+              return (
+                <TableCell
+                  style={{
+                    ...styles,
+                    cursor: 'default',
+                  }}
+                  key={uuidv4()}
+                >
+                  {column.label}
+                </TableCell>
+              );
+            })}
+          </TableRow>
         </TableHead>
-        <TableBody></TableBody>
+        <TableBody>
+          {Array.isArray(orderItems) &&
+            orderItems.length > 0 &&
+            orderItems.map(row => {
+              return (
+                <TableRow key={uuidv4()}>
+                  {orderDetailsColumns.map(column => {
+                    //rendering based on prop
+                    const columnName = column.id;
+                    const columnValue = row[columnName];
+                    return (
+                      <TableCell
+                        style={{
+                          ...styles,
+                          cursor: 'default',
+                        }}
+                        key={uuidv4()}
+                      >
+                        {formatText(columnName, columnValue)}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              );
+            })}
+        </TableBody>
       </Table>
     </TableContainer>
   );

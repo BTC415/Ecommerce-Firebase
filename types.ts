@@ -25,3 +25,8 @@ export type OrderHistoryColumnName =
   | 'orderUserId'
   | 'orderCreatedDate'
   | 'documentId';
+export type OrderDetailsColumnName =
+  | 'thumbnail'
+  | 'name'
+  | 'price'
+  | 'quantity';
