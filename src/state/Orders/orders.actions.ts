@@ -32,5 +32,5 @@ interface SetOrderHistoryAction {
 
 interface SetOrderDetailsAction {
   type: ActionType.SET_ORDER_DETAILS;
-  payload: Order;
+  payload: Order | null;
 }

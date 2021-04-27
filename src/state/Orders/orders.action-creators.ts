@@ -23,7 +23,7 @@ export const getOrderDetailsStart = (orderId: string): OrdersAction => ({
   payload: orderId,
 });
 
-export const setOrderDetails = (order: Order): OrdersAction => ({
+export const setOrderDetails = (order: Order | null): OrdersAction => ({
   type: ActionType.SET_ORDER_DETAILS,
   payload: order,
 });

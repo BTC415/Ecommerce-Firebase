@@ -1,5 +1,9 @@
 //importing types
 import { Order } from '../../interfaces';
+//importing hooks
+import { useEffect } from 'react';
+import { useOrdersActions } from '../../hooks';
+//importing components
 import {
   TableContainer,
   Table,
@@ -19,6 +23,13 @@ interface OrderDetailsProps {
 const OrderDetails: React.FC<OrderDetailsProps> = ({ order }) => {
   //destructuring
   const orderItems = order && order.orderItems;
+  const { setOrderDetails } = useOrdersActions();
+  //unmounting
+  useEffect(() => {
+    return () => {
+      setOrderDetails(null);
+    };
+  }, [setOrderDetails]);
   return (
     <TableContainer>
       <Table>
