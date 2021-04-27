@@ -5,7 +5,9 @@ import { ActionType } from './orders.action-types';
 export type OrdersAction =
   | SaveOrderHistoryStartAction
   | GetOrderHistoryStartAction
-  | SetOrderHistoryAction;
+  | SetOrderHistoryAction
+  | GetOrderDetailsStartAction
+  | SetOrderDetailsAction;
 
 //start action interfaces
 export interface SaveOrderHistoryStartAction {
@@ -18,8 +20,17 @@ export interface GetOrderHistoryStartAction {
   payload: string;
 }
 
+export interface GetOrderDetailsStartAction {
+  type: ActionType.GET_ORDER_DETAILS_START;
+  payload: string;
+}
 //other action interfaces
 interface SetOrderHistoryAction {
   type: ActionType.SET_ORDER_HISTORY;
   payload: Order[];
+}
+
+interface SetOrderDetailsAction {
+  type: ActionType.SET_ORDER_DETAILS;
+  payload: Order;
 }

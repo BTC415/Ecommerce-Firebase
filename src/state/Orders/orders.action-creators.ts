@@ -17,3 +17,13 @@ export const setOrderHistory = (history: Order[]): OrdersAction => ({
   type: ActionType.SET_ORDER_HISTORY,
   payload: history,
 });
+
+export const getOrderDetailsStart = (orderId: string): OrdersAction => ({
+  type: ActionType.GET_ORDER_DETAILS_START,
+  payload: orderId,
+});
+
+export const setOrderDetails = (order: Order): OrdersAction => ({
+  type: ActionType.SET_ORDER_DETAILS,
+  payload: order,
+});
