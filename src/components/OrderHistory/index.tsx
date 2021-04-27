@@ -1,5 +1,7 @@
 //importing hooks
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useOrdersActions } from '../../hooks';
 //importing utils
 import { v4 as uuidv4 } from 'uuid';
 import { orderHistoryColumns, styles, formatText } from '../../Utils';
@@ -20,8 +22,15 @@ interface OrderHistoryProps {
 }
 //order history
 const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
-  //history
+  //redux actions & history
   const history = useHistory();
+  const { setOrderHistory } = useOrdersActions();
+  //unmounting
+  useEffect(() => {
+    return () => {
+      setOrderHistory(null);
+    };
+  }, [setOrderHistory]);
   return (
     <TableContainer className="order__table">
       <Table>
