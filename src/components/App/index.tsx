@@ -18,6 +18,7 @@ import Admin from '../../pages/Admin';
 import Search from '../../pages/Search';
 import ProductDetails from '../../pages/ProductDetails';
 import Cart from '../../pages/Cart';
+import Order from '../../pages/Order';
 import Payment from '../../pages/Payment';
 //importing router utils
 import { Route, Switch } from 'react-router';
@@ -110,6 +111,16 @@ const App: React.FC = () => {
             <MainLayout>
               <Recovery />
             </MainLayout>
+          )}
+        />
+        <Route
+          path="/order/:orderId"
+          render={() => (
+            <WithAuth>
+              <AdminLayout>
+                <Order />
+              </AdminLayout>
+            </WithAuth>
           )}
         />
         <Route

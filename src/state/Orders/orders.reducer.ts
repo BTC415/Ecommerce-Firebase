@@ -5,10 +5,12 @@ import { OrdersAction } from './orders.actions';
 //state interface
 interface OrdersState {
   orderHistory: Order[];
+  orderDetails: Order | null;
 }
 //initial state
 const initialState: OrdersState = {
   orderHistory: [],
+  orderDetails: null,
 };
 //reducer
 const ordersReducer = (
@@ -18,6 +20,8 @@ const ordersReducer = (
   switch (action.type) {
     case ActionType.SET_ORDER_HISTORY:
       return { ...state, orderHistory: action.payload };
+    case ActionType.SET_ORDER_DETAILS:
+      return { ...state, orderDetails: action.payload };
     default:
       return state;
   }
