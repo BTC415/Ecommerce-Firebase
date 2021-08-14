@@ -25,14 +25,14 @@ import { Route, Switch } from 'react-router';
 //importing layouts
 import MainLayout from '../../layouts/MainLayout';
 import AdminLayout from '../../layouts/AdminLayout';
-//app component
+
 const App: React.FC = () => {
-  //redux action & state
   const { checkUserSession } = useUserActions();
-  //checking if user is signed in on first render
+
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
+
   return (
     <div className="app__container">
       <AdminToolbar />

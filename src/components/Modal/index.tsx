@@ -1,9 +1,8 @@
-//modal props
 interface ModalProps {
   toggleModal: () => void;
   isModalHidden: boolean;
 }
-//modal component
+
 const Modal: React.FC<ModalProps> = ({
   isModalHidden,
   toggleModal,

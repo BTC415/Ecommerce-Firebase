@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom';
 //importing font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-//header component
+
 const Header: React.FC = () => {
-  //redux state & actions
   const { currentUser } = useTypedSelector(state => state.user);
+
   const totalCartItems = useTypedSelector(state => selectCartItemsCount(state));
+
   const { emailSignOutStart } = useUserActions();
+
   return (
     <header>
       <div className="container">

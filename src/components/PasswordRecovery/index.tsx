@@ -7,22 +7,22 @@ import { useHistory } from 'react-router-dom';
 import MainForm from '../Forms/MainForm';
 import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
-//email password form component
+
 const PasswordRecovery: React.FC = () => {
-  //local state
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState<string[]>([]);
-  //redux actions, router history & state
+
   const history = useHistory();
+
   const { recoverPasswordStart, resetUserState } = useUserActions();
   const { recoverPasswordSuccess, userErrors } = useTypedSelector(
     state => state.user
   );
-  //resetting user on first render
+
   useEffect(() => {
     resetUserState();
   }, [resetUserState]);
-  //resetting form
+
   useEffect(() => {
     if (recoverPasswordSuccess) {
       setEmail('');
@@ -32,7 +32,7 @@ const PasswordRecovery: React.FC = () => {
       setErrors(userErrors);
     }
   }, [recoverPasswordSuccess, history, userErrors, resetUserState]);
-  //on submit handler
+
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email.length > 0) {
@@ -42,6 +42,7 @@ const PasswordRecovery: React.FC = () => {
       setErrors(['Please enter a valid email.']);
     }
   };
+
   return (
     <MainForm headline="Password Recovery">
       {errors.length > 0 && (

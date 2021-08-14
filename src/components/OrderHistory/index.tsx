@@ -16,21 +16,21 @@ import {
   TableRow,
   TableBody,
 } from '@material-ui/core';
-//props interface
+
 interface OrderHistoryProps {
   orders: Order[];
 }
-//order history
+
 const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
-  //redux actions & history
   const history = useHistory();
   const { setOrderHistory } = useOrdersActions();
-  //unmounting
+
   useEffect(() => {
     return () => {
       setOrderHistory(null);
     };
   }, [setOrderHistory]);
+
   return (
     <TableContainer className="order__table">
       <Table>

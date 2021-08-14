@@ -5,26 +5,23 @@ import { ProductData } from '../../../interfaces';
 //importing font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-//props interface
+
 interface CheckoutItemProps {
   product: ProductData;
 }
-//checkout item
+
 const CheckoutItem: React.FC<CheckoutItemProps> = ({ product }) => {
-  //redux actions
   const { removeCartItem, addCartItem, reduceCartItem } = useCartActions();
-  //destructuring
   const { thumbnail, description, quantity, price, documentId } = product;
-  //on click handlers
-  const handleRemoveCartItem = (documentId: string) => {
+
+  const handleRemoveCartItem = (documentId: string) =>
     removeCartItem(documentId);
-  };
-  const handleAddProduct = (product: ProductData) => {
-    addCartItem(product);
-  };
-  const handleReduceCartItem = (product: ProductData) => {
+
+  const handleReduceCartItem = (product: ProductData) =>
     reduceCartItem(product);
-  };
+
+  const handleAddProduct = (product: ProductData) => addCartItem(product);
+
   return (
     <div className="product__checkout">
       <div className="thumbnail">

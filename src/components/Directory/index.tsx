@@ -1,6 +1,6 @@
 //importing utils
 import { Link } from 'react-router-dom';
-//directory component
+
 const Directory: React.FC = () => {
   return (
     <section className="directory">

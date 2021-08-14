@@ -10,16 +10,17 @@ import { v4 as uuidv4 } from 'uuid';
 //importing components
 import Button from '../Forms/Button';
 import CheckoutItem from './item';
-//checkout
+
 const Checkout = () => {
-  //redux actions & state, router utils
   const history = useHistory();
+
   const { cartItems, total } = useTypedSelector(
     createStructuredSelector({
       cartItems: selectCartItems,
       total: selectCartTotal,
     })
   );
+
   return (
     <div className="checkout">
       <h1>Checkout</h1>

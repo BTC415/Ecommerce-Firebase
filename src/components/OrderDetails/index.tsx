@@ -15,21 +15,21 @@ import {
 //importing utils
 import { orderDetailsColumns, styles, formatText } from '../../Utils';
 import { v4 as uuidv4 } from 'uuid';
-//props interface
+
 interface OrderDetailsProps {
   order: Order;
 }
-//order details
+
 const OrderDetails: React.FC<OrderDetailsProps> = ({ order }) => {
-  //destructuring
   const orderItems = order && order.orderItems;
   const { setOrderDetails } = useOrdersActions();
-  //unmounting
+
   useEffect(() => {
     return () => {
       setOrderDetails(null);
     };
   }, [setOrderDetails]);
+
   return (
     <TableContainer>
       <Table>
