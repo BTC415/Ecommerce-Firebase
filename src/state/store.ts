@@ -20,6 +20,7 @@ export const store = createStore(
   {},
   composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 );
+
 //redux persist
 export const persistor = persistStore(store);
 //running redux saga

@@ -19,7 +19,7 @@ import FormInput from '../Forms/FormInput';
 import Button from '../Forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-//initial address
+
 const initialAddress: Address = {
   line1: '',
   line2: '',
@@ -28,9 +28,8 @@ const initialAddress: Address = {
   postal_code: '',
   country: '',
 };
-//payment details
+
 const PaymentDetails = () => {
-  //redux state, actions, history & stripe hooks
   const { total, itemCount, cartItems } = useTypedSelector(
     createStructuredSelector({
       total: selectCartTotal,
@@ -38,24 +37,25 @@ const PaymentDetails = () => {
       cartItems: selectCartItems,
     })
   );
+
   const history = useHistory();
   const { saveOrderHistoryStart } = useOrdersActions();
   const elements = useElements();
   const stripe = useStripe();
-  //local state
+
   const [shippingAddress, setShippingAddress] = useState<Address>(
     initialAddress
   );
   const [billingAddress, setBillingAddress] = useState<Address>(initialAddress);
   const [recipientName, setRecipientName] = useState('');
   const [nameOnCard, setNameOnCard] = useState('');
-  //redirecting only if cleared items
+
   useEffect(() => {
     if (itemCount < 1) {
       history.push('/account');
     }
   }, [history, itemCount]);
-  //on submit handler
+
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!elements) return;
