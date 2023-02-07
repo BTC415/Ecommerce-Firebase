@@ -4,11 +4,11 @@
 
 ## The Challenge⚡️
 
-I had the idea to build a fully functional eCommerce project using technologies that I liked. That's when I found this great course by [@SimpleTut](ttps://www.youtube.com/@SimpleTut) on Youtube. I immediately found interest in his teaching style and started this project.
+I had the idea to build a fully functional eCommerce project using technologies that I liked. That's when I found this great course by [@SimpleTut](https://www.youtube.com/@SimpleTut) on Youtube. I immediately found interest in his teaching style and started this project.
 
 I changed a couple of things from the course, such as using `typescript` instead of `javascript` and `scss` for styling.
 
-This is a great repo if you want to get started with integrating `Redux Saga` with typescript and `React.js`.
+This is a great repository if you want to get started with integrating `Redux Saga` with typescript and `React.js`. Although it's pretty old and needs some code cleanup.
 
 Here was the challenge:
 
