@@ -8,7 +8,7 @@ I had the idea to build a fully functional eCommerce project using technologies 
 
 I changed a couple of things from the course, such as using `typescript` instead of `javascript` and `scss` for styling.
 
-This is a great repository if you want to get started with integrating `Redux Saga` with typescript and `React.js`. Although it's pretty old and needs some code cleanup.
+This is a great repository if you want to get started with integrating `Redux Saga` with typescript and `React.js`.
 
 Here was the challenge:
 
