@@ -1,4 +1,4 @@
-# Shoply - Featuring React.js, Firebase, Redux Saga, Material UI & Typescript
+# Shoply - Featuring React.js, Firebase, Redux Saga, Material UI , Stripe & Typescript
 
 ![Shoply design preview image](./public/design/preview.png)
 
@@ -16,12 +16,15 @@ Here was the challenge:
 - Using a strict & consistent folder architecture.
 - Implementing a cart system using client-side logic.
 - Handling CRUD operations with firebase, using Redux Saga.
+- Stripe for payments w/ credit-card & paypal support.
+
 - Creating a good harmony between React, Redux and Typescript.
 
 ## Built With ✨
 
 - [Firebase](https://firebase.google.com/)
 - Redux Saga, Redux Persist
+- Stripe for payments
 - [Material UI](https://mui.com/) - UI library
 - [React](https://reactjs.org/) - JS library
 - Typescript
