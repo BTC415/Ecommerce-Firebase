@@ -29,8 +29,4 @@ Here was the challenge:
 - [React](https://reactjs.org/) - JS library
 - Typescript
 
-## Author
-
-- [@achrafdev](https://achrafdev.com)
-
 **Thanks for sharing** 🚀
